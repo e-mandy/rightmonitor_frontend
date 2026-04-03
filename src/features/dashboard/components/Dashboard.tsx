@@ -17,6 +17,7 @@ import {
   SquareFill,
   XCircleFill,
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -25,16 +26,18 @@ const Dashboard = () => {
         <ExclamationTriangleFill size={16} color="#f59e0b" />
         <span>
           <strong>2 companies</strong> below health score 50.
-          <span
+          <Link
+            to="/at-risk"
             style={{
               color: "var(--b)",
               fontWeight: "700",
               cursor: "pointer",
+              textDecoration: "none",
             }}
             id="alert-atrisk"
           >
             View at-risk →
-          </span>
+          </Link>
         </span>
       </div>
       <div className="ph">

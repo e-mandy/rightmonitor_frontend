@@ -1,13 +1,7 @@
-import {
-  Clock,
-  ExclamationCircle,
-  FileText,
-  GraphUp,
-  GridFill,
-  HouseDoor,
-  Square,
-} from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { FileText, GraphUp } from "react-bootstrap-icons";
+import { NavLink } from "react-router-dom";
+import { SidebarElement } from "../constants/sidebar.constants";
+import SidebarCard, { type SidebarCardType } from "./SidebarCard";
 
 const SideBar = () => {
   return (
@@ -18,18 +12,11 @@ const SideBar = () => {
         }}
       ></div>
       <div className="sb-sec">Overview</div>
-      <Link to="/dashboard" className="si on" data-view="dashboard">
-        <GridFill size={16} color="#2B8AC9" />
-        360° Dashboard
-      </Link>
-      <Link to="/journey" className="si si-ch" data-view="journey">
-        <Square size={16} color="#888" />
-        Journey Feed
-      </Link>
-      <Link to="/onboarding" className="si si-ch" data-view="onboarding">
-        <Clock size={16} color="#2B8AC9" />
-        Onboarding
-      </Link>
+      {SidebarElement.find(
+        (element) => element.name == "Overview",
+      )?.element?.map((element: SidebarCardType) => {
+        return <SidebarCard {...element} />;
+      })}
       <div
         className="sb-sec"
         style={{
@@ -38,14 +25,11 @@ const SideBar = () => {
       >
         Companies
       </div>
-      <Link to="/dashboard" className="si" data-view="dashboard">
-        <HouseDoor size={16} color="#2B8AC9" />
-        All Companies
-      </Link>
-      <Link to="/at-risk" className="si" data-view="atrisk">
-        <ExclamationCircle size={16} color="#b45309" />
-        At Risk<span className="si-bdg red">2</span>
-      </Link>
+      {SidebarElement.find(
+        (element) => element.name == "Companies",
+      )?.element?.map((element: SidebarCardType) => {
+        return <SidebarCard {...element} />;
+      })}
       <div
         className="sb-sec"
         style={{
@@ -54,14 +38,11 @@ const SideBar = () => {
       >
         Reports
       </div>
-      <Link to="/weekly-report" className="si" data-view="report">
-        <FileText size={16} color="#80B500" />
-        Weekly Report
-      </Link>
-      <Link to="/analytics" className="si" data-view="analytics">
-        <GraphUp size={16} color="#15803d" />
-        Analytics
-      </Link>
+      {SidebarElement.find(
+        (element) => element.name == "Reports",
+      )?.element?.map((element: SidebarCardType) => {
+        return <SidebarCard {...element} />;
+      })}
       <div
         id="sb-co-pin"
         style={{
