@@ -1,6 +1,4 @@
-import { FileText, GraphUp } from "react-bootstrap-icons";
-import { NavLink } from "react-router-dom";
-import { SidebarElement } from "../constants/sidebar.constants";
+import { SidebarElement } from "../../constants/sidebar.constants";
 import SidebarCard, { type SidebarCardType } from "./SidebarCard";
 
 const SideBar = () => {

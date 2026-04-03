@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
-import Dashboard from "./features/dashboard/components/Dashboard";
-import Journey from "./features/journey/components/Journey";
-import Onboarding from "./features/onboarding/components/Onboarding";
-import Risk from "./features/risk/components/Risk";
-import WeeklyReport from "./features/weekly-report/components/WeeklyReport";
-import Analytics from "./features/analytics/components/Analytics";
+import Dashboard from "./pages/Dashboard";
+import Journey from "./pages/Journey";
+import Onboarding from "./pages/Onboarding";
+import Risk from "./pages/Risk";
+import WeeklyReport from "./pages/WeeklyReport";
+import Analytics from "./pages/Analytics";
 
 function App() {
   return (
