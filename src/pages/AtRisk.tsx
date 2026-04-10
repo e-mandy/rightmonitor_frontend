@@ -1,4 +1,4 @@
-const Risk = () => {
+const AtRisk = () => {
   return (
     <div className="view" id="view-atrisk">
       <div className="ph">
@@ -234,4 +234,4 @@ const Risk = () => {
   );
 };
 
-export default Risk;
+export default AtRisk;
