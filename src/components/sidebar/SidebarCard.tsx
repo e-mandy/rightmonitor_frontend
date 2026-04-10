@@ -6,7 +6,7 @@ export type SidebarCardType = {
   to: string;
   class: boolean;
   data_view: string;
-  children: React.ReactNode | null;
+  children: null | number;
 };
 
 const SidebarCard = ({ ...data }: SidebarCardType) => {
@@ -20,7 +20,9 @@ const SidebarCard = ({ ...data }: SidebarCardType) => {
     >
       {data.icon}
       {data.name}
-      {data.children && data.children}
+      {data.children && data.children > 0 && (
+        <span className="si-bdg red">{data.children}</span>
+      )}
     </NavLink>
   );
 };

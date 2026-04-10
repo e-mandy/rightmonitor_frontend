@@ -7,6 +7,7 @@ import {
   HouseDoor,
   Square,
 } from "react-bootstrap-icons";
+import { atRiskCompanies } from "./at_risk.constants";
 
 export const SidebarElement = [
   {
@@ -56,7 +57,7 @@ export const SidebarElement = [
         class: false,
         icon: <ExclamationCircle size={16} color="#b45309" />,
         data_view: "atrisk",
-        children: <span className="si-bdg red">2</span>,
+        children: atRiskCompanies.length,
       },
     ],
   },
