@@ -1,3 +1,7 @@
+import { KeycloakProvider } from "@keycloak/keycloak-ui-shared";
+import { Provider } from "react-redux";
+import { store } from "../reduxStore";
+
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <KeycloakProvider
@@ -29,7 +33,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         scope: "openid",
       }}
     >
-      {children}
+      <Provider store={store}>{children}</Provider>
     </KeycloakProvider>
   );
 };

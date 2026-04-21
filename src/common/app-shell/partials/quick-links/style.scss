@@ -1,0 +1,30 @@
+.app-drawer-logo {
+    .svg-icon {
+        width: 100%;
+        height: 100%;
+    }
+    svg {
+        width: 100%;
+        aspect-ratio: 7/6;
+        object-fit: contain;
+        height: auto;
+    }
+}
+.svg-icon.xp {
+    margin-right: 20px;
+
+    svg {
+        width: auto;
+        height: 36px;
+    }
+}
+.app-drawer-item {
+    .desc {
+        font-size: 12px;
+        font-weight: 4 00;
+    }
+}
+
+[data-kt-app-layout=light-sidebar] .app-sidebar {
+    padding-top: 0
+}
