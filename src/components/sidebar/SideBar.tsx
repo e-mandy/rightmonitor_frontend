@@ -83,7 +83,10 @@ const SideBar = () => {
               id="sb-co-score"
               style={{
                 color: companyHealthScore
-                  ? getScoreColor(companyHealthScore)
+                  ? getScoreColor(companyHealthScore).color
+                  : "",
+                backgroundColor: companyHealthScore
+                  ? getScoreColor(companyHealthScore).bg
                   : "",
               }}
             >

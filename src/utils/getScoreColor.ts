@@ -1,9 +1,9 @@
-export const getScoreColor = (score: number): string => {
+export const getScoreColor = (score: number) => {
   if (score < 35) {
-    return "#b91c1c";
+    return { color: "#b91c1c", bg: "#b91c1c" };
   } else if (score >= 35 && score < 55) {
-    return "#b45309";
+    return { color: "#b45309", bg: "#fee2e2" };
   } else {
-    return "#15803d";
+    return { color: "#15803d", bg: "#dcfce7" };
   }
 };

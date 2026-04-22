@@ -1,6 +1,6 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { companies } from "../constants/at_risk.constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Overview from "../components/company_detail/Overview";
 import Journey from "./Journey";
 import Products from "../components/company_detail/Products";
@@ -11,11 +11,15 @@ type SectionType = "overview" | "journey" | "products" | "contacts" | "notes";
 
 const CompanyDetail = () => {
   const { state } = useLocation();
+  const navigate = useNavigate();
   const [currentSection, setCurrentSection] = useState<SectionType>("overview");
   const id: null | string = state?.id ?? null;
 
   const company = id ? companies.find((company) => company.id === id) : null;
 
+  useEffect(() => {
+    if (id === null) navigate("/dashboard", { replace: true });
+  }, [id, navigate]);
   return (
     <div className="view" id="view-company">
       <div className="co-hero">

@@ -105,7 +105,7 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
             <div className="ar-metric">
               <div
                 className="ar-metric-val"
-                style={{ color: getScoreColor(data.saas_health) }}
+                style={{ color: getScoreColor(data.saas_health).color }}
               >
                 {data.saas_health}%
               </div>
@@ -114,7 +114,7 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
             <div className="ar-metric">
               <div
                 className="ar-metric-val"
-                style={{ color: getScoreColor(data.hw_health) }}
+                style={{ color: getScoreColor(data.hw_health).color }}
               >
                 {data.hw_health}%
               </div>
@@ -123,7 +123,7 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
             <div className="ar-metric">
               <div
                 className="ar-metric-val"
-                style={{ color: getScoreColor(data.relationship) }}
+                style={{ color: getScoreColor(data.relationship).color }}
               >
                 {data.relationship}%
               </div>

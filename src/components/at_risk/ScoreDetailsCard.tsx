@@ -50,7 +50,7 @@ const ScoreDetailsCard = () => {
                     fontWeight: 900,
                     letterSpacing: "-1px",
                     lineHeight: 1,
-                    color: getScoreColor(ar_data.health_score),
+                    color: getScoreColor(ar_data.health_score).color,
                   }}
                   id="m-score"
                 >
@@ -82,7 +82,7 @@ const ScoreDetailsCard = () => {
                   <span className="rm-modal-dim-wt">Weight: 40%</span>
                   <span
                     className="rm-modal-dim-score"
-                    style={{ color: getScoreColor(ar_data.saas_health) }}
+                    style={{ color: getScoreColor(ar_data.saas_health).color }}
                   >
                     {ar_data.saas_health} / 100
                   </span>
@@ -93,7 +93,7 @@ const ScoreDetailsCard = () => {
                   className="rm-modal-bar"
                   style={{
                     width: ar_data.saas_health + "%",
-                    background: getScoreColor(ar_data.saas_health),
+                    background: getScoreColor(ar_data.saas_health).color,
                   }}
                 ></div>
               </div>
@@ -164,7 +164,7 @@ const ScoreDetailsCard = () => {
                   <span className="rm-modal-dim-wt">Weight: 30%</span>
                   <span
                     className="rm-modal-dim-score"
-                    style={{ color: getScoreColor(ar_data.health_score) }}
+                    style={{ color: getScoreColor(ar_data.health_score).color }}
                   >
                     {ar_data.health_score} / 100
                   </span>
@@ -175,7 +175,7 @@ const ScoreDetailsCard = () => {
                   className="rm-modal-bar"
                   style={{
                     width: ar_data.hw_health + "%",
-                    background: getScoreColor(ar_data.hw_health),
+                    background: getScoreColor(ar_data.hw_health).color,
                   }}
                 ></div>
               </div>
@@ -240,7 +240,7 @@ const ScoreDetailsCard = () => {
                   <span className="rm-modal-dim-wt">Weight: 30%</span>
                   <span
                     className="rm-modal-dim-score"
-                    style={{ color: getScoreColor(ar_data.relationship) }}
+                    style={{ color: getScoreColor(ar_data.relationship).color }}
                   >
                     {ar_data.relationship} / 100
                   </span>
@@ -251,7 +251,7 @@ const ScoreDetailsCard = () => {
                   className="rm-modal-bar"
                   style={{
                     width: ar_data.relationship + "%",
-                    background: getScoreColor(ar_data.relationship),
+                    background: getScoreColor(ar_data.relationship).color,
                   }}
                 ></div>
               </div>
