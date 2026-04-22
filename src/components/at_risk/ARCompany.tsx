@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { companies } from "../../constants/at_risk.constants";
 import { useAtRiskStore } from "../../store/at-risk.store";
 import type { AtRiskCompaniesType } from "../../types/atrisk_companies.types";
 import { getFormatDate } from "../../utils/functions/getFormatDate";
+import { getScoreColor } from "../../utils/getScoreColor";
 
 const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
   const setIsOpenedModal = useAtRiskStore.getState().setIsOpenedModal;
+  const navigate = useNavigate();
 
   const currentCompany = companies.find(
     (company) => company.id === data.company_id,
@@ -13,6 +16,13 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
   const handleModal = () => {
     setIsOpenedModal(true, data.company_id);
   };
+
+  const handleCompanyProfile = (id: string) => {
+    navigate("/company-profile", {
+      state: { id },
+    });
+  };
+
   return (
     currentCompany && (
       <div className="ar-card">
@@ -65,6 +75,7 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
               data-score="38"
               data-sbg="#fee2e2"
               data-scol="#b91c1c"
+              onClick={() => handleCompanyProfile(data.company_id)}
             >
               View Profile →
             </button>
@@ -72,12 +83,17 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
         </div>
         <div className="ar-body">
           <div className="ar-flags">
-            <div className="ar-flag ar-flag-r">
-              🔴 SaaS adoption critically low ({data.saas_health}%)
-            </div>
-            <div className="ar-flag ar-flag-r">
-              🔴 Relationship health deteriorating ({data.relationship}%)
-            </div>
+            {data.saas_health < 50 && (
+              <div className="ar-flag ar-flag-r">
+                🔴 SaaS adoption critically low ({data.saas_health}%)
+              </div>
+            )}
+            {data.relationship < 50 && (
+              <div className="ar-flag ar-flag-r">
+                🔴 Relationship health deteriorating ({data.relationship}%)
+              </div>
+            )}
+
             <div className="ar-flag ar-flag-a">
               ⚠ Onboarding behind schedule
             </div>
@@ -87,19 +103,28 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
           </div>
           <div className="ar-metrics">
             <div className="ar-metric">
-              <div className="ar-metric-val" style={{ color: "#b91c1c" }}>
+              <div
+                className="ar-metric-val"
+                style={{ color: getScoreColor(data.saas_health) }}
+              >
                 {data.saas_health}%
               </div>
               <div className="ar-metric-lbl">SaaS Health</div>
             </div>
             <div className="ar-metric">
-              <div className="ar-metric-val" style={{ color: "#b45309" }}>
+              <div
+                className="ar-metric-val"
+                style={{ color: getScoreColor(data.hw_health) }}
+              >
                 {data.hw_health}%
               </div>
               <div className="ar-metric-lbl">HW Health</div>
             </div>
             <div className="ar-metric">
-              <div className="ar-metric-val" style={{ color: "#b91c1c" }}>
+              <div
+                className="ar-metric-val"
+                style={{ color: getScoreColor(data.relationship) }}
+              >
                 {data.relationship}%
               </div>
               <div className="ar-metric-lbl">Relationship</div>

@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setData } from "./reduxStore/reducers";
 import { useEnvironment } from "@keycloak/keycloak-ui-shared";
+import CompanyDetail from "./pages/CompanyDetail";
 
 function App() {
   const context = useEnvironment();
@@ -72,6 +73,7 @@ function App() {
                 <Route path="/at-risk" element={<AtRisk />} />
                 <Route path="/weekly-report" element={<WeeklyReport />} />
                 <Route path="/analytics" element={<Analytics />} />
+                <Route path="/company-profile" element={<CompanyDetail />} />
               </Route>
             </Routes>
           </AppShell>

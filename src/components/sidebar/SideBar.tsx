@@ -1,7 +1,20 @@
+import { useLocation } from "react-router-dom";
 import { SidebarElement } from "../../constants/sidebar.constants";
 import SidebarCard, { type SidebarCardType } from "./SidebarCard";
+import { atRiskCompanies, companies } from "../../constants/at_risk.constants";
+import { getScoreColor } from "../../utils/getScoreColor";
 
 const SideBar = () => {
+  const { state } = useLocation();
+  const id: string | null = state?.id ?? null;
+
+  const companyName = id
+    ? companies.find((company) => company.id === state?.id)?.name
+    : null;
+  const companyHealthScore = id
+    ? atRiskCompanies.find((company) => company.company_id === state?.id)
+        ?.health_score
+    : null;
   return (
     <div className="sb">
       <div
@@ -41,28 +54,41 @@ const SideBar = () => {
       )?.element?.map((element: SidebarCardType) => {
         return <SidebarCard {...element} />;
       })}
-      <div
-        id="sb-co-pin"
-        style={{
-          display: "none",
-        }}
-      >
+      {state?.id && (
         <div
-          className="sb-sec"
+          id="sb-co-pin"
           style={{
-            marginTop: "6px",
+            display: state?.id != null ? "flex" : "none",
+            flexDirection: "column",
           }}
         >
-          Current Company
+          <div
+            className="sb-sec"
+            style={{
+              marginTop: "6px",
+            }}
+          >
+            Current Company
+          </div>
+          <div className="sb-co">
+            <div className="sb-co-dot"></div>
+            <span className="sb-co-name" id="sb-co-name">
+              {companyName}
+            </span>
+            <span
+              className="sb-co-score"
+              id="sb-co-score"
+              style={{
+                color: companyHealthScore
+                  ? getScoreColor(companyHealthScore)
+                  : "",
+              }}
+            >
+              {companyHealthScore}
+            </span>
+          </div>
         </div>
-        <div className="sb-co">
-          <div className="sb-co-dot"></div>
-          <span className="sb-co-name" id="sb-co-name">
-            —
-          </span>
-          <span className="sb-co-score" id="sb-co-score"></span>
-        </div>
-      </div>
+      )}
       <div className="sb-foot">
         <div className="sb-user">
           <div

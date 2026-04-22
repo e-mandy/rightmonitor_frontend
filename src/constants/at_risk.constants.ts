@@ -53,7 +53,7 @@ export const atRiskCompanies = [
   {
     company_id: "comp-003",
     health_score: 28,
-    saas_health: 15,
+    saas_health: 69,
     hw_health: 40,
     relationship: 30,
     arr: 85000,
