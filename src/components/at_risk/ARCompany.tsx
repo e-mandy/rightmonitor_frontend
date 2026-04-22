@@ -106,7 +106,7 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
             </div>
             <div className="ar-metric">
               {/** We have to fix the value here */}
-              <div className="ar-metric-val">$18K</div>
+              <div className="ar-metric-val">${data.arr}</div>
               <div className="ar-metric-lbl">ARR at Risk</div>
             </div>
           </div>
