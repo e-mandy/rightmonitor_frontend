@@ -1452,7 +1452,7 @@ We'll come back here
   border-color: var(--g);
   color: var(--gd);
 }
-.modal-overlay {
+.rm-modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
@@ -1461,10 +1461,10 @@ We'll come back here
   align-items: center;
   justify-content: center;
 }
-.modal-overlay.open {
+.rm-modal-overlay.open {
   display: flex;
 }
-.modal {
+.rm-modal {
   background: #fff;
   border-radius: 16px;
   width: 680px;
@@ -1473,18 +1473,18 @@ We'll come back here
   overflow-y: auto;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
 }
-.modal-head {
+.rm-modal-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px 0;
 }
-.modal-title {
+.rm-modal-title {
   font-size: 16px;
   font-weight: 800;
   color: var(--t1);
 }
-.modal-close {
+.rm-modal-close {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -1498,13 +1498,13 @@ We'll come back here
   color: var(--t2);
   line-height: 1;
 }
-.modal-close:hover {
+.rm-modal-close:hover {
   background: #eee;
 }
-.modal-body {
+.rm-modal-body {
   padding: 20px 24px 24px;
 }
-.modal-co {
+.rm-modal-co {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1514,7 +1514,7 @@ We'll come back here
   border-radius: var(--r2);
   border: 1px solid var(--bdr);
 }
-.modal-co-av {
+.rm-modal-co-av {
   width: 40px;
   height: 40px;
   border-radius: 12px;
@@ -1526,38 +1526,38 @@ We'll come back here
   flex-shrink: 0;
   border: 1px solid var(--bdr);
 }
-.modal-co-name {
+.rm-modal-co-name {
   font-size: 14px;
   font-weight: 800;
   color: var(--t1);
 }
-.modal-co-sub {
+.rm-modal-co-sub {
   font-size: 11px;
   color: var(--t3);
   margin-top: 2px;
 }
-.modal-dim {
+.rm-modal-dim {
   padding: 14px 0;
   border-bottom: 1px solid var(--bdr2);
 }
-.modal-dim:last-child {
+.rm-modal-dim:last-child {
   border-bottom: none;
 }
-.modal-dim-head {
+.rm-modal-dim-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
 }
-.modal-dim-name {
+.rm-modal-dim-name {
   font-size: 13px;
   font-weight: 800;
 }
-.modal-dim-score {
+.rm-modal-dim-score {
   font-size: 15px;
   font-weight: 900;
 }
-.modal-dim-wt {
+.rm-modal-dim-wt {
   font-size: 10px;
   color: var(--t3);
   background: var(--page);
@@ -1565,29 +1565,29 @@ We'll come back here
   border-radius: 20px;
   border: 1px solid var(--bdr);
 }
-.modal-bar-wrap {
+.rm-modal-bar-wrap {
   background: #f0f0f0;
   border-radius: 20px;
   height: 8px;
   overflow: hidden;
   margin-bottom: 10px;
 }
-.modal-bar {
+.rm-modal-bar {
   height: 8px;
   border-radius: 20px;
 }
-.modal-sub-grid {
+.rm-modal-sub-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
-.modal-sub {
+.rm-modal-sub {
   background: var(--page);
   border-radius: var(--r3);
   padding: 10px 12px;
   border: 1px solid var(--bdr);
 }
-.modal-sub-label {
+.rm-modal-sub-label {
   font-size: 10px;
   color: var(--t3);
   font-weight: 700;
@@ -1595,12 +1595,12 @@ We'll come back here
   letter-spacing: 0.4px;
   margin-bottom: 4px;
 }
-.modal-sub-val {
+.rm-modal-sub-val {
   font-size: 14px;
   font-weight: 900;
   color: var(--t1);
 }
-.modal-sub-trend {
+.rm-modal-sub-trend {
   font-size: 10px;
   margin-top: 2px;
 }
