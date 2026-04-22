@@ -28,8 +28,8 @@ const SideBar = () => {
       <div className="sb-sec">Overview</div>
       {SidebarElement.find(
         (element) => element.name == "Overview",
-      )?.element?.map((element: SidebarCardType) => {
-        return <SidebarCard {...element} />;
+      )?.element?.map((element: SidebarCardType, index) => {
+        return <SidebarCard {...element} key={index} />;
       })}
       <div
         className="sb-sec"
@@ -41,8 +41,8 @@ const SideBar = () => {
       </div>
       {SidebarElement.find(
         (element) => element.name == "Companies",
-      )?.element?.map((element: SidebarCardType) => {
-        return <SidebarCard {...element} />;
+      )?.element?.map((element: SidebarCardType, index) => {
+        return <SidebarCard {...element} key={index} />;
       })}
       <div
         className="sb-sec"
@@ -54,8 +54,8 @@ const SideBar = () => {
       </div>
       {SidebarElement.find(
         (element) => element.name == "Reports",
-      )?.element?.map((element: SidebarCardType) => {
-        return <SidebarCard {...element} />;
+      )?.element?.map((element: SidebarCardType, index) => {
+        return <SidebarCard {...element} key={index} />;
       })}
       {state?.id && (
         <div

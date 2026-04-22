@@ -6,8 +6,8 @@ import { FooterWrapper } from "./components/footer";
 // import { ThemeModeProvider } from "./partials";
 import { PageDataProvider } from "./core";
 import { reInitMenu } from "../helpers";
-import SideBar from "../../components/sidebar/SideBar";
 import { ThemeModeProvider } from "./partials";
+import SideBar from "../../components/sidebar/SideBar";
 // import {Sidebar} from "./components/sidebar";
 
 const MasterLayout = () => {
