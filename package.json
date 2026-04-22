@@ -16,6 +16,7 @@
   "dependencies": {
     "@faker-js/faker": "^10.4.0",
     "@formatjs/intl-relativetimeformat": "^12.3.2",
+    "@keycloak/keycloak-account-ui": "^26.6.1",
     "@keycloak/keycloak-ui-shared": "^26.6.1",
     "@novu/react": "^3.15.0",
     "@reduxjs/toolkit": "^2.11.2",

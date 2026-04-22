@@ -8,7 +8,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       environment={{
         serverBaseUrl: import.meta.env.VITE_APP_SSO_URL,
         realm: window.location.hostname.split(".")[0],
-        clientId: "localhost",
+        clientId: import.meta.env.VITE_APP_SSO_CLIENT_ID,
         resourceUrl: "",
         logo: "",
         logoUrl: "",

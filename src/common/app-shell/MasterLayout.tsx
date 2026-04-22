@@ -6,7 +6,8 @@ import { FooterWrapper } from "./components/footer";
 // import { ThemeModeProvider } from "./partials";
 import { PageDataProvider } from "./core";
 import { reInitMenu } from "../helpers";
-import { Sidebar } from "./components/sidebar";
+import SideBar from "../../components/sidebar/SideBar";
+import { ThemeModeProvider } from "./partials";
 // import {Sidebar} from "./components/sidebar";
 
 const MasterLayout = () => {
@@ -17,37 +18,35 @@ const MasterLayout = () => {
 
   return (
     <PageDataProvider>
-      {/*<ThemeModeProvider>*/}
-      <div
-        className="d-flex flex-column flex-root app-root container-lg"
-        id="kt_app_root"
-      >
-        <div
-          className="app-page flex-column flex-column-fluid"
-          id="kt_app_page"
-        >
-          <HeaderWrapper />
+      <ThemeModeProvider>
+        <div className="d-flex flex-column flex-root app-root" id="kt_app_root">
           <div
-            className="app-wrapper flex-column flex-row-fluid"
-            id="kt_app_wrapper"
+            className="app-page flex-column flex-column-fluid"
+            id="kt_app_page"
+            style={{ height: "100vh", overflow: "hidden" }}
           >
-            <Sidebar />
+            <HeaderWrapper />
             <div
-              className="app-main flex-column flex-row-fluid"
-              id="kt_app_main"
+              className="app-wrapper d-flex flex-row-fluid flex-grow-1 overflow-hidden"
+              id="kt_app_wrapper"
             >
-              <div className="d-flex flex-column flex-column-fluid">
-                {/*<ToolbarWrapper />*/}
-                <Content>
-                  <Outlet />
-                </Content>
+              <SideBar />
+              <div
+                className="app-main flex-column flex-row-fluid overflow-y-auto"
+                id="kt_app_main"
+              >
+                <div className="d-flex flex-column flex-column-fluid">
+                  {/*<ToolbarWrapper />*/}
+                  <Content>
+                    <Outlet />
+                  </Content>
+                </div>
+                <FooterWrapper />
               </div>
-              <FooterWrapper />
             </div>
           </div>
         </div>
-      </div>
-      {/*</ThemeModeProvider>*/}
+      </ThemeModeProvider>
     </PageDataProvider>
   );
 };

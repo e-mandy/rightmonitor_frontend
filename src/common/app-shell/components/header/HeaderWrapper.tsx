@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import clsx from "clsx";
 import { useLayout } from "../../core/index.ts";
 import { Header } from "./Header.tsx";

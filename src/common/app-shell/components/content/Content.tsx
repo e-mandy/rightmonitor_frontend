@@ -17,7 +17,7 @@ const Content = ({ children }: WithChildren) => {
     <div
       id="kt_app_content"
       className={clsx(
-        "app-content pt-0 container",
+        "app-content pt-0 container-fluid overflow-y-auto",
         classes.content.join(" "),
         config?.app?.content?.class,
       )}
