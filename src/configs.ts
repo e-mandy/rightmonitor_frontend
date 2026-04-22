@@ -1,7 +1,5 @@
-import { faker } from "@faker-js/faker";
-
 const configs: any = {
-  appName: faker.commerce.productName(),
+  appName: "RightMonitor",
   appVersion: "1.0.0",
   xpUrl: "",
   domainName: "rightcomtech.com",

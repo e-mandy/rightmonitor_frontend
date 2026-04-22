@@ -104,6 +104,7 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
           <button className="btn btn-ghost">✉ Send Email</button>
         </div>
       </div>
+      {/** Modal Card */}
     </div>
   );
 };
