@@ -3,9 +3,12 @@ import { SidebarElement } from "../../constants/sidebar.constants";
 import SidebarCard, { type SidebarCardType } from "./SidebarCard";
 import { atRiskCompanies, companies } from "../../constants/at_risk.constants";
 import { getScoreColor } from "../../utils/getScoreColor";
+import { shallowEqual, useSelector } from "react-redux";
 
 const SideBar = () => {
   const { state } = useLocation();
+  const store: any = useSelector((state: any) => state.root, shallowEqual);
+  const currentUser = store.personalInfo;
   const id: string | null = state?.id ?? null;
 
   const companyName = id
@@ -99,10 +102,13 @@ const SideBar = () => {
               fontSize: "10px",
             }}
           >
-            AA
+            {currentUser?.firstName[0]}
+            {currentUser?.lastName[0]}
           </div>
           <div>
-            <div className="sb-uname">Amos Ahounou</div>
+            <div className="sb-uname">
+              {currentUser?.firstName} {currentUser?.lastName}
+            </div>
             <div className="sb-urole">Lead Frontend · CSA</div>
           </div>
         </div>
