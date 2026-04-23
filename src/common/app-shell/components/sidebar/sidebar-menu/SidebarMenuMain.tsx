@@ -1,9 +1,16 @@
 // import { useIntl } from "react-intl";
 import { SidebarMenuItemWithSub } from "./SidebarMenuItemWithSub";
 import { SidebarMenuItem } from "./SidebarMenuItem";
+import { useLocation } from "react-router-dom";
+import { companies } from "../../../../../constants/at_risk.constants";
 
 const SidebarMenuMain = () => {
-  // const intl = useIntl();
+  const { state } = useLocation();
+
+  const id: null | string = state?.id ?? null;
+  const companyName = id
+    ? companies.find((company) => company.id === id)?.name
+    : null;
 
   return (
     <>
@@ -30,7 +37,7 @@ const SidebarMenuMain = () => {
         <SidebarMenuItem to="/at-risk" title="At Risk" hasBullet={true} />
       </SidebarMenuItemWithSub>
 
-      <SidebarMenuItemWithSub to="" title="Report" icon="notepad-bookmark">
+      <SidebarMenuItemWithSub to="" title="Report" icon="note">
         <SidebarMenuItem
           to="/weekly-report"
           title="Weekly Report"
@@ -39,6 +46,15 @@ const SidebarMenuMain = () => {
 
         <SidebarMenuItem to="/analytics" title="Analytics" hasBullet={true} />
       </SidebarMenuItemWithSub>
+
+      {companyName && (
+        <SidebarMenuItem
+          to="/company-profile"
+          title={companyName}
+          fontIcon="bi-archive"
+          icon="ranking"
+        />
+      )}
     </>
   );
 };
