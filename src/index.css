@@ -1,10 +1,10 @@
 :root {
-  --g: #80b500;
+  --g: #e8fff3;
   --gd: #6b9900;
   --gl: #f2f8e6;
   --b: #2b8ac9;
-  --bd: #1d6fa8;
-  --bl: #e8f3fb;
+  --bd: #2b8ac9;
+  --bl: #e9f3ff;
   --white: #fff;
   --bg: #fcfcfc;
   --page: #fcfcfc;
@@ -498,7 +498,7 @@ We'll come back here
 }
 .bx-g {
   background: #dcfce7;
-  color: #15803d;
+  color: #80b500;
 }
 .bx-a {
   background: #fef3c7;
@@ -517,7 +517,7 @@ We'll come back here
   color: #555;
 }
 .c-g {
-  color: #15803d;
+  color: #80b500;
 }
 .c-a {
   color: #b45309;
@@ -622,7 +622,7 @@ We'll come back here
   font-weight: 900;
 }
 .sv-g {
-  color: #15803d;
+  color: #80b500;
 }
 .sv-a {
   color: #b45309;
@@ -727,7 +727,7 @@ We'll come back here
   font-weight: 600;
 }
 .kt-g {
-  color: #15803d;
+  color: #80b500;
 }
 .kt-a {
   color: #b45309;
@@ -893,7 +893,7 @@ We'll come back here
   color: var(--t1);
 }
 .mr-g {
-  color: #15803d;
+  color: #80b500;
 }
 .mr-a {
   color: #b45309;
@@ -1244,7 +1244,7 @@ We'll come back here
 }
 .ps-g {
   background: #dcfce7;
-  color: #15803d;
+  color: #80b500;
 }
 .ps-a {
   background: #fef3c7;

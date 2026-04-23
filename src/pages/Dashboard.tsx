@@ -18,6 +18,7 @@ import {
   XCircleFill,
 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { Card } from "@rightcom/right-lib";
 
 const Dashboard = () => {
   return (
