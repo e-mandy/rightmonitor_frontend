@@ -7,7 +7,7 @@ import { FooterWrapper } from "./components/footer";
 import { PageDataProvider } from "./core";
 import { reInitMenu } from "../helpers";
 import { ThemeModeProvider } from "./partials";
-import SideBar from "../../components/sidebar/SideBar";
+import SidebarRC from "./components/sidebar/Sidebar";
 // import {Sidebar} from "./components/sidebar";
 
 const MasterLayout = () => {
@@ -30,7 +30,7 @@ const MasterLayout = () => {
               className="app-wrapper d-flex flex-row-fluid flex-grow-1 overflow-hidden"
               id="kt_app_wrapper"
             >
-              <SideBar />
+              <SidebarRC />
               <div
                 className="app-main flex-column flex-row-fluid overflow-y-auto"
                 id="kt_app_main"

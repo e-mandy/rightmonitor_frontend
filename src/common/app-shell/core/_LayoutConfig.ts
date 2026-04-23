@@ -1,66 +1,65 @@
-import {type ILayout} from './_Models'
+import { type ILayout } from "./_Models";
 
 export const DefaultConfig: ILayout = {
-  layoutType: 'light-sidebar',
+  layoutType: "light-sidebar",
   main: {
-    componentName: 'main',
-    type: 'default',
+    componentName: "main",
+    type: "default",
     pageBgWhite: false,
-    iconType: 'duotone',
+    iconType: "duotone",
   },
   app: {
     general: {
-      componentName: 'general',
+      componentName: "general",
       evolution: true,
-      layoutType: 'default',
-      mode: 'light',
+      layoutType: "default",
+      mode: "light",
       rtl: false,
-      primaryColor: '#50CD89',
+      primaryColor: "#50CD89",
       pageBgWhite: false,
-      pageWidth: 'default',
+      pageWidth: "default",
     },
     header: {
-      componentName: 'header',
+      componentName: "header",
       display: true,
       default: {
-        container: 'fluid',
-        containerClass: 'd-flex align-items-stretch justify-content-between',
+        container: "fluid",
+        containerClass: "d-flex align-items-stretch justify-content-between",
         fixed: {
           desktop: true,
           mobile: false,
         },
-        content: 'menu',
+        content: "menu",
         menu: {
           display: true,
-          iconType: 'svg',
+          iconType: "svg",
         },
       },
     },
     sidebar: {
-      componentName: 'sidebar',
-      // TODO set to true to enable sidebar
-      display: false,
+      componentName: "sidebar",
+      display: true,
       default: {
-        class: 'flex-column',
+        class: "flex-column",
         push: {
-          header: true,
+          header: false,
           toolbar: true,
           footer: true,
         },
         drawer: {
           enabled: true,
           attributes: {
-            'data-kt-drawer': 'true',
-            'data-kt-drawer-name': 'app-sidebar',
-            'data-kt-drawer-activate': '{default: true, lg: false}',
-            'data-kt-drawer-overlay': 'true',
-            'data-kt-drawer-width': '225px',
-            'data-kt-drawer-direction': 'start',
-            'data-kt-drawer-toggle': '#kt_app_sidebar_mobile_toggle',
+            "data-kt-drawer": "true",
+            "data-kt-drawer-name": "app-sidebar",
+            "data-kt-drawer-activate": "{default: true, lg: false}",
+            "data-kt-drawer-overlay": "true",
+            "data-kt-drawer-width": "225px",
+            "data-kt-drawer-direction": "start",
+            "data-kt-drawer-toggle": "#kt_app_sidebar_mobile_toggle",
           },
         },
         fixed: {
-          desktop: true,
+          desktop: false,
         },
         minimize: {
           desktop: {
@@ -70,17 +69,17 @@ export const DefaultConfig: ILayout = {
           },
         },
         menu: {
-          iconType: 'svg',
+          iconType: "svg",
         },
       },
     },
     toolbar: {
-      componentName: 'toolbar',
+      componentName: "toolbar",
       display: false,
-      layout: 'classic',
-      class: 'py-3 py-lg-6',
-      container: 'fluid',
-      containerClass: 'd-flex flex-stack',
+      layout: "classic",
+      class: "py-3 py-lg-6",
+      container: "fluid",
+      containerClass: "d-flex flex-stack",
       fixed: {
         desktop: false,
         mobile: false,
@@ -89,47 +88,48 @@ export const DefaultConfig: ILayout = {
       filterButton: true,
       daterangepickerButton: false,
       primaryButton: true,
-      primaryButtonLabel: 'Create',
-      primaryButtonModal: 'create-app',
+      primaryButtonLabel: "Create",
+      primaryButtonModal: "create-app",
     },
     pageTitle: {
-      componentName: 'page-title',
+      componentName: "page-title",
       display: false,
       breadCrumb: false,
       description: false,
-      direction: 'column',
+      direction: "column",
     },
     content: {
-      componentName: 'content',
-      container: 'fluid',
+      componentName: "content",
+      container: "fluid",
     },
     footer: {
-      componentName: 'footer',
+      componentName: "footer",
       display: true,
-      container: 'fluid',
-      containerClass: 'd-flex flex-column flex-fill flex-md-row flex-center flex-md-stack py-3',
+      container: "fluid",
+      containerClass:
+        "d-flex flex-column flex-fill flex-md-row flex-center flex-md-stack py-3",
       fixed: {
         desktop: false,
         mobile: false,
       },
     },
     pageLoader: {
-      componentName: 'page-loader',
-      type: 'none',
-      logoImage: 'default.svg',
-      logoClass: 'mh-75px',
+      componentName: "page-loader",
+      type: "none",
+      logoImage: "default.svg",
+      logoClass: "mh-75px",
     },
   },
   illustrations: {
-    componentName: 'illustrations',
-    set: 'sketchy-1',
+    componentName: "illustrations",
+    set: "sketchy-1",
   },
   scrolltop: {
-    componentName: 'scrolltop',
+    componentName: "scrolltop",
     display: true,
   },
   engage: {
-    componentName: 'engage',
+    componentName: "engage",
     demos: {
       enabled: true,
     },
@@ -137,4 +137,4 @@ export const DefaultConfig: ILayout = {
       enabled: false,
     },
   },
-}
+};
