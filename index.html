@@ -8,6 +8,25 @@
   </head>
   <body>
     <div id="root"></div>
+    <div
+      class="splash-screen"
+      id="splash-screen"
+      style="
+        display: flex;
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      "
+    >
+      <div style="text-align: center">
+        <div style="margin-bottom: 15px">
+          <img alt="RightQ" src="/RightCom.svg" style="height: 36px" />
+        </div>
+        <div class="spinner-border text-primary" output="status"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
