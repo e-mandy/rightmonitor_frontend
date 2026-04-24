@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Journey from "./pages/Journey";
 import Onboarding from "./pages/Onboarding";
@@ -67,6 +67,10 @@ function App() {
           <AppShell>
             <Routes>
               <Route element={<MasterLayout />}>
+                <Route
+                  path="/"
+                  element={<Navigate to="/dashboard" replace />}
+                />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/journey" element={<Journey />} />
                 <Route path="/onboarding" element={<Onboarding />} />
