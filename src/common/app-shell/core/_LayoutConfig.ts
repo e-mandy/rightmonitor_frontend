@@ -27,7 +27,7 @@ export const DefaultConfig: ILayout = {
         containerClass: "d-flex align-items-stretch justify-content-between",
         fixed: {
           desktop: true,
-          mobile: false,
+          mobile: true,
         },
         content: "menu",
         menu: {

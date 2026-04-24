@@ -1,10 +1,11 @@
 import Parse from "parse";
 
-Parse.initialize(
-  import.meta.env.VITE_PARSE_APP_ID,
-  import.meta.env.VITE_PARSE_APP_KEY,
-);
+export const initParseInClientSide = () => {
+  Parse.initialize(
+    import.meta.env.VITE_PARSE_APP_ID,
+    import.meta.env.VITE_PARSE_APP_KEY,
+  );
 
-Parse.serverURL = import.meta.env.VITE_BACKEND_URL;
-
-export default Parse;
+  Parse.serverURL = import.meta.env.VITE_BACKEND_URL;
+  Parse.CoreManager.set("REQUEST_ATTEMPT_LIMIT", 1);
+};
