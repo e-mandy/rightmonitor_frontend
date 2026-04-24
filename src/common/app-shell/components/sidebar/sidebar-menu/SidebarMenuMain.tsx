@@ -21,13 +21,13 @@ const SidebarMenuMain = () => {
         icon="ranking"
       />
 
-      <SidebarMenuItemWithSub to="" title="Overview" icon="notepad-bookmark">
+      <SidebarMenuItemWithSub to="" title="Overview" icon="kanban">
         <SidebarMenuItem to="/journey" title="Journey Feed" hasBullet={true} />
 
         <SidebarMenuItem to="/onboarding" title="Onboarding" hasBullet={true} />
       </SidebarMenuItemWithSub>
 
-      <SidebarMenuItemWithSub to="" title="Companies" icon="notepad-bookmark">
+      <SidebarMenuItemWithSub to="" title="Companies" icon="office-bag">
         <SidebarMenuItem
           to="/dashboard"
           title="All Companies"
@@ -37,7 +37,7 @@ const SidebarMenuMain = () => {
         <SidebarMenuItem to="/at-risk" title="At Risk" hasBullet={true} />
       </SidebarMenuItemWithSub>
 
-      <SidebarMenuItemWithSub to="" title="Report" icon="note">
+      <SidebarMenuItemWithSub to="" title="Report" icon="graph-up">
         <SidebarMenuItem
           to="/weekly-report"
           title="Weekly Report"
