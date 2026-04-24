@@ -33,40 +33,42 @@ export function HeaderWrapper() {
           config.app?.header?.default?.containerClass,
         )}
       >
-        <div
-          className="d-flex align-items-center ms-n2 me-2"
-          title="Show sidebar menu"
-        >
-          <a href={"/"} className={"text-dark"}>
-            {/*<div*/}
-            {/*  className="btn btn-icon btn-active-color-primary w-35px h-35px"*/}
-            {/*  id="kt_app_sidebar_mobile_toggle"*/}
-            {/*>*/}
-            {/*  <KTIcon iconName="abstract-14" className=" fs-1" />*/}
-            {/*</div>*/}
-            <div
-              className={
-                "d-none d-sm-none d-md-none d-lg-flex align-items-center"
-              }
-            >
-              <img src={productIcon} style={{ height: 32, width: 32 }} />
-              <span className={"ms-5 fs-1 fw-bold"}>{configs.appName}</span>
-            </div>
-            <div className="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-              <div className="d-lg-none">
-                <div className={"d-flex align-items-center"}>
-                  <img alt="Logo" src={productIcon} className="h-30px" />
-                  <div className={"ms-4"}>
-                    {" "}
-                    <span className={"text-dark fs-4 fw-bold"}>
-                      {configs.appName}
-                    </span>
+        {!config.app.sidebar?.display && (
+          <div
+            className="d-flex align-items-center ms-n2 me-2"
+            title="Show sidebar menu"
+          >
+            <a href={"/"} className={"text-dark"}>
+              {/*<div*/}
+              {/*  className="btn btn-icon btn-active-color-primary w-35px h-35px"*/}
+              {/*  id="kt_app_sidebar_mobile_toggle"*/}
+              {/*>*/}
+              {/*  <KTIcon iconName="abstract-14" className=" fs-1" />*/}
+              {/*</div>*/}
+              <div
+                className={
+                  "d-none d-sm-none d-md-none d-lg-flex align-items-center"
+                }
+              >
+                <img src={productIcon} style={{ height: 32, width: 32 }} />
+                <span className={"ms-5 fs-1 fw-bold"}>{configs.appName}</span>
+              </div>
+              <div className="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+                <div className="d-lg-none">
+                  <div className={"d-flex align-items-center"}>
+                    <img alt="Logo" src={productIcon} className="h-30px" />
+                    <div className={"ms-4"}>
+                      {" "}
+                      <span className={"text-dark fs-4 fw-bold"}>
+                        {configs.appName}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </a>
-        </div>
+            </a>
+          </div>
+        )}
 
         <div
           id="kt_app_header_wrapper"

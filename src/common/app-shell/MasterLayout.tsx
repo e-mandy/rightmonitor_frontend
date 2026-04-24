@@ -19,18 +19,18 @@ const MasterLayout = () => {
   return (
     <PageDataProvider>
       <ThemeModeProvider>
-        <div className="d-flex flex-column flex-root app-root" id="kt_app_root">
+        <div className="d-flex flex-row flex-root app-root" id="kt_app_root">
           <div
-            className="app-page flex-column flex-column-fluid"
+            className="app-page d-flex flex-row flex-row-fluid"
             id="kt_app_page"
             style={{ height: "100vh", overflow: "hidden" }}
           >
+            <SidebarRC />
             <HeaderWrapper />
             <div
-              className="app-wrapper d-flex flex-row-fluid flex-grow-1 overflow-hidden"
+              className="app-wrapper d-flex flex-row-fluid overflow-hidden"
               id="kt_app_wrapper"
             >
-              <SidebarRC />
               <div
                 className="app-main flex-column flex-row-fluid overflow-y-auto"
                 id="kt_app_main"

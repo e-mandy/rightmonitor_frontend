@@ -5,6 +5,7 @@ import { useLayout } from "../../core";
 import { type MutableRefObject, useEffect, useRef } from "react";
 import { ToggleComponent } from "../../../helpers/ts/components";
 import productIcon from "../../../../assets/favicon.png";
+import productionLogo from "../../../../assets/RightCom.svg";
 
 type PropsType = {
   sidebarRef: MutableRefObject<HTMLDivElement | null>;
@@ -61,7 +62,7 @@ const SidebarLogo = (props: PropsType) => {
             className="h-25px app-sidebar-logo-default"
           />
         ) : (
-          <>
+          <div className="d-flex gap-4 align-items-center">
             <img
               alt="Logo"
               src={productIcon}
@@ -72,7 +73,12 @@ const SidebarLogo = (props: PropsType) => {
               src={productIcon}
               className="h-25px app-sidebar-logo-default theme-dark-show"
             />
-          </>
+            <img
+              alt="RightCom"
+              src={productionLogo}
+              className="h-25px app-sidebar-logo-default"
+            />
+          </div>
         )}
 
         <img

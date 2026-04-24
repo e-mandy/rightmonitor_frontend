@@ -42,7 +42,7 @@ export const DefaultConfig: ILayout = {
       default: {
         class: "flex-column",
         push: {
-          header: false,
+          header: true,
           toolbar: true,
           footer: true,
         },
@@ -59,7 +59,7 @@ export const DefaultConfig: ILayout = {
           },
         },
         fixed: {
-          desktop: false,
+          desktop: true,
         },
         minimize: {
           desktop: {
