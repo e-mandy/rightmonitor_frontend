@@ -1,4 +1,4 @@
-import Parse from "parse/dist/parse.min.js";
+import Parse from "parse";
 
 export const getCompanies = async () => {
   const query = new Parse.Query("Company");

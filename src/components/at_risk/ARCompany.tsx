@@ -4,6 +4,7 @@ import { useAtRiskStore } from "../../store/at-risk.store";
 import type { AtRiskCompaniesType } from "../../types/atrisk_companies.types";
 import { getFormatDate } from "../../utils/functions/getFormatDate";
 import { getScoreColor } from "../../utils/getScoreColor";
+import { Card } from "@rightcom/right-lib";
 
 const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
   const setIsOpenedModal = useAtRiskStore.getState().setIsOpenedModal;
@@ -25,13 +26,12 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
 
   return (
     currentCompany && (
-      <div className="ar-card">
-        <div className="ar-head">
+      <Card className="ar-card">
+        <Card.Body className="ar-head">
           <div
             className="ar-logo"
             style={{
               background: "#fee2e2",
-              color: "#b91c1c",
               overflow: "hidden",
             }}
           >
@@ -80,7 +80,7 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
               View Profile →
             </button>
           </div>
-        </div>
+        </Card.Body>
         <div className="ar-body">
           <div className="ar-flags">
             {data.saas_health < 50 && (
@@ -141,7 +141,7 @@ const ARCompany = ({ ...data }: AtRiskCompaniesType) => {
             <button className="btn btn-ghost">✉ Send Email</button>
           </div>
         </div>
-      </div>
+      </Card>
     )
   );
 };
