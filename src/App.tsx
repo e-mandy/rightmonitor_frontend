@@ -22,7 +22,7 @@ import CompanyDetail from "./pages/CompanyDetail";
 
 function App() {
   const context = useEnvironment();
-  console.log(context.keycloak);
+  console.log(context.keycloak.token);
   const dispatch = useDispatch();
 
   useEffect(() => {

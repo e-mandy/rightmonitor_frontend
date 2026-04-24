@@ -18,8 +18,11 @@ import {
   XCircleFill,
 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { useCompany } from "../hooks/useCompany";
+import CustomerScore from "../components/dashboard/CustomerScore";
 
 const Dashboard = () => {
+  const { data: companies } = useCompany();
   return (
     <div className="view active" id="view-dashboard">
       <div className="alert">
@@ -43,7 +46,9 @@ const Dashboard = () => {
       <div className="ph">
         <div>
           <div className="ph-title">360° Overview</div>
-          <div className="ph-sub">Real-time · All products · 24 companies</div>
+          <div className="ph-sub">
+            Real-time · All products · {companies?.length} companies
+          </div>
         </div>
         <div className="ph-right">
           <button className="btn btn-ghost">↓ Export</button>
@@ -212,211 +217,15 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  className="co-row"
-                  data-name="Ecobank GH"
-                  data-init="EG"
-                  data-bg="#e8f3fb"
-                  data-col="#2B8AC9"
-                  data-score="82"
-                  data-sbg="#dcfce7"
-                  data-scol="#15803d"
-                >
-                  <td>
-                    <div className="cname">Ecobank GH</div>
-                    <div className="csince">Since Jan 2024</div>
-                  </td>
-                  <td>
-                    <div className="sbar-w">
-                      <div
-                        className="sbar sb-g"
-                        style={{
-                          width: "82%",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="sv sv-g">82</div>
-                  </td>
-                  <td>
-                    <span className="bx bx-g">88%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-g">79%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-g">80%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-g">Healthy</span>
-                  </td>
-                  <td>
-                    <span className="vlink modal-btn">View →</span>
-                  </td>
-                </tr>
-                <tr
-                  className="co-row"
-                  data-name="MTN Ghana"
-                  data-init="MT"
-                  data-bg="#f0f7e0"
-                  data-col="#80B500"
-                  data-score="76"
-                  data-sbg="#dcfce7"
-                  data-scol="#15803d"
-                >
-                  <td>
-                    <div className="cname">MTN Ghana</div>
-                    <div className="csince">Since Mar 2023</div>
-                  </td>
-                  <td>
-                    <div className="sbar-w">
-                      <div
-                        className="sbar sb-g"
-                        style={{
-                          width: "76%",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="sv sv-g">76</div>
-                  </td>
-                  <td>
-                    <span className="bx bx-g">80%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-a">65%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-g">82%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-g">Healthy</span>
-                  </td>
-                  <td>
-                    <span className="vlink modal-btn">View →</span>
-                  </td>
-                </tr>
-                <tr
-                  className="co-row"
-                  data-name="Standard Bank"
-                  data-init="SB"
-                  data-bg="#fef3c7"
-                  data-col="#b45309"
-                  data-score="58"
-                  data-sbg="#fef3c7"
-                  data-scol="#b45309"
-                >
-                  <td>
-                    <div className="cname">Standard Bank</div>
-                    <div className="csince">Since Aug 2023</div>
-                  </td>
-                  <td>
-                    <div className="sbar-w">
-                      <div
-                        className="sbar sb-a"
-                        style={{
-                          width: "58%",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="sv sv-a">58</div>
-                  </td>
-                  <td>
-                    <span className="bx bx-a">60%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-a">55%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-g">62%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-a">Warning</span>
-                  </td>
-                  <td>
-                    <span className="vlink modal-btn">View →</span>
-                  </td>
-                </tr>
-                <tr
-                  className="co-row"
-                  data-name="BCEAO Sénégal"
-                  data-init="BC"
-                  data-bg="#fee2e2"
-                  data-col="#b91c1c"
-                  data-score="38"
-                  data-sbg="#fee2e2"
-                  data-scol="#b91c1c"
-                >
-                  <td>
-                    <div className="cname">BCEAO Sénégal</div>
-                    <div className="csince">Since Nov 2024</div>
-                  </td>
-                  <td>
-                    <div className="sbar-w">
-                      <div
-                        className="sbar sb-r"
-                        style={{
-                          width: "38%",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="sv sv-r">38</div>
-                  </td>
-                  <td>
-                    <span className="bx bx-r">32%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-a">55%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-r">28%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-r">At Risk</span>
-                  </td>
-                  <td>
-                    <span className="vlink modal-btn">View →</span>
-                  </td>
-                </tr>
-                <tr
-                  className="co-row"
-                  data-name="Airtel Nigeria"
-                  data-init="AN"
-                  data-bg="#fee2e2"
-                  data-col="#b91c1c"
-                  data-score="43"
-                  data-sbg="#fee2e2"
-                  data-scol="#b91c1c"
-                >
-                  <td>
-                    <div className="cname">Airtel Nigeria</div>
-                    <div className="csince">Since Feb 2025</div>
-                  </td>
-                  <td>
-                    <div className="sbar-w">
-                      <div
-                        className="sbar sb-r"
-                        style={{
-                          width: "43%",
-                        }}
-                      ></div>
-                    </div>
-                    <div className="sv sv-r">43</div>
-                  </td>
-                  <td>
-                    <span className="bx bx-r">40%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-a">52%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-r">36%</span>
-                  </td>
-                  <td>
-                    <span className="bx bx-r">At Risk</span>
-                  </td>
-                  <td>
-                    <span className="vlink modal-btn">View →</span>
-                  </td>
-                </tr>
+                {companies?.map((company: any) => (
+                  <tr className="co-row">
+                    <CustomerScore
+                      created_at={company.createdAt}
+                      name={company.name}
+                      key={company.company_id}
+                    />
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

@@ -6,6 +6,9 @@ import "./index.css";
 import App from "./App.tsx";
 import AuthProvider from "./providers/AuthProvider.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { initParseInClientSide } from "./utils/parse/parseInstance.ts";
+
+initParseInClientSide();
 
 const client = new QueryClient();
 
