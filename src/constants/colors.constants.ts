@@ -15,4 +15,8 @@ export const APP_COLORS = {
     bg: "#fee2e2",
     color: "#b45309",
   },
+  neutral: {
+    bg: "transparent",
+    color: "black",
+  },
 };

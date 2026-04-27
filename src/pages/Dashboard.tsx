@@ -18,6 +18,7 @@ import CustomerScore from "../components/dashboard/CustomerScore";
 import type { CompanyType } from "../types/company.type";
 import AggregatesContainer from "../components/dashboard/AggregatesContainer";
 import { ErrorBoundary } from "../components/ErrorBoundary";
+import KPIContainer from "../components/dashboard/KPIContainer";
 
 const Dashboard = () => {
   const { data: companies } = useCompany();
@@ -56,41 +57,9 @@ const Dashboard = () => {
       <ErrorBoundary>
         <AggregatesContainer />
       </ErrorBoundary>
-      <div className="krow">
-        <div className="kcard kc-g">
-          <div className="klbl">Gross Revenue Retention</div>
-          <div className="kval c-g">94.2%</div>
-          <div className="ktrend kt-g">▲ +1.3% vs last month</div>
-          <div className="ktgt">Target: &gt;90%</div>
-        </div>
-        <div className="kcard kc-b">
-          <div className="klbl">Net Revenue Retention</div>
-          <div className="kval c-b">108.7%</div>
-          <div className="ktrend kt-g">▲ +3.1% vs last month</div>
-          <div className="ktgt">Target: &gt;105%</div>
-        </div>
-        <div className="kcard kc-a">
-          <div className="klbl">Logo Churn</div>
-          <div className="kval c-a">1.8%</div>
-          <div className="ktrend kt-a">▲ +0.4% — near threshold</div>
-          <div className="ktgt">Target: &lt;2% / month</div>
-        </div>
-        <div className="kcard kc-p">
-          <div className="klbl">Expansion Pipeline</div>
-          <div
-            className="kval"
-            style={{
-              fontSize: "20px",
-              paddingTop: "4px",
-              color: "var(--t1)",
-            }}
-          >
-            $142,000
-          </div>
-          <div className="ktrend kt-n">4 active upsell opportunities</div>
-          <div className="ktgt">Monthly target: $200K</div>
-        </div>
-      </div>
+      <ErrorBoundary>
+        <KPIContainer />
+      </ErrorBoundary>
       <div className="g64">
         <div className="card">
           <div className="ch" style={{ paddingBottom: "0" }}>

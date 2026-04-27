@@ -672,7 +672,6 @@ We'll come back here
   border-radius: var(--r);
   border: 1px solid var(--bdr);
   box-shadow: var(--sh);
-  padding: 16px 18px 14px;
   position: relative;
   overflow: hidden;
   transition: 0.2s;
