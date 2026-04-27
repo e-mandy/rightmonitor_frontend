@@ -638,13 +638,7 @@ We'll come back here
 .scard {
   flex: 1;
   background: var(--bg);
-  border: 1px solid var(--bdr);
-  border-radius: var(--r2);
-  box-shadow: var(--sh);
-  padding: 12px 14px;
   display: flex;
-  align-items: center;
-  gap: 12px;
 }
 .scard-ico {
   width: 36px;

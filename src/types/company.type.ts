@@ -1,8 +1,8 @@
 export type CompanyType = {
-  id: string;
+  company_id: string;
   name: string;
-  logo: string;
   industry: string;
   region: string;
-  created_at: string;
+  logo: string;
+  createdAt: string;
 };

@@ -20,6 +20,8 @@ import {
 import { Link } from "react-router-dom";
 import { useCompany } from "../hooks/useCompany";
 import CustomerScore from "../components/dashboard/CustomerScore";
+import type { CompanyType } from "../types/company.type";
+import AggregateCard from "../components/dashboard/AggregateCard";
 
 const Dashboard = () => {
   const { data: companies } = useCompany();
@@ -56,99 +58,36 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="strip">
-        <div className="scard">
-          <div
-            className="scard-ico"
-            style={{
-              background: "#f0f7e0",
-            }}
-          >
-            <Circle size={18} color="#80B500" />
-          </div>
-          <div>
-            <div className="scard-val">24</div>
-            <div className="scard-lbl">Total Companies</div>
-          </div>
-        </div>
-        <div className="scard">
-          <div
-            className="scard-ico"
-            style={{
-              background: "#dcfce7",
-            }}
-          >
-            <CheckCircleFill size={18} color="#15803d" />
-          </div>
-          <div>
-            <div
-              className="scard-val"
-              style={{
-                color: "#15803d",
-              }}
-            >
-              17
-            </div>
-            <div className="scard-lbl">Healthy</div>
-          </div>
-        </div>
-        <div className="scard">
-          <div
-            className="scard-ico"
-            style={{
-              background: "#fef3c7",
-            }}
-          >
-            <ExclamationCircle size={18} color="#b45309" />
-          </div>
-          <div>
-            <div
-              className="scard-val"
-              style={{
-                color: "#b45309",
-              }}
-            >
-              5
-            </div>
-            <div className="scard-lbl">Warning</div>
-          </div>
-        </div>
-        <div className="scard">
-          <div className="scard-ico" style={{ background: "#fee2e2" }}>
-            <XCircleFill size={18} color="#b91c1c" />
-          </div>
-          <div>
-            <div
-              className="scard-val"
-              style={{
-                color: "#b91c1c",
-              }}
-            >
-              2
-            </div>
-            <div className="scard-lbl">At Risk</div>
-          </div>
-        </div>
-        <div className="scard">
-          <div
-            className="scard-ico"
-            style={{
-              background: "#e8f3fb",
-            }}
-          >
-            <HouseDoorFill size={18} color="#2B8AC9" />
-          </div>
-          <div>
-            <div
-              className="scard-val"
-              style={{
-                color: "#2b8ac9",
-              }}
-            >
-              $142K
-            </div>
-            <div className="scard-lbl">Pipeline</div>
-          </div>
-        </div>
+        <AggregateCard
+          icon={<Circle />}
+          value="24"
+          label="Total Companies"
+          color="green"
+        />
+        <AggregateCard
+          icon={<CheckCircleFill />}
+          value="17"
+          label="Healthy"
+          color="green"
+        />
+        <AggregateCard
+          icon={<ExclamationCircle />}
+          value="4"
+          label="Warning"
+          color="orange"
+        />
+        <AggregateCard
+          icon={<XCircleFill />}
+          value="4"
+          label="At Risk"
+          color="red"
+        />
+        <AggregateCard
+          icon={<HouseDoorFill />}
+          value="142k"
+          label="Pipeline"
+          color="blue"
+        />
       </div>
       <div className="krow">
         <div className="kcard kc-g">
@@ -217,7 +156,7 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {companies?.map((company: any) => (
+                {companies?.map((company: CompanyType) => (
                   <tr className="co-row">
                     <CustomerScore
                       created_at={company.createdAt}

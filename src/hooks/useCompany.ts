@@ -5,5 +5,6 @@ export const useCompany = () => {
   return useQuery({
     queryKey: ["companies"],
     queryFn: getCompanies,
+    throwOnError: true,
   });
 };
