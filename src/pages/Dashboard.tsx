@@ -2,26 +2,22 @@ import {
   BarChartFill,
   CardText,
   ChatDotsFill,
-  CheckCircleFill,
-  Circle,
   CircleFill,
   ClockFill,
-  ExclamationCircle,
   ExclamationTriangleFill,
   FileEarmarkFill,
   FileTextFill,
-  HouseDoorFill,
   PersonFill,
   RecordCircle,
   RecordCircleFill,
   SquareFill,
-  XCircleFill,
 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useCompany } from "../hooks/useCompany";
 import CustomerScore from "../components/dashboard/CustomerScore";
 import type { CompanyType } from "../types/company.type";
-import AggregateCard from "../components/dashboard/AggregateCard";
+import AggregatesContainer from "../components/dashboard/AggregatesContainer";
+import { ErrorBoundary } from "../components/ErrorBoundary";
 
 const Dashboard = () => {
   const { data: companies } = useCompany();
@@ -57,38 +53,9 @@ const Dashboard = () => {
           <button className="btn btn-primary">+ Add Company</button>
         </div>
       </div>
-      <div className="strip">
-        <AggregateCard
-          icon={<Circle />}
-          value="24"
-          label="Total Companies"
-          color="green"
-        />
-        <AggregateCard
-          icon={<CheckCircleFill />}
-          value="17"
-          label="Healthy"
-          color="green"
-        />
-        <AggregateCard
-          icon={<ExclamationCircle />}
-          value="4"
-          label="Warning"
-          color="orange"
-        />
-        <AggregateCard
-          icon={<XCircleFill />}
-          value="4"
-          label="At Risk"
-          color="red"
-        />
-        <AggregateCard
-          icon={<HouseDoorFill />}
-          value="142k"
-          label="Pipeline"
-          color="blue"
-        />
-      </div>
+      <ErrorBoundary>
+        <AggregatesContainer />
+      </ErrorBoundary>
       <div className="krow">
         <div className="kcard kc-g">
           <div className="klbl">Gross Revenue Retention</div>

@@ -3,7 +3,7 @@ import { getTargetColor } from "../../utils/functions/getTargetColor";
 import type { Color } from "../../types/colors.types";
 
 export type AggregateCardType = {
-  value: string;
+  value: string | number;
   label: string;
   icon: React.ReactNode;
   color: Color;
@@ -30,7 +30,14 @@ const AggregateCard = ({ ...data }: AggregateCardType) => {
           >
             {data.value}
           </div>
-          <div className="scard-lbl">{data.label}</div>
+          <div
+            className="scard-lbl"
+            style={{
+              fontSize: "12px",
+            }}
+          >
+            {data.label}
+          </div>
         </div>
       </Card.Body>
     </Card>
