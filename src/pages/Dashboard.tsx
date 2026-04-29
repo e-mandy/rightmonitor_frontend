@@ -4,7 +4,6 @@ import {
   ChatDotsFill,
   CircleFill,
   ClockFill,
-  ExclamationTriangleFill,
   FileEarmarkFill,
   FileTextFill,
   PersonFill,
@@ -12,12 +11,12 @@ import {
   RecordCircleFill,
   SquareFill,
 } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
 import { useCompany } from "../hooks/useCompany";
 import AggregatesContainer from "../components/dashboard/AggregatesContainer";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import KPIContainer from "../components/dashboard/KPIContainer";
 import CustomHealthScoreContainer from "../components/dashboard/CustomHealthScoreContainer";
+import AlertAtRisk from "../components/dashboard/AlertAtRisk";
 
 const Dashboard = () => {
   const {
@@ -25,24 +24,9 @@ const Dashboard = () => {
   } = useCompany();
   return (
     <div className="view active" id="view-dashboard">
-      <div className="alert">
-        <ExclamationTriangleFill size={16} color="#f59e0b" />
-        <span>
-          <strong>2 companies</strong> below health score 50.
-          <Link
-            to="/at-risk"
-            style={{
-              color: "var(--b)",
-              fontWeight: "700",
-              cursor: "pointer",
-              textDecoration: "none",
-            }}
-            id="alert-atrisk"
-          >
-            View at-risk →
-          </Link>
-        </span>
-      </div>
+      <ErrorBoundary>
+        <AlertAtRisk />
+      </ErrorBoundary>
       <div className="ph">
         <div>
           <div className="ph-title">360° Overview</div>
