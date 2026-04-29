@@ -14,14 +14,15 @@ import {
 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useCompany } from "../hooks/useCompany";
-import CustomerScore from "../components/dashboard/CustomerScore";
-import type { CompanyType } from "../types/company.type";
 import AggregatesContainer from "../components/dashboard/AggregatesContainer";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import KPIContainer from "../components/dashboard/KPIContainer";
+import CustomHealthScoreContainer from "../components/dashboard/CustomHealthScoreContainer";
 
 const Dashboard = () => {
-  const { data: companies } = useCompany();
+  const {
+    fetchCompanies: { data: companies },
+  } = useCompany();
   return (
     <div className="view active" id="view-dashboard">
       <div className="alert">
@@ -61,50 +62,7 @@ const Dashboard = () => {
         <KPIContainer />
       </ErrorBoundary>
       <div className="g64">
-        <div className="card">
-          <div className="ch" style={{ paddingBottom: "0" }}>
-            <div className="ch-t">Customer Health Scores</div>
-            <span className="ch-a">View all 24 →</span>
-          </div>
-          <div className="tabs">
-            <div className="tab on">All</div>
-            <div className="tab">At Risk</div>
-            <div className="tab">Healthy</div>
-            <div className="tab">Warning</div>
-          </div>
-          <div className="cb">
-            <table className="ht">
-              <thead>
-                <tr>
-                  <th
-                    style={{
-                      width: "26%",
-                    }}
-                  >
-                    Company
-                  </th>
-                  <th>Score</th>
-                  <th>SaaS 40%</th>
-                  <th>HW 30%</th>
-                  <th>Relation 30%</th>
-                  <th>Status</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {companies?.map((company: CompanyType) => (
-                  <tr className="co-row">
-                    <CustomerScore
-                      created_at={company.createdAt}
-                      name={company.name}
-                      key={company.company_id}
-                    />
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <CustomHealthScoreContainer />
         <div className="card">
           <div className="ch">
             <div className="ch-t">Cross-Product Journey</div>

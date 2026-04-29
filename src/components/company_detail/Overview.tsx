@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { atRiskCompanies, companies } from "../../constants/at_risk.constants";
-import { getScoreColor } from "../../utils/getScoreColor";
+import { getScoreColor } from "../../utils/functions/getScoreColor";
 
 const Overview = () => {
   const { state } = useLocation();

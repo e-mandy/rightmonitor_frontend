@@ -1,10 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCompanies } from "../api/companies.api";
+import { getCompanies, getCompaniesMetrics } from "../api/companies.api";
 
 export const useCompany = () => {
-  return useQuery({
+  const fetchCompanies = useQuery({
     queryKey: ["companies"],
     queryFn: getCompanies,
     throwOnError: true,
   });
+
+  const fetchCompaniesMetrics = useQuery({
+    queryKey: ["companies_metrics"],
+    queryFn: getCompaniesMetrics,
+    throwOnError: true,
+  });
+
+  return { fetchCompanies, fetchCompaniesMetrics };
 };

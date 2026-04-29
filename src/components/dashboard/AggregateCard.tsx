@@ -12,9 +12,9 @@ export type AggregateCardType = {
 const AggregateCard = ({ ...data }: AggregateCardType) => {
   return (
     <Card className="scard">
-      <Card.Body className="d-flex flex-row gap-5 justify-content-start">
+      <Card.Body className="d-flex flex-row gap-5 justify-content-start align-items-center">
         <div
-          className="p-3 d-flex rounded-3 justify-content-center"
+          className="p-3 d-flex rounded-3 justify-content-center align-items-center"
           style={{
             background: getTargetColor(data.color).bg,
           }}

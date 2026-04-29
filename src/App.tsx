@@ -19,6 +19,7 @@ import { useDispatch } from "react-redux";
 import { setData } from "./reduxStore/reducers";
 import { useEnvironment } from "@keycloak/keycloak-ui-shared";
 import CompanyDetail from "./pages/CompanyDetail";
+import ScoreDetailsCard from "./components/at_risk/ScoreDetailsCard";
 
 function App() {
   const context = useEnvironment();
@@ -79,6 +80,8 @@ function App() {
                 <Route path="/company-profile" element={<CompanyDetail />} />
               </Route>
             </Routes>
+
+            <ScoreDetailsCard />
           </AppShell>
         </BrowserRouter>
       </div>

@@ -8,9 +8,14 @@ import {
 import AggregateCard, { type AggregateCardType } from "./AggregateCard";
 import { getTargetColor } from "../../utils/functions/getTargetColor";
 import { useCompany } from "../../hooks/useCompany";
+import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
 
 const AggregatesContainer = () => {
-  const { data: companies } = useCompany();
+  const {
+    fetchCompanies: { data: companies },
+  } = useCompany();
+
+  const { getCompanyWithMetrics } = useCompanyMetrics();
 
   const AGGREGATES_FIELDS: AggregateCardType[] = [
     {
@@ -23,7 +28,7 @@ const AggregatesContainer = () => {
       color: "green",
       icon: <CheckCircleFill size="18" color={getTargetColor("green").color} />,
       label: "Healthy",
-      value: "17",
+      value: getCompanyWithMetrics("healthy").length,
     },
     {
       color: "orange",
@@ -31,16 +36,16 @@ const AggregatesContainer = () => {
         <ExclamationCircle size="18" color={getTargetColor("orange").color} />
       ),
       label: "Warning",
-      value: "4",
+      value: getCompanyWithMetrics("warning").length,
     },
     {
       color: "red",
       icon: <XCircleFill size="18" color={getTargetColor("red").color} />,
       label: "At Risk",
-      value: "24",
+      value: getCompanyWithMetrics("at-risk").length,
     },
     {
-      color: "blue",
+      color: "neutral",
       icon: <HouseDoorFill size="18" color={getTargetColor("blue").color} />,
       label: "Pipeline",
       value: "142k",
@@ -48,8 +53,8 @@ const AggregatesContainer = () => {
   ];
   return (
     <div className="strip">
-      {AGGREGATES_FIELDS.map((aggregate) => (
-        <AggregateCard {...aggregate} />
+      {AGGREGATES_FIELDS.map((aggregate, index) => (
+        <AggregateCard {...aggregate} key={index} />
       ))}
     </div>
   );

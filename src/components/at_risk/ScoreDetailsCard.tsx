@@ -1,19 +1,32 @@
-import { atRiskCompanies, companies } from "../../constants/at_risk.constants";
-import { useAtRiskStore } from "../../store/at-risk.store";
+import { useNavigate } from "react-router-dom";
+import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
+import { useCurrentCompanyStore } from "../../store/current-company.store";
+import { getCompanyStatus } from "../../utils/functions/getCompanyStatus";
 import { getFormatDate } from "../../utils/functions/getFormatDate";
-import { getScoreColor } from "../../utils/getScoreColor";
+import { getScoreColor } from "../../utils/functions/getScoreColor";
+import { getTargetColor } from "../../utils/functions/getTargetColor";
+import type { CustomerScoreType } from "../dashboard/CustomerScore";
 
 const ScoreDetailsCard = () => {
-  const setIsOpenedModal = useAtRiskStore.getState().setIsOpenedModal;
-  const { currentCompanyId, isOpenedModal } = useAtRiskStore();
+  const setIsOpenedModal = useCurrentCompanyStore.getState().setIsOpenedModal;
+  const { currentCompanyId, isOpenedModal } = useCurrentCompanyStore();
+  const { getCompanyWithMetrics } = useCompanyMetrics();
+  const navigate = useNavigate();
 
-  const company = companies.find((company) => company.id === currentCompanyId);
-  const ar_data = atRiskCompanies.find(
-    (company) => company.company_id === currentCompanyId,
+  const companyMetric: undefined | CustomerScoreType = getCompanyWithMetrics(
+    "all",
+  ).find(
+    (company: CustomerScoreType) => company.company_id === currentCompanyId,
   );
+
+  const handleCompanyProfile = (id: string) => {
+    setIsOpenedModal(false, "");
+    navigate("/company-profile", {
+      state: { id },
+    });
+  };
   return (
-    company &&
-    ar_data && (
+    companyMetric && (
       <div
         className={`rm-modal-overlay ${isOpenedModal ? "open" : ""}`}
         id="rm-modal"
@@ -33,14 +46,14 @@ const ScoreDetailsCard = () => {
           <div className="rm-modal-body">
             <div className="rm-modal-co">
               <div className="rm-modal-co-av" id="m-logo">
-                {company.name.slice(0, 2).toUpperCase()}
+                {companyMetric.name.slice(0, 2).toUpperCase()}
               </div>
               <div style={{ flex: 1 }}>
                 <div className="rm-modal-co-name" id="m-name">
-                  {company.name}
+                  {companyMetric.name}
                 </div>
                 <div className="rm-modal-co-sub">
-                  {`${company.industry} · ${company.region} · Client since ${getFormatDate(company.created_at)}`}
+                  {`${companyMetric.industry} · ${companyMetric?.region} · Client since ${getFormatDate(companyMetric?.created_at)}`}
                 </div>
               </div>
               <div style={{ textAlign: "right" }}>
@@ -50,11 +63,11 @@ const ScoreDetailsCard = () => {
                     fontWeight: 900,
                     letterSpacing: "-1px",
                     lineHeight: 1,
-                    color: getScoreColor(ar_data.health_score).color,
+                    color: getScoreColor(companyMetric?.overall_health).color,
                   }}
                   id="m-score"
                 >
-                  {ar_data?.health_score}
+                  {Math.round(companyMetric?.overall_health)}
                 </div>
                 <div
                   style={{
@@ -66,10 +79,18 @@ const ScoreDetailsCard = () => {
                   Overall Score
                 </div>
                 <span
-                  className={`bx ${ar_data?.health_score > 50 ? "bx-g" : "bx-r"}`}
+                  className="bx"
+                  style={{
+                    backgroundColor: getScoreColor(companyMetric.overall_health)
+                      .bg,
+                    color: getScoreColor(companyMetric.overall_health).color,
+                  }}
                   id="m-bx"
                 >
-                  {ar_data.health_score > 50 ? "Healthy" : "At Risk"}
+                  {getCompanyStatus(
+                    companyMetric.overall_health,
+                  )[0].toUpperCase() +
+                    getCompanyStatus(companyMetric.overall_health).slice(1)}
                 </span>
               </div>
             </div>
@@ -82,9 +103,11 @@ const ScoreDetailsCard = () => {
                   <span className="rm-modal-dim-wt">Weight: 40%</span>
                   <span
                     className="rm-modal-dim-score"
-                    style={{ color: getScoreColor(ar_data.saas_health).color }}
+                    style={{
+                      color: getScoreColor(companyMetric.saas_health).color,
+                    }}
                   >
-                    {ar_data.saas_health} / 100
+                    {Math.round(companyMetric.saas_health)} / 100
                   </span>
                 </div>
               </div>
@@ -92,8 +115,8 @@ const ScoreDetailsCard = () => {
                 <div
                   className="rm-modal-bar"
                   style={{
-                    width: ar_data.saas_health + "%",
-                    background: getScoreColor(ar_data.saas_health).color,
+                    width: companyMetric.saas_health + "%",
+                    background: getScoreColor(companyMetric.saas_health).color,
                   }}
                 ></div>
               </div>
@@ -164,9 +187,12 @@ const ScoreDetailsCard = () => {
                   <span className="rm-modal-dim-wt">Weight: 30%</span>
                   <span
                     className="rm-modal-dim-score"
-                    style={{ color: getScoreColor(ar_data.health_score).color }}
+                    style={{
+                      color: getScoreColor(companyMetric?.hardware_health)
+                        .color,
+                    }}
                   >
-                    {ar_data.health_score} / 100
+                    {Math.round(companyMetric?.hardware_health)} / 100
                   </span>
                 </div>
               </div>
@@ -174,8 +200,9 @@ const ScoreDetailsCard = () => {
                 <div
                   className="rm-modal-bar"
                   style={{
-                    width: ar_data.hw_health + "%",
-                    background: getScoreColor(ar_data.hw_health).color,
+                    width: companyMetric?.hardware_health + "%",
+                    background: getScoreColor(companyMetric?.hardware_health)
+                      .color,
                   }}
                 ></div>
               </div>
@@ -201,7 +228,7 @@ const ScoreDetailsCard = () => {
                     className="rm-modal-sub-val"
                     style={{ color: "#15803d" }}
                   >
-                    2.1%
+                    {Math.round(companyMetric.rma_rate)}%
                   </div>
                   <div
                     className="rm-modal-sub-trend"
@@ -240,9 +267,12 @@ const ScoreDetailsCard = () => {
                   <span className="rm-modal-dim-wt">Weight: 30%</span>
                   <span
                     className="rm-modal-dim-score"
-                    style={{ color: getScoreColor(ar_data.relationship).color }}
+                    style={{
+                      color: getScoreColor(companyMetric?.relationship_health)
+                        .color,
+                    }}
                   >
-                    {ar_data.relationship} / 100
+                    {Math.round(companyMetric?.relationship_health)} / 100
                   </span>
                 </div>
               </div>
@@ -250,8 +280,10 @@ const ScoreDetailsCard = () => {
                 <div
                   className="rm-modal-bar"
                   style={{
-                    width: ar_data.relationship + "%",
-                    background: getScoreColor(ar_data.relationship).color,
+                    width: companyMetric?.relationship_health + "%",
+                    background: getScoreColor(
+                      companyMetric?.relationship_health,
+                    ).color,
                   }}
                 ></div>
               </div>
@@ -260,13 +292,23 @@ const ScoreDetailsCard = () => {
                   <div className="rm-modal-sub-label">NPS Score</div>
                   <div
                     className="rm-modal-sub-val"
-                    style={{ color: "#15803d" }}
+                    style={{
+                      color:
+                        companyMetric.implementation_nps.nps < 0
+                          ? getTargetColor("red").color
+                          : getTargetColor("green").color,
+                    }}
                   >
-                    +68
+                    {Math.round(companyMetric.implementation_nps.nps)}
                   </div>
                   <div
                     className="rm-modal-sub-trend"
-                    style={{ color: "#15803d" }}
+                    style={{
+                      color:
+                        companyMetric.implementation_nps.nps < 0
+                          ? getTargetColor("red").color
+                          : getTargetColor("green").color,
+                    }}
                   >
                     ▲ +4 vs last quarter
                   </div>
@@ -314,6 +356,7 @@ const ScoreDetailsCard = () => {
                 className="btn btn-primary"
                 id="rm-modal-profile"
                 style={{ flex: 1, justifyContent: "center" }}
+                onClick={() => handleCompanyProfile(companyMetric.company_id)}
               >
                 View Full Profile →
               </button>

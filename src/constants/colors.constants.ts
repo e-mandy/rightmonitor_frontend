@@ -12,8 +12,8 @@ export const APP_COLORS = {
     color: "#80B500",
   },
   orange: {
-    bg: "#fee2e2",
-    color: "#b45309",
+    bg: "#FEF3C7",
+    color: "#F59E0B",
   },
   neutral: {
     bg: "transparent",
