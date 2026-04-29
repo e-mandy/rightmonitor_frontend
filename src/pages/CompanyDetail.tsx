@@ -1,21 +1,27 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { companies } from "../constants/at_risk.constants";
 import { useEffect, useState } from "react";
 import Overview from "../components/company_detail/Overview";
 import Journey from "./Journey";
 import Products from "../components/company_detail/Products";
 import Contacts from "../components/auth/Contacts";
 import Notes from "../components/company_detail/Notes";
+import { useCompanyMetrics } from "../hooks/useCompaniesMetrics";
+import type { CustomerScoreType } from "../components/dashboard/CustomerScore";
 
 type SectionType = "overview" | "journey" | "products" | "contacts" | "notes";
 
 const CompanyDetail = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const { getCompanyWithMetrics } = useCompanyMetrics();
   const [currentSection, setCurrentSection] = useState<SectionType>("overview");
   const id: null | string = state?.id ?? null;
 
-  const company = id ? companies.find((company) => company.id === id) : null;
+  const company: null | CustomerScoreType = id
+    ? getCompanyWithMetrics("all").find(
+        (company: CustomerScoreType) => company.company_id === id,
+      )
+    : null;
 
   useEffect(() => {
     if (id === null) navigate("/dashboard", { replace: true });
