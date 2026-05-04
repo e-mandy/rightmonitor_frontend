@@ -13,14 +13,22 @@ type HealthScoreType = "all" | "at-risk" | "healthy" | "warning";
 const customStyles = {
   rows: {
     style: {
-      minHeight: "65px",
+      minHeight: "60px",
     },
   },
   headCells: {
-    style: {},
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
   },
   cells: {
-    style: {},
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
   },
 };
 
@@ -40,6 +48,10 @@ const CustomHealthScoreContainer = () => {
           <div className="csince">Since {getFormatDate(row.created_at)}</div>
         </div>
       ),
+      style: {
+        display: "flex",
+        justifyContent: "start",
+      },
     },
     {
       name: "Score",

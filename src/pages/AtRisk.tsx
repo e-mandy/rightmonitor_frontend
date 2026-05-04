@@ -18,7 +18,7 @@ const AtRisk = () => {
         </div>
       </div>
       <TotalARR />
-      {getCompanyWithMetrics("warning").map((element: CustomerScoreType) => (
+      {getCompanyWithMetrics("at-risk").map((element: CustomerScoreType) => (
         <ARCompany {...element} />
       ))}
     </div>

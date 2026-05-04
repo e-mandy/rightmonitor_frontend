@@ -8,7 +8,7 @@ interface SelectedCompaniesKPIType {
 export const useSelectedCompaniesKPIStore = create<SelectedCompaniesKPIType>(
   (set) => ({
     selectedCompanies: [],
-    setSelectedCompanies: (companiesId: number[]) =>
+    setSelectedCompanies: (companiesId: number[] | []) =>
       set({ selectedCompanies: companiesId }),
   }),
 );

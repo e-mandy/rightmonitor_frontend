@@ -2,8 +2,8 @@ import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
 
 const TotalAtRiskCompanies = () => {
   const { getCompanyWithMetrics } = useCompanyMetrics();
-  const total = getCompanyWithMetrics("warning")
-    ? getCompanyWithMetrics("warning").length
+  const total = getCompanyWithMetrics("at-risk")
+    ? getCompanyWithMetrics("at-risk").length
     : 0;
   return (
     <div className="ph-sub">

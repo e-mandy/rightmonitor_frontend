@@ -14,6 +14,5 @@ export const getKPIStats = async (companies: string[]) => {
   const query = await Parse.Cloud.run("global_stats", {
     companies: companies,
   });
-  console.log(query.data);
   return query.data;
 };

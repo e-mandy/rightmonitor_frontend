@@ -16,7 +16,7 @@ import { ErrorBoundary } from "../components/ErrorBoundary";
 import KPIContainer from "../components/dashboard/KPIContainer";
 import CustomHealthScoreContainer from "../components/dashboard/CustomHealthScoreContainer";
 import AlertAtRisk from "../components/dashboard/AlertAtRisk";
-import DashboardHeader from "../components/dashboard/DashboardHeader";
+import CompaniesHeader from "../components/companies/CompaniesHeader";
 
 const Companies = () => {
   return (
@@ -26,7 +26,7 @@ const Companies = () => {
       </ErrorBoundary>
 
       <ErrorBoundary>
-        <DashboardHeader />
+        <CompaniesHeader />
       </ErrorBoundary>
       <ErrorBoundary>
         <AggregatesContainer />
