@@ -4,7 +4,7 @@ import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
 
 const AlertAtRisk = () => {
   const { getCompanyWithMetrics } = useCompanyMetrics();
-  const companyAtRisk = getCompanyWithMetrics("warning");
+  const companyAtRisk = getCompanyWithMetrics("at-risk");
   return (
     companyAtRisk &&
     companyAtRisk.length > 0 && (

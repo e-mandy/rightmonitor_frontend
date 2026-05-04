@@ -1,7 +1,10 @@
-import { atRiskCompanies } from "../../constants/at_risk.constants";
+import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
 
 const TotalAtRiskCompanies = () => {
-  const total = atRiskCompanies.length;
+  const { getCompanyWithMetrics } = useCompanyMetrics();
+  const total = getCompanyWithMetrics("warning")
+    ? getCompanyWithMetrics("warning").length
+    : 0;
   return (
     <div className="ph-sub">
       {total} companies requiring immediate attention

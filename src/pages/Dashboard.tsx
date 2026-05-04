@@ -11,34 +11,23 @@ import {
   RecordCircleFill,
   SquareFill,
 } from "react-bootstrap-icons";
-import { useCompany } from "../hooks/useCompany";
 import AggregatesContainer from "../components/dashboard/AggregatesContainer";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import KPIContainer from "../components/dashboard/KPIContainer";
 import CustomHealthScoreContainer from "../components/dashboard/CustomHealthScoreContainer";
 import AlertAtRisk from "../components/dashboard/AlertAtRisk";
+import DashboardHeader from "../components/dashboard/DashboardHeader";
 
 const Dashboard = () => {
-  const {
-    fetchCompanies: { data: companies },
-  } = useCompany();
   return (
     <div className="view active" id="view-dashboard">
       <ErrorBoundary>
         <AlertAtRisk />
       </ErrorBoundary>
-      <div className="ph">
-        <div>
-          <div className="ph-title">360° Overview</div>
-          <div className="ph-sub">
-            Real-time · All products · {companies?.length} companies
-          </div>
-        </div>
-        <div className="ph-right">
-          <button className="btn btn-ghost">↓ Export</button>
-          <button className="btn btn-primary">+ Add Company</button>
-        </div>
-      </div>
+
+      <ErrorBoundary>
+        <DashboardHeader />
+      </ErrorBoundary>
       <ErrorBoundary>
         <AggregatesContainer />
       </ErrorBoundary>
