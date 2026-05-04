@@ -29,7 +29,7 @@ const SidebarMenuMain = () => {
 
       <SidebarMenuItemWithSub to="" title="Companies" icon="office-bag">
         <SidebarMenuItem
-          to="/dashboard"
+          to="/companies"
           title="All Companies"
           hasBullet={true}
         />

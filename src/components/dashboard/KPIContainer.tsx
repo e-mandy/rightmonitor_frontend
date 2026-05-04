@@ -5,26 +5,25 @@ const KPIContainer = () => {
   const {
     fetchCompaniesKPI: { data: companiesKPI },
   } = useCompany();
-  console.log(companiesKPI);
   return (
     <div className="krow">
       <KPICard
         label="Gross Revenue Retention"
-        value={`${companiesKPI.avg_grr}%`}
+        value={`${companiesKPI?.avg_grr}%`}
         trend="▲ +1.3% vs last month"
         target="Target: &lt;90%"
         color="neutral"
       />
       <KPICard
         label="Net Revenue Retention"
-        value={`${companiesKPI.avg_nrr}%`}
+        value={`${companiesKPI?.avg_nrr}%`}
         trend="▲ +3.1% vs last month"
         target="Target: &lt;105%"
         color="neutral"
       />
       <KPICard
         label="Logo Churn"
-        value={`${companiesKPI.logo_churn}%`}
+        value={`${companiesKPI?.logo_churn}%`}
         trend="▲ +0.4% — near threshold"
         target="Target: &lt;2%"
         color="neutral"

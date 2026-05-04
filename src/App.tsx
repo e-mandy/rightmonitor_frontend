@@ -20,6 +20,7 @@ import { setData } from "./reduxStore/reducers";
 import { useEnvironment } from "@keycloak/keycloak-ui-shared";
 import CompanyDetail from "./pages/CompanyDetail";
 import ScoreDetailsCard from "./components/at_risk/ScoreDetailsCard";
+import Companies from "./pages/Companies";
 
 function App() {
   const context = useEnvironment();
@@ -72,6 +73,7 @@ function App() {
                   element={<Navigate to="/dashboard" replace />}
                 />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/companies" element={<Companies />} />
                 <Route path="/journey" element={<Journey />} />
                 <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/at-risk" element={<AtRisk />} />
