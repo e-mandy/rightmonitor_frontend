@@ -21,6 +21,7 @@ import { useEnvironment } from "@keycloak/keycloak-ui-shared";
 import CompanyDetail from "./pages/CompanyDetail";
 import ScoreDetailsCard from "./components/at_risk/ScoreDetailsCard";
 import Companies from "./pages/Companies";
+import UserManagement from "./pages/UserManagement";
 
 function App() {
   const context = useEnvironment();
@@ -80,6 +81,7 @@ function App() {
                 <Route path="/weekly-report" element={<WeeklyReport />} />
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/company-profile" element={<CompanyDetail />} />
+                <Route path="/user-management" element={<UserManagement />} />
               </Route>
             </Routes>
 

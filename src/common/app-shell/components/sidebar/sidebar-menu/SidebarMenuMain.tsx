@@ -47,6 +47,14 @@ const SidebarMenuMain = () => {
         <SidebarMenuItem to="/analytics" title="Analytics" hasBullet={true} />
       </SidebarMenuItemWithSub>
 
+      <SidebarMenuItemWithSub to="/settings" icon="setting" title="Settings">
+        <SidebarMenuItem
+          to="/user-management"
+          title="User Management"
+          hasBullet={true}
+        />
+      </SidebarMenuItemWithSub>
+
       {companyName && (
         <SidebarMenuItem
           to="/company-profile"
