@@ -35,7 +35,7 @@ export const useSettings = () => {
 
   const getUserUserWithRoles = useQuery({
     queryKey: ["user_with_roles", currentCompany, roles],
-    queryFn: () => {
+    queryFn: async () => {
       if (!companyToken) return null;
       const configs: UserApiParamsType = {
         token: companyToken,
@@ -44,9 +44,8 @@ export const useSettings = () => {
         roles: roles,
       };
 
-      return getUserWithRolesApi(configs);
+      return await getUserWithRolesApi(configs);
     },
-    enabled: !!companyToken,
   });
 
   return { getUserUserWithRoles };

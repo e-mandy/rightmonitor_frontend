@@ -17,6 +17,7 @@ const AggregatesContainer = () => {
 
   const { getCompanyWithMetrics } = useCompanyMetrics();
 
+  console.log(getCompanyWithMetrics("all"));
   const AGGREGATES_FIELDS: AggregateCardType[] = [
     {
       color: "green",

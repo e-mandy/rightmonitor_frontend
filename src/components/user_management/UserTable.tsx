@@ -3,6 +3,9 @@ import { USERS } from "../../constants/user.constants";
 import type { UserType } from "../../types/user.types";
 import { Person } from "react-bootstrap-icons";
 import { useSettings } from "../../hooks/useSettings";
+import { useEffect } from "react";
+import { KyConfigs } from "../../utils/kyInstance";
+import { useEnvironment } from "@keycloak/keycloak-ui-shared";
 
 const customStyles = {
   rows: {
@@ -14,11 +17,26 @@ const customStyles = {
 };
 
 const UserTable = () => {
+  const context = useEnvironment();
   const {
-    getUserUserWithRoles: { data, isPending },
+    getUserUserWithRoles: { data },
   } = useSettings();
 
-  console.log(isPending ? "Chargement..." : data);
+  console.log(data);
+  useEffect(() => {
+    (() => {
+      KyConfigs(import.meta.env.VITE_XP_BACKEND_URL)
+        .kyInstance.post("orgUsersWithRoles", {
+          json: {
+            token: context.keycloak.token,
+            clients: ["rightq"],
+            roles: ["rightq_admin", "rightq_user", "rightq_manager"],
+            company: "rightintern",
+          },
+        })
+        .json();
+    })();
+  }, [context.keycloak.token]);
 
   const columns = [
     {

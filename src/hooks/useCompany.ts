@@ -22,9 +22,20 @@ export const useCompany = () => {
   });
 
   const fetchCompaniesMetrics = useQuery({
-    queryKey: ["companies_metrics"],
-    queryFn: getCompaniesMetrics,
-    throwOnError: true,
+    queryKey: ["companies_metrics", selectedCompanies],
+    queryFn: () => {
+      const companiesId =
+        selectedCompanies.length > 0
+          ? selectedCompanies
+          : (fetchCompanies?.data?.map(
+              (company: CompanyType) => company.company_id,
+            ) ?? []);
+      if (companiesId.lengt === 0) return null;
+      console.log(companiesId);
+      return getCompaniesMetrics(companiesId);
+    },
+    enabled:
+      fetchCompanies.isSuccess && (fetchCompanies?.data?.length ?? 0) > 0,
   });
 
   const fetchCompaniesKPI = useQuery({

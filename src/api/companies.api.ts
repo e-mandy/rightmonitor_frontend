@@ -5,8 +5,10 @@ export const getCompanies = async () => {
   return query.data;
 };
 
-export const getCompaniesMetrics = async () => {
-  const query = await Parse.Cloud.run("companies_metrics");
+export const getCompaniesMetrics = async (companies: string[]) => {
+  const query = await Parse.Cloud.run("companies_metrics", {
+    companies: companies,
+  });
   return query.data;
 };
 
