@@ -1,20 +1,28 @@
 import ky from "ky";
 
-const url = import.meta.env.VITE_API_URL;
+export const KyConfigs = (url: string) => {
+  const kyInstance = ky.create({
+    prefixUrl: url,
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
 
-const kyInstance = ky.create({
-  prefixUrl: url,
-});
+  const kyPrivateInstance = ky.extend({
+    hooks: {
+      beforeRequest: [
+        (request) => {
+          const token = "MY_TOKEN";
+          request.headers.set("Authorization", `Bearer ${token}`);
+        },
+      ],
+    },
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
 
-export const kyPrivateInstance = ky.extend({
-  hooks: {
-    beforeRequest: [
-      (request) => {
-        const token = "MY_TOKEN";
-        request.headers.set("Authorization", `Bearer ${token}`);
-      },
-    ],
-  },
-});
-
-export default kyInstance;
+  return { kyInstance, kyPrivateInstance };
+};

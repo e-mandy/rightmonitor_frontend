@@ -166,14 +166,15 @@ export function Notifications() {
     },
   ];
   return (
-    <Inbox
-      applicationIdentifier="LOR__41zOSKd"
-      subscriber={context.keycloak.realm + ":" + states?.me?.id}
-      // routerPush={(path: string) => navigate(path)}
-      backendUrl={configs.backendUrl}
-      socketUrl={configs.socketUrl}
-      tabs={tabs}
-      localization={inboxLocales}
-    />
+    // <Inbox
+    //   applicationIdentifier="LOR__41zOSKd"
+    //   subscriber={context.keycloak.realm + ":" + states?.me?.id}
+    //   // routerPush={(path: string) => navigate(path)}
+    //   backendUrl={configs.backendUrl}
+    //   socketUrl={configs.socketUrl}
+    //   tabs={tabs}
+    //   localization={inboxLocales}
+    // />
+    <></>
   );
 }

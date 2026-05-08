@@ -2,6 +2,7 @@ import { DataTable, Dropdown, DropdownButton } from "@rightcom/right-lib";
 import { USERS } from "../../constants/user.constants";
 import type { UserType } from "../../types/user.types";
 import { Person } from "react-bootstrap-icons";
+import { useSettings } from "../../hooks/useSettings";
 
 const customStyles = {
   rows: {
@@ -13,6 +14,12 @@ const customStyles = {
 };
 
 const UserTable = () => {
+  const {
+    getUserUserWithRoles: { data, isPending },
+  } = useSettings();
+
+  console.log(isPending ? "Chargement..." : data);
+
   const columns = [
     {
       name: "Full name",

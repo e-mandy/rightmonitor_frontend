@@ -26,3 +26,5 @@ export const USERS: UserType[] = [
     role: "Manager",
   },
 ];
+
+export const userRoles = ["admin", "manager", "user"];
