@@ -7,7 +7,7 @@ type KPICardType = {
   value: string | number | React.ReactNode;
   trend?: string;
   details?: string;
-  target: string;
+  target: string | React.ReactNode;
   color: Color;
 };
 

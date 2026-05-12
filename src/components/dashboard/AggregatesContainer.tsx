@@ -9,15 +9,16 @@ import AggregateCard, { type AggregateCardType } from "./AggregateCard";
 import { getTargetColor } from "../../utils/functions/getTargetColor";
 import { useCompany } from "../../hooks/useCompany";
 import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
+import { getFormatMoney } from "../../utils/functions/fetFormatMoney";
 
 const AggregatesContainer = () => {
   const {
     fetchCompanies: { data: companies },
+    fetchCompaniesKPI: { data: companiesKPI },
   } = useCompany();
 
   const { getCompanyWithMetrics } = useCompanyMetrics();
 
-  console.log(getCompanyWithMetrics("all"));
   const AGGREGATES_FIELDS: AggregateCardType[] = [
     {
       color: "green",
@@ -57,7 +58,7 @@ const AggregatesContainer = () => {
       color: "neutral",
       icon: <HouseDoorFill size="18" color={getTargetColor("blue").color} />,
       label: "Pipeline",
-      value: "142k",
+      value: getFormatMoney(companiesKPI.global_grr),
       hasView: false,
     },
   ];

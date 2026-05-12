@@ -31,7 +31,7 @@ export const useCompany = () => {
               (company: CompanyType) => company.company_id,
             ) ?? []);
       if (companiesId.lengt === 0) return null;
-      console.log(companiesId);
+
       return getCompaniesMetrics(companiesId);
     },
     enabled:

@@ -7,6 +7,7 @@ const KPIContainer = () => {
   const {
     fetchCompaniesKPI: { data: companiesKPI, isPending },
   } = useCompany();
+
   return (
     <div className="krow">
       <KPICard
@@ -32,9 +33,20 @@ const KPIContainer = () => {
       />
       <KPICard
         label="Expansion Pipeline"
-        value={isPending ? <Spinner /> : `${getFormatMoney(companiesKPI?.mrr)}`}
+        value={
+          isPending ? (
+            <Spinner />
+          ) : (
+            `${getFormatMoney(companiesKPI?.global_grr)}`
+          )
+        }
         trend="4 active upsell opportunities"
-        target="Monthly target: $200K"
+        target={
+          <>
+            Monthly target:{" "}
+            {isPending ? <Spinner /> : getFormatMoney(companiesKPI?.mrr)}
+          </>
+        }
         color="neutral"
       />
     </div>
