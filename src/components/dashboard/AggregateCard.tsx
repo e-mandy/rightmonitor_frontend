@@ -1,12 +1,15 @@
 import { Card } from "@rightcom/right-lib";
 import { getTargetColor } from "../../utils/functions/getTargetColor";
 import type { Color } from "../../types/colors.types";
+import { Link } from "react-router-dom";
 
 export type AggregateCardType = {
   value: string | number;
   label: string;
   icon: React.ReactNode;
   color: Color;
+  hasView: boolean;
+  link?: string;
 };
 
 const AggregateCard = ({ ...data }: AggregateCardType) => {
@@ -38,6 +41,19 @@ const AggregateCard = ({ ...data }: AggregateCardType) => {
           >
             {data.label}
           </div>
+          {data.hasView && data.link && (
+            <div className="my-1 fs-7">
+              <Link
+                to={{
+                  pathname: "/companies",
+                  search: `?filter=${data.link.toLowerCase()}`,
+                }}
+                className="text-primary fw-bold"
+              >
+                View
+              </Link>
+            </div>
+          )}
         </div>
       </Card.Body>
     </Card>

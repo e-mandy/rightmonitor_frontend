@@ -6,7 +6,7 @@
   --bd: #2b8ac9;
   --bl: #e9f3ff;
   --white: #fff;
-  --bg: #fcfcfc;
+  --bg: #ffffff;
   --page: #f5f7f8;
   --t1: #1c1c1e;
   --t2: #6b7280;
@@ -538,17 +538,7 @@ We'll come back here
 .vlink:hover {
   text-decoration: underline;
 }
-.card {
-  background: var(--bg);
-  border-radius: var(--r);
-  border: 1px solid var(--bdr);
-  box-shadow: var(--sh);
-  overflow: hidden;
-  transition: 0.2s;
-}
-.card:hover {
-  box-shadow: var(--sh2);
-}
+
 .ch {
   display: flex;
   align-items: center;

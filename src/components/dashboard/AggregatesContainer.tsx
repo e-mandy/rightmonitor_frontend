@@ -24,12 +24,16 @@ const AggregatesContainer = () => {
       icon: <Circle size="18" color={getTargetColor("green").color} />,
       label: "Total Companies",
       value: companies?.length,
+      hasView: true,
+      link: "all",
     },
     {
       color: "green",
       icon: <CheckCircleFill size="18" color={getTargetColor("green").color} />,
       label: "Healthy",
       value: getCompanyWithMetrics("healthy").length,
+      hasView: true,
+      link: "healthy",
     },
     {
       color: "orange",
@@ -38,18 +42,23 @@ const AggregatesContainer = () => {
       ),
       label: "Warning",
       value: getCompanyWithMetrics("warning").length,
+      hasView: true,
+      link: "warning",
     },
     {
       color: "red",
       icon: <XCircleFill size="18" color={getTargetColor("red").color} />,
       label: "At Risk",
       value: getCompanyWithMetrics("at-risk").length,
+      hasView: true,
+      link: "at-risk",
     },
     {
       color: "neutral",
       icon: <HouseDoorFill size="18" color={getTargetColor("blue").color} />,
       label: "Pipeline",
       value: "142k",
+      hasView: false,
     },
   ];
   return (

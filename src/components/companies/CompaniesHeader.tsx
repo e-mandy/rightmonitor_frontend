@@ -1,6 +1,4 @@
 import { useCompany } from "../../hooks/useCompany";
-import { DateRangePicker } from "@rightcom/right-lib";
-import CompaniesSelection from "./CompaniesSelection";
 
 const CompaniesHeader = () => {
   const {
@@ -9,14 +7,10 @@ const CompaniesHeader = () => {
   return (
     <div className="ph">
       <div>
-        <div className="ph-title">360° Overview</div>
+        <div className="ph-title">Companies</div>
         <div className="ph-sub">
-          Real-time · All products · {companies?.length} companies
+          All companies · {companies?.length} companies
         </div>
-      </div>
-      <div className="ph-right d-flex align-items-center">
-        <DateRangePicker />
-        <CompaniesSelection />
       </div>
     </div>
   );

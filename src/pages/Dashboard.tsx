@@ -1,20 +1,14 @@
 import {
   BarChartFill,
   CardText,
-  ChatDotsFill,
   CircleFill,
-  ClockFill,
   FileEarmarkFill,
   FileTextFill,
-  PersonFill,
   RecordCircle,
-  RecordCircleFill,
-  SquareFill,
 } from "react-bootstrap-icons";
 import AggregatesContainer from "../components/dashboard/AggregatesContainer";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import KPIContainer from "../components/dashboard/KPIContainer";
-import CustomHealthScoreContainer from "../components/dashboard/CustomHealthScoreContainer";
 import AlertAtRisk from "../components/dashboard/AlertAtRisk";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 
@@ -34,7 +28,7 @@ const Dashboard = () => {
       <ErrorBoundary>
         <KPIContainer />
       </ErrorBoundary>
-      <div className="g64">
+      {/* <div className="g64">
         <CustomHealthScoreContainer />
         <div className="card">
           <div className="ch">
@@ -135,7 +129,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="g333">
         <div className="card">
           <div className="ch">
