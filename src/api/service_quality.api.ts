@@ -1,6 +1,6 @@
 import Parse from "parse";
 
-export const getServiceQuality = async (companiesId: string[]) => {
+export const getServiceQuality = async (companiesId: number[]) => {
   const response = await Parse.Cloud.run("quality", {
     companies: companiesId,
   });

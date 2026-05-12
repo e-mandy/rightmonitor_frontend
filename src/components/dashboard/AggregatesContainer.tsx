@@ -24,7 +24,7 @@ const AggregatesContainer = () => {
       color: "green",
       icon: <Circle size="18" color={getTargetColor("green").color} />,
       label: "Total Companies",
-      value: companies?.length,
+      value: companies?.length ?? 0,
       hasView: true,
       link: "all",
     },
@@ -58,7 +58,7 @@ const AggregatesContainer = () => {
       color: "neutral",
       icon: <HouseDoorFill size="18" color={getTargetColor("blue").color} />,
       label: "Pipeline",
-      value: getFormatMoney(companiesKPI.global_grr),
+      value: getFormatMoney(companiesKPI?.global_grr),
       hasView: false,
     },
   ];

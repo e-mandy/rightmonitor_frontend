@@ -7,7 +7,7 @@ export const useCompaniesId = (
   const companiesId =
     selectedCompanies.length > 0
       ? selectedCompanies
-      : (fetchCompanies.data.map((company: CompanyType) =>
+      : (fetchCompanies.data?.map((company: CompanyType) =>
           parseInt(company.company_id),
         ) ?? []);
 

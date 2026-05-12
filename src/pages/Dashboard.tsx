@@ -11,6 +11,7 @@ import { ErrorBoundary } from "../components/ErrorBoundary";
 import KPIContainer from "../components/dashboard/KPIContainer";
 import AlertAtRisk from "../components/dashboard/AlertAtRisk";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
+import ServiceQuality from "../components/dashboard/ServiceQuality";
 
 const Dashboard = () => {
   return (
@@ -29,49 +30,9 @@ const Dashboard = () => {
         <KPIContainer />
       </ErrorBoundary>
       <div className="g333">
-        <div className="card">
-          <div className="ch">
-            <div className="ch-t">Service Quality</div>
-            <span className="ch-a">Details →</span>
-          </div>
-          <div className="cb">
-            <div className="mr">
-              <div>
-                <div className="mr-name">First Response Time</div>
-                <div className="mr-tgt">Target: &lt;2h</div>
-              </div>
-              <div className="mr-val mr-g">1h 24m</div>
-            </div>
-            <div className="mr">
-              <div>
-                <div className="mr-name">Support Tickets (mo.)</div>
-                <div className="mr-tgt">This month total</div>
-              </div>
-              <div className="mr-val">47</div>
-            </div>
-            <div className="mr">
-              <div>
-                <div className="mr-name">RMA Rate</div>
-                <div className="mr-tgt">Target: &lt;5%</div>
-              </div>
-              <div className="mr-val mr-g">2.1%</div>
-            </div>
-            <div className="mr">
-              <div>
-                <div className="mr-name">Implementation NPS</div>
-                <div className="mr-tgt">Post-onboarding avg</div>
-              </div>
-              <div className="mr-val mr-g">+62</div>
-            </div>
-            <div className="mr">
-              <div>
-                <div className="mr-name">Time-to-Value</div>
-                <div className="mr-tgt">Avg days to first use</div>
-              </div>
-              <div className="mr-val">12d</div>
-            </div>
-          </div>
-        </div>
+        <ErrorBoundary>
+          <ServiceQuality />
+        </ErrorBoundary>
         <div className="card">
           <div className="ch">
             <div className="ch-t">Product Adoption</div>
