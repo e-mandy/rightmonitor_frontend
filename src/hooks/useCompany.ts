@@ -5,9 +5,9 @@ import {
   getCompanyMetrics,
   getKPIStats,
 } from "../api/companies.api";
-import type { CompanyType } from "../types/company.type";
 import { useLocation } from "react-router-dom";
 import { useCompanies } from "./useCompanies";
+import { useCompaniesId } from "./useCompaniesId";
 
 export const useCompany = () => {
   const { companies } = useCompanies();
@@ -21,44 +21,28 @@ export const useCompany = () => {
     throwOnError: true,
   });
 
+  const { companiesId, isReady } = useCompaniesId(
+    { data: fetchCompanies.data, isSuccess: fetchCompanies.isSuccess },
+    companies,
+  );
+
   const fetchCompaniesMetrics = useQuery({
     queryKey: ["companies_metrics", companies],
-    queryFn: () => {
-      const companiesId =
-        companies.length > 0
-          ? companies
-          : (fetchCompanies?.data?.map(
-              (company: CompanyType) => company.company_id,
-            ) ?? []);
-      if (companiesId.lengt === 0) return null;
-
-      return getCompaniesMetrics(companiesId);
-    },
-    enabled:
-      fetchCompanies.isSuccess && (fetchCompanies?.data?.length ?? 0) > 0,
+    queryFn: () => getCompaniesMetrics(companiesId),
+    enabled: isReady,
   });
 
   const fetchCompaniesKPI = useQuery({
     queryKey: ["companies_kpi", companies],
-    queryFn: () => {
-      const companiesId =
-        companies.length > 0
-          ? companies
-          : (fetchCompanies?.data?.map(
-              (company: CompanyType) => company.company_id,
-            ) ?? []);
-      return getKPIStats(companiesId);
-    },
-    enabled:
-      fetchCompanies.isSuccess &&
-      (companies.length > 0 || (fetchCompanies?.data?.length ?? 0) > 0),
+    queryFn: () => getKPIStats(companiesId),
+    enabled: isReady,
   });
 
   const fetchCompanyMetrics = useQuery({
     queryKey: ["company_metrics"],
     queryFn: () => {
       if (!id) return null;
-      return getCompanyMetrics(id);
+      return getCompanyMetrics(parseInt(id));
     },
   });
 
