@@ -14,7 +14,7 @@ export type AggregateCardType = {
 
 const AggregateCard = ({ ...data }: AggregateCardType) => {
   return (
-    <Card className="scard">
+    <Card className="flex-grow-1">
       <Card.Body className="d-flex flex-row gap-5 justify-content-start align-items-center">
         <div
           className="p-3 d-flex rounded-3 justify-content-center align-items-center"

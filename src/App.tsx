@@ -22,6 +22,7 @@ import CompanyDetail from "./pages/CompanyDetail";
 import ScoreDetailsCard from "./components/at_risk/ScoreDetailsCard";
 import Companies from "./pages/Companies";
 import UserManagement from "./pages/UserManagement";
+import { CompaniesProvider } from "./Providers/CompaniesProvider";
 
 function App() {
   const context = useEnvironment();
@@ -67,23 +68,25 @@ function App() {
       <div className="app">
         <BrowserRouter>
           <AppShell>
-            <Routes>
-              <Route element={<MasterLayout />}>
-                <Route
-                  path="/"
-                  element={<Navigate to="/dashboard" replace />}
-                />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/companies" element={<Companies />} />
-                <Route path="/journey" element={<Journey />} />
-                <Route path="/onboarding" element={<Onboarding />} />
-                <Route path="/at-risk" element={<AtRisk />} />
-                <Route path="/weekly-report" element={<WeeklyReport />} />
-                <Route path="/analytics" element={<Analytics />} />
-                <Route path="/company-profile" element={<CompanyDetail />} />
-                <Route path="/user-management" element={<UserManagement />} />
-              </Route>
-            </Routes>
+            <CompaniesProvider>
+              <Routes>
+                <Route element={<MasterLayout />}>
+                  <Route
+                    path="/"
+                    element={<Navigate to="/dashboard" replace />}
+                  />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/companies" element={<Companies />} />
+                  <Route path="/journey" element={<Journey />} />
+                  <Route path="/onboarding" element={<Onboarding />} />
+                  <Route path="/at-risk" element={<AtRisk />} />
+                  <Route path="/weekly-report" element={<WeeklyReport />} />
+                  <Route path="/analytics" element={<Analytics />} />
+                  <Route path="/company-profile" element={<CompanyDetail />} />
+                  <Route path="/user-management" element={<UserManagement />} />
+                </Route>
+              </Routes>
+            </CompaniesProvider>
 
             <ScoreDetailsCard />
           </AppShell>

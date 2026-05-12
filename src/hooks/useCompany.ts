@@ -5,12 +5,12 @@ import {
   getCompanyMetrics,
   getKPIStats,
 } from "../api/companies.api";
-import { useSelectedCompaniesKPIStore } from "../store/kpi.store";
 import type { CompanyType } from "../types/company.type";
 import { useLocation } from "react-router-dom";
+import { useCompanies } from "./useCompanies";
 
 export const useCompany = () => {
-  const { selectedCompanies } = useSelectedCompaniesKPIStore();
+  const { companies } = useCompanies();
   const { state } = useLocation();
 
   const id: null | string = state?.id ?? null;
@@ -22,11 +22,11 @@ export const useCompany = () => {
   });
 
   const fetchCompaniesMetrics = useQuery({
-    queryKey: ["companies_metrics", selectedCompanies],
+    queryKey: ["companies_metrics", companies],
     queryFn: () => {
       const companiesId =
-        selectedCompanies.length > 0
-          ? selectedCompanies
+        companies.length > 0
+          ? companies
           : (fetchCompanies?.data?.map(
               (company: CompanyType) => company.company_id,
             ) ?? []);
@@ -39,11 +39,11 @@ export const useCompany = () => {
   });
 
   const fetchCompaniesKPI = useQuery({
-    queryKey: ["companies_kpi", selectedCompanies],
+    queryKey: ["companies_kpi", companies],
     queryFn: () => {
       const companiesId =
-        selectedCompanies.length > 0
-          ? selectedCompanies
+        companies.length > 0
+          ? companies
           : (fetchCompanies?.data?.map(
               (company: CompanyType) => company.company_id,
             ) ?? []);
@@ -51,7 +51,7 @@ export const useCompany = () => {
     },
     enabled:
       fetchCompanies.isSuccess &&
-      (selectedCompanies.length > 0 || (fetchCompanies?.data?.length ?? 0) > 0),
+      (companies.length > 0 || (fetchCompanies?.data?.length ?? 0) > 0),
   });
 
   const fetchCompanyMetrics = useQuery({

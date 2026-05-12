@@ -13,7 +13,7 @@ type KPICardType = {
 
 const KPICard = ({ ...data }: KPICardType) => {
   return (
-    <Card className="kcard">
+    <Card>
       <Card.Body>
         <div className="klbl">{data.label}</div>
         <div
