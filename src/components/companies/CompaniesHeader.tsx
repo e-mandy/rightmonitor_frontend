@@ -1,4 +1,5 @@
 import { useCompany } from "../../hooks/useCompany";
+import CompaniesSelection from "./CompaniesSelection";
 
 const CompaniesHeader = () => {
   const {
@@ -11,6 +12,9 @@ const CompaniesHeader = () => {
         <div className="ph-sub">
           All companies · {companies?.length} companies
         </div>
+      </div>
+      <div>
+        <CompaniesSelection />
       </div>
     </div>
   );

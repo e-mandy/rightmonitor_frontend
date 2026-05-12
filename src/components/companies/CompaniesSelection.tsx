@@ -5,14 +5,22 @@ import { useState } from "react";
 import { useCompanies } from "../../hooks/useCompanies";
 
 const CompaniesSelection = () => {
-  const [selectedCurrentCompanies, setSelectedCurrentCompanies] = useState<
-    null | { value: string; label: string }[]
-  >(null);
+  const { setCompaniesValue, companies } = useCompanies();
 
-  const setCompaniesValue = useCompanies().setCompaniesValue;
   const {
     fetchCompanies: { data },
   } = useCompany();
+
+  const selectedCompanies = companies.map((company) => {
+    const companyData: CompanyType = data.find(
+      (c: CompanyType) => c.company_id == company.toString(),
+    );
+    return { value: companyData.company_id, label: companyData.name };
+  });
+
+  const [selectedCurrentCompanies, setSelectedCurrentCompanies] = useState<
+    null | { value: string; label: string }[]
+  >(selectedCompanies ?? []);
 
   const options =
     data?.map((company: CompanyType) => ({
