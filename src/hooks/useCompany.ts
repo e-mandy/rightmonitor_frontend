@@ -8,6 +8,7 @@ import {
 import { useLocation } from "react-router-dom";
 import { useCompanies } from "./useCompanies";
 import { useCompaniesId } from "./useCompaniesId";
+import type { KpiType } from "../types/kpi.types";
 
 export const useCompany = () => {
   const { companies } = useCompanies();
@@ -32,7 +33,7 @@ export const useCompany = () => {
     enabled: isReady,
   });
 
-  const fetchCompaniesKPI = useQuery({
+  const fetchCompaniesKPI = useQuery<KpiType>({
     queryKey: ["companies_kpi", companies],
     queryFn: () => getKPIStats(companiesId),
     enabled: isReady,

@@ -5,7 +5,7 @@ import { getTargetColor } from "../../utils/functions/getTargetColor";
 type KPICardType = {
   label: string;
   value: string | number | React.ReactNode;
-  trend?: string;
+  trend?: string | React.ReactNode;
   details?: string;
   target: string | React.ReactNode;
   color: Color;

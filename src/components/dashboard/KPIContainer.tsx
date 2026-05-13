@@ -2,26 +2,38 @@ import { Spinner } from "react-bootstrap";
 import { useCompany } from "../../hooks/useCompany";
 import KPICard from "./KPICard";
 import { getFormatMoney } from "../../utils/functions/fetFormatMoney";
+import { getEvolution } from "../../utils/functions/getEvolution";
 
 const KPIContainer = () => {
   const {
     fetchCompaniesKPI: { data: companiesKPI, isPending },
   } = useCompany();
 
-  console.log(companiesKPI);
   return (
     <div className="krow">
       <KPICard
         label="Gross Revenue Retention"
         value={isPending ? <Spinner /> : `${companiesKPI?.avg_grr?.current}%`}
-        trend="▲ +1.3% vs last month"
+        trend={
+          isPending ? (
+            <Spinner />
+          ) : (
+            `${getEvolution(companiesKPI?.avg_grr.lvm ?? 0).symbol} ${getEvolution(companiesKPI?.avg_grr.lvm ?? 0).sign}${companiesKPI?.avg_grr.lvm}% vs last month`
+          )
+        }
         target="Target: &lt;90%"
         color="neutral"
       />
       <KPICard
         label="Net Revenue Retention"
         value={isPending ? <Spinner /> : `${companiesKPI?.avg_nrr?.current}%`}
-        trend="▲ +3.1% vs last month"
+        trend={
+          isPending ? (
+            <Spinner />
+          ) : (
+            `${getEvolution(companiesKPI?.avg_nrr.lvm ?? 0).symbol} ${getEvolution(companiesKPI?.avg_nrr.lvm ?? 0).sign}${companiesKPI?.avg_nrr.lvm}% vs last month`
+          )
+        }
         target="Target: &lt;105%"
         color="neutral"
       />
@@ -30,7 +42,13 @@ const KPIContainer = () => {
         value={
           isPending ? <Spinner /> : `${companiesKPI?.logo_churn?.current}%`
         }
-        trend="▲ +0.4% — near threshold"
+        trend={
+          isPending ? (
+            <Spinner />
+          ) : (
+            `${getEvolution(companiesKPI?.logo_churn.lvm ?? 0).symbol} ${getEvolution(companiesKPI?.logo_churn.lvm ?? 0).sign}${companiesKPI?.logo_churn.lvm}% vs last month`
+          )
+        }
         target="Target: &lt;2%"
         color="neutral"
       />
@@ -40,14 +58,18 @@ const KPIContainer = () => {
           isPending ? (
             <Spinner />
           ) : (
-            `${getFormatMoney(companiesKPI?.global_grr)}`
+            `${getFormatMoney(companiesKPI?.global_grr ?? 0)}`
           )
         }
         trend="4 active upsell opportunities"
         target={
           <>
             Monthly target:{" "}
-            {isPending ? <Spinner /> : getFormatMoney(companiesKPI?.mrr)}
+            {isPending ? (
+              <Spinner size="sm" />
+            ) : (
+              getFormatMoney(companiesKPI?.mrr ?? 0)
+            )}
           </>
         }
         color="neutral"
