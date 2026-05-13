@@ -4,10 +4,9 @@ import { getFormatTime } from "../../utils/functions/getFormatTime";
 
 const ServiceQuality = () => {
   const {
-    fetchServiceQuality: { data, isPending },
+    fetchServiceQuality: { data },
   } = useQuality();
 
-  console.log(isPending ? "Chargement..." : data);
   return (
     <div className="card">
       <div className="ch">

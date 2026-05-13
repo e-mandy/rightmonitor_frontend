@@ -1,6 +1,10 @@
 export type UserType = {
-  full_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  mobile: string;
+  username: string;
   role: "Admin" | "Manager" | "Agent";
+  realmMappings: {
+    name: string;
+  }[];
 };
