@@ -3,6 +3,7 @@ import { Spinner } from "react-bootstrap";
 import { Card } from "@rightcom/right-lib";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import UserTable from "../components/user_management/UserTable";
+import TotalCompanyUsers from "../components/user_management/TotalCompanyUsers";
 
 const UserManagement = () => {
   return (
@@ -22,6 +23,9 @@ const UserManagement = () => {
         <div>
           <Card>
             <Card.Body>
+              <ErrorBoundary>
+                <TotalCompanyUsers />
+              </ErrorBoundary>
               <ErrorBoundary>
                 <UserTable />
               </ErrorBoundary>
