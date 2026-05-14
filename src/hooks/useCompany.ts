@@ -9,10 +9,13 @@ import { useLocation } from "react-router-dom";
 import { useCompanies } from "./useCompanies";
 import { useCompaniesId } from "./useCompaniesId";
 import type { KpiType } from "../types/kpi.types";
+import { useDateStore } from "../store/current_date.store";
 
 export const useCompany = () => {
   const { companies } = useCompanies();
   const { state } = useLocation();
+  const start_date = useDateStore((state) => state.start_date);
+  const end_date = useDateStore((state) => state.end_date);
 
   const id: null | string = state?.id ?? null;
 
@@ -35,7 +38,7 @@ export const useCompany = () => {
 
   const fetchCompaniesKPI = useQuery<KpiType>({
     queryKey: ["companies_kpi", companies],
-    queryFn: () => getKPIStats(companiesId),
+    queryFn: () => getKPIStats(companiesId, start_date, end_date),
     enabled: isReady,
   });
 

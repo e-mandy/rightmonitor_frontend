@@ -8,6 +8,6 @@ export const getEvolution = (
       }
     : {
         symbol: "▼",
-        sign: "-",
+        sign: "",
       };
 };

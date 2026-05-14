@@ -12,9 +12,15 @@ export const getCompaniesMetrics = async (companies: number[]) => {
   return query.data;
 };
 
-export const getKPIStats = async (companies: number[]) => {
+export const getKPIStats = async (
+  companies: number[],
+  start_date: Date | null = null,
+  end_date: Date | null = null,
+) => {
   const query = await Parse.Cloud.run("global_stats", {
     companies: companies,
+    start_date: start_date,
+    end_date: end_date,
   });
   return query.data;
 };

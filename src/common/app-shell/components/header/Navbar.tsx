@@ -37,7 +37,7 @@ const Navbar = () => {
           {/*    className=" me-2"*/}
           {/*  />*/}
           {/*) : (*/}
-          <div className="symbol-label fs-5 fw-bold bg-success text-inverse-primary  me-2">
+          <div className="symbol-label fs-8 bg-success text-inverse-primary">
             {currentUser?.firstName?.[0] || currentUser?.email?.[0]}
             {currentUser?.lastName?.[0] || currentUser?.email?.[1]}
           </div>
