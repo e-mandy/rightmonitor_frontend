@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getScoreColor } from "../../utils/functions/getScoreColor";
 import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
 import type { CustomerScoreType } from "../dashboard/CustomerScore";
@@ -24,7 +24,16 @@ const Overview = () => {
   return (
     company && (
       <div className="tp active" id="pane-overview">
-        <div className="sec-t">Health Score Breakdown</div>
+        <div className="sec-t">
+          Health Score Breakdown{" "}
+          <Link
+            to={{
+              pathname: `/company-profile/${company.company_id}/health/details`,
+            }}
+          >
+            View more details
+          </Link>
+        </div>
         <div className="score-ov">
           <div style={{ textAlign: "center", width: "140px", flexShrink: 0 }}>
             <div className="score-ring">

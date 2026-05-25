@@ -23,6 +23,7 @@ import ScoreDetailsCard from "./components/at_risk/ScoreDetailsCard";
 import Companies from "./pages/Companies";
 import UserManagement from "./pages/UserManagement";
 import { CompaniesProvider } from "./Providers/CompaniesProvider";
+import HealthScoreDetails from "./components/companies/HealthScoreDetails";
 
 function App() {
   const context = useEnvironment();
@@ -83,6 +84,10 @@ function App() {
                   <Route path="/weekly-report" element={<WeeklyReport />} />
                   <Route path="/analytics" element={<Analytics />} />
                   <Route path="/company-profile" element={<CompanyDetail />} />
+                  <Route
+                    path="/company-profile/:company_id/health/details"
+                    element={<HealthScoreDetails />}
+                  />
                   <Route path="/user-management" element={<UserManagement />} />
                 </Route>
               </Routes>
