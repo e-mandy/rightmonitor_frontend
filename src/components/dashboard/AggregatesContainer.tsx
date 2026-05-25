@@ -58,7 +58,7 @@ const AggregatesContainer = () => {
       color: "neutral",
       icon: <HouseDoorFill size="18" color={getTargetColor("blue").color} />,
       label: "Pipeline",
-      value: getFormatMoney(companiesKPI?.global_grr),
+      value: getFormatMoney(companiesKPI?.pipeline ?? 0),
       hasView: false,
     },
   ];

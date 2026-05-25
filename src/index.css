@@ -1855,11 +1855,10 @@ We'll come back here
   margin-top: 2px;
 }
 .wr-header {
-  background: linear-gradient(135deg, #80b500 0%, #6b9900 100%);
   border-radius: var(--r);
-  padding: 24px 28px;
+  padding: 10px;
   margin-bottom: 16px;
-  color: #fff;
+  color: #000;
 }
 .wr-title {
   font-size: 22px;
@@ -1874,8 +1873,7 @@ We'll come back here
 .wr-kpis {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-top: 16px;
+  gap: 20px;
 }
 .wr-kpi {
   background: rgba(255, 255, 255, 0.15);

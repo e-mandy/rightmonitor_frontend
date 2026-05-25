@@ -11,6 +11,6 @@ export type KpiType = {
     current: number;
     lvm: number;
   };
-  global_grr: number;
+  pipeline: number;
   mrr: number;
 };

@@ -22,7 +22,6 @@ const KPIContainer = () => {
           )
         }
         target="Target: &lt;90%"
-        color="neutral"
       />
       <KPICard
         label="Net Revenue Retention"
@@ -35,7 +34,6 @@ const KPIContainer = () => {
           )
         }
         target="Target: &lt;105%"
-        color="neutral"
       />
       <KPICard
         label="Logo Churn"
@@ -50,7 +48,6 @@ const KPIContainer = () => {
           )
         }
         target="Target: &lt;2%"
-        color="neutral"
       />
       <KPICard
         label="Expansion Pipeline"
@@ -58,7 +55,7 @@ const KPIContainer = () => {
           isPending ? (
             <Spinner />
           ) : (
-            `${getFormatMoney(companiesKPI?.global_grr ?? 0)}`
+            `${getFormatMoney(companiesKPI?.pipeline ?? 0)}`
           )
         }
         trend="4 active upsell opportunities"
@@ -72,7 +69,6 @@ const KPIContainer = () => {
             )}
           </>
         }
-        color="neutral"
       />
     </div>
   );

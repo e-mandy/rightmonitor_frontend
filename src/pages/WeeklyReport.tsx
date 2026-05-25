@@ -1,3 +1,4 @@
+import { ErrorBoundary } from "../components/ErrorBoundary";
 import WeeklySummary from "../components/weekly_report/WeeklySummary";
 import { getWeek } from "../utils/functions/getFormatDate";
 
@@ -20,7 +21,9 @@ const WeeklyReport = () => {
           <button className="btn btn-primary">✉ Send to Team</button>
         </div>
       </div>
-      <WeeklySummary />
+      <ErrorBoundary>
+        <WeeklySummary />
+      </ErrorBoundary>
       <div className="g2">
         <div className="wr-sec">
           <div className="wr-sec-head">
