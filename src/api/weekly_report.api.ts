@@ -11,5 +11,5 @@ export const healthChanges = async (
     end_date: end_date,
   });
 
-  return response;
+  return response.data;
 };

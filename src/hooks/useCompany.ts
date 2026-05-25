@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   getCompanies,
   getCompaniesMetrics,
+  getCompany,
   getCompanyMetrics,
   getKPIStats,
 } from "../api/companies.api";
@@ -55,10 +56,19 @@ export const useCompany = () => {
     },
   });
 
+  const fetchCurrentCompany = useQuery({
+    queryKey: ["current_company"],
+    queryFn: () => {
+      if (!id) return null;
+      return getCompany(id);
+    },
+  });
+
   return {
     fetchCompanies,
     fetchCompaniesMetrics,
     fetchCompaniesKPI,
     fetchCompanyMetrics,
+    fetchCurrentCompany,
   };
 };

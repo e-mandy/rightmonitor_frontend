@@ -16,13 +16,14 @@ const CompanyDetail = () => {
   const navigate = useNavigate();
   const { getCompanyWithMetrics } = useCompanyMetrics();
   const {
-    fetchCompanyMetrics: { data, isPending },
+    fetchCurrentCompany: { data },
   } = useCompany();
+
+  console.log(data);
 
   const [currentSection, setCurrentSection] = useState<SectionType>("overview");
   const id: null | string = state?.id ?? null;
 
-  console.log(isPending ? "Chargement" : data);
   const company: null | CustomerScoreType = id
     ? getCompanyWithMetrics("all").find(
         (company: CustomerScoreType) => company.company_id === id,

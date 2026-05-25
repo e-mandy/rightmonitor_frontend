@@ -1,83 +1,49 @@
 import { useState } from "react";
-import { DataTable, Card } from "@rightcom/right-lib";
-import { customStyles } from "../../constants/styles.constants";
+import { DataTable, Card, Spinner } from "@rightcom/right-lib";
 import { getEvolution } from "../../utils/functions/getEvolution";
 import { getTargetColor } from "../../utils/functions/getTargetColor";
 import { useWeeklyReport } from "../../hooks/useWeeklyReport";
 
-const DUMMY_COMPANIES: {
-  company: string;
-  change: number;
-  previous: number;
-  current: number;
-}[] = [
-  {
-    company: "Alpha Corp",
-    change: -12,
-    previous: 28,
-    current: 70,
+const customStyles = {
+  rows: {
+    style: {
+      minHeight: "60px",
+    },
   },
-  {
-    company: "Beta Logistics",
-    change: 5,
-    previous: 65,
-    current: 70,
+  cells: {
+    style: {
+      display: "flex",
+      alignItems: "center",
+    },
   },
-  {
-    company: "Gamma CyberSec",
-    change: -24,
-    previous: 12,
-    current: 70,
-  },
-  {
-    company: "Delta FinTech",
-    change: -1,
-    previous: 72,
-    current: 70,
-  },
-  {
-    company: "Epsilon Agro",
-    change: -2,
-    previous: 45,
-    current: 70,
-  },
-  {
-    company: "Omega Health",
-    change: -18,
-    previous: 78,
-    current: 70,
-  },
-  {
-    company: "Zeta Energy",
-    change: -8,
-    previous: 33,
-    current: 70,
-  },
-];
+};
 
 const CustomerHealthChanges = () => {
   const [perPage, setPerPage] = useState(5);
   const {
     getHealthChanges: { data },
+    getCompanyInfo,
   } = useWeeklyReport();
 
-  console.log(data);
   const columns = [
     {
       name: "Company",
       cell: (row) => (
         <span className="d-flex gap-4 justify-content-start">
-          <p>{row?.name}</p>
+          <p>{getCompanyInfo(row?.company)?.name}</p>
         </span>
       ),
+      style: {},
     },
     {
       name: "Previous",
-      selector: (row) => row.previous,
+      selector: (row) => Math.round(row.previous),
+      center: true,
     },
     {
       name: "Current",
-      cell: (row) => <p>{row.current}</p>,
+      cell: (row) => <p>{Math.round(row.current)}</p>,
+      center: true,
     },
     {
       name: "Changes",
@@ -91,11 +57,12 @@ const CustomerHealthChanges = () => {
                   : getTargetColor("green").color,
             }}
           >
-            {getEvolution(row.change).symbol} {getEvolution(row.change).sign}
-            {row.change}
+            {getEvolution(row?.change).symbol} {getEvolution(row?.change).sign}
+            {row?.change}
           </p>
         </>
       ),
+      center: true,
     },
   ];
 
@@ -103,15 +70,16 @@ const CustomerHealthChanges = () => {
     <Card className="flex-grow-1 px-8 py-6">
       <div>
         <h3 className="d-flex flex-column align-items-start fs-7">
-          <span className="fs-1">{DUMMY_COMPANIES?.length}</span> company(ies)
+          <span className="fs-1">{data?.length}</span> company(ies)
         </h3>
       </div>
       <DataTable
+        noDataComponent={<Spinner />}
         key={perPage}
         customStyles={customStyles}
         columns={columns}
         responsive
-        data={DUMMY_COMPANIES}
+        data={data ?? []}
         pagination
         paginationPerPage={perPage}
         paginationRowsPerPageOptions={[5, 10, 20]}
