@@ -1,6 +1,6 @@
 const CustomerHealthChanges = () => {
   return (
-    <div className="wr-sec">
+    <div className="wr-sec w-50">
       <div className="wr-sec-head">
         <div className="wr-sec-title">Health Score Changes</div>
       </div>

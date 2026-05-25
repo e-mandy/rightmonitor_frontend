@@ -91,7 +91,9 @@ const UserTable = () => {
         <Modal.Body>
           Select the companies.
           <TreeSelect
-            treeDate={companies.map((company: CompanyType) => company.name)}
+            treeDate={
+              companies?.map((company: CompanyType) => company.name) ?? []
+            }
           />
         </Modal.Body>
         <Modal.Footer>

@@ -1,17 +1,17 @@
 import { Card } from "@rightcom/right-lib";
 import { useState } from "react";
 import CustomerHealthChanges from "./CustomerHealthChanges";
+import RisksEscalations from "./RisksEscalations";
 
-type SectionName = "performance" | "settings" | "reports" | "changes";
+type SectionName = "risks" | "adpotions" | "changes";
 
 const WeelkyDetails = () => {
-  const [section, setSection] = useState<SectionName>("performance");
+  const [section, setSection] = useState<SectionName>("changes");
 
   const SECTIONS_COMPONENTS = {
-    performance: <CustomerHealthChanges />,
-    settings: <></>,
-    reports: <></>,
-    changes: <></>,
+    changes: <CustomerHealthChanges />,
+    risks: <RisksEscalations />,
+    adpotions: <></>,
   };
 
   return (
@@ -20,33 +20,27 @@ const WeelkyDetails = () => {
         <Card className="overflow-hidden ps-3 my-6">
           <Card.Body className="d-flex gap-5 p-0">
             <div
-              className={`w-kpi-section ${section === "performance" && "active"}`}
-              onClick={() => setSection("performance")}
-            >
-              Performance
-            </div>
-            <div
-              className={`w-kpi-section ${section === "settings" && "active"}`}
-              onClick={() => setSection("settings")}
-            >
-              Settings
-            </div>
-            <div
-              className={`w-kpi-section ${section === "reports" && "active"}`}
-              onClick={() => setSection("reports")}
-            >
-              Reports
-            </div>
-            <div
               className={`w-kpi-section ${section === "changes" && "active"}`}
               onClick={() => setSection("changes")}
             >
               Changes
             </div>
+            <div
+              className={`w-kpi-section ${section === "risks" && "active"}`}
+              onClick={() => setSection("risks")}
+            >
+              Risks
+            </div>
+            <div
+              className={`w-kpi-section ${section === "adpotions" && "active"}`}
+              onClick={() => setSection("adpotions")}
+            >
+              Adpotions
+            </div>
           </Card.Body>
         </Card>
       </div>
-      <div className="g2">{SECTIONS_COMPONENTS[section]}</div>
+      <div>{SECTIONS_COMPONENTS[section]}</div>
     </>
   );
 };

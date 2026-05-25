@@ -1,7 +1,6 @@
 import { useEnvironment } from "@keycloak/keycloak-ui-shared";
 import { KyConfigs } from "../utils/kyInstance";
 import { useQuery } from "@tanstack/react-query";
-import { userRoles } from "../constants/user.constants";
 import type { UserType } from "../types/user.types";
 
 type ClientType = "rightq" | "rightsurvey" | "rightdesk";
@@ -12,6 +11,8 @@ type UserApiParamsType = {
   company: string;
   roles: string[];
 };
+
+const userRoles = ["admin", "user", "manager"];
 
 export const getUserWithRolesApi = async (
   configs: UserApiParamsType,

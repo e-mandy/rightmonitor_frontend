@@ -8,30 +8,9 @@ import { getCompanyStatus } from "../../utils/functions/getCompanyStatus";
 import { useCurrentCompanyStore } from "../../store/current-company.store";
 import { getFormatDate } from "../../utils/functions/getFormatDate";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { customStyles } from "../../constants/styles.constants";
 
 type HealthScoreType = "all" | "at-risk" | "healthy" | "warning";
-
-const customStyles = {
-  rows: {
-    style: {
-      minHeight: "60px",
-    },
-  },
-  headCells: {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  },
-  cells: {
-    style: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-  },
-};
 
 const CustomHealthScoreContainer = () => {
   const { getCompanyWithMetrics } = useCompanyMetrics();
