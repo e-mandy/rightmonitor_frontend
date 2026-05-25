@@ -5,49 +5,41 @@ import { getTargetColor } from "../../utils/functions/getTargetColor";
 
 const DUMMY_COMPANIES: {
   name: string;
-  status: "warning" | "critical";
   trend: number;
   healthscore: number;
 }[] = [
   {
     name: "Alpha Corp",
-    status: "critical",
     trend: -12, // En baisse
     healthscore: 28,
   },
   {
     name: "Beta Logistics",
-    status: "warning",
     trend: 5, // En légère hausse
     healthscore: 65,
   },
   {
     name: "Gamma CyberSec",
-    status: "critical",
     trend: -24, // Chute brutale
     healthscore: 12,
   },
   {
     name: "Delta FinTech",
-    status: "warning",
     trend: -1,
     healthscore: 72,
   },
   {
     name: "Epsilon Agro",
-    status: "critical",
     trend: -2,
     healthscore: 45,
   },
   {
     name: "Omega Health",
-    status: "critical",
     trend: -18,
     healthscore: 78,
   },
   {
     name: "Zeta Energy",
-    status: "critical",
     trend: -8,
     healthscore: 33,
   },
@@ -61,26 +53,6 @@ const NewlyAtRisk = () => {
       cell: (row) => (
         <span className="d-flex gap-4 justify-content-start">
           <p>{row?.name}</p>
-        </span>
-      ),
-    },
-    {
-      name: "Status",
-      cell: (row: any) => (
-        <span
-          className="bx"
-          style={{
-            color:
-              row.trend < -10
-                ? getTargetColor("red").color
-                : getTargetColor("orange").color,
-            backgroundColor:
-              row.trend < -10
-                ? getTargetColor("red").bg
-                : getTargetColor("orange").bg,
-          }}
-        >
-          {row.status}
         </span>
       ),
     },

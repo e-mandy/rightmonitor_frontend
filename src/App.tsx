@@ -25,12 +25,15 @@ import UserManagement from "./pages/UserManagement";
 import { CompaniesProvider } from "./Providers/CompaniesProvider";
 import HealthScoreDetails from "./components/companies/HealthScoreDetails";
 import { setParseToken } from "./utils/parse/parseInstance";
+import { Spinner } from "react-bootstrap";
 
 function App() {
   const context = useEnvironment();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!context?.keycloak?.token) return;
+
     getPersonalInfo({ context })
       .then((response) => {
         dispatch(setData({ key: "personalInfo", value: response }));
@@ -65,8 +68,19 @@ function App() {
       })
       .catch(console.error);
 
-    if (context?.keycloak?.token) setParseToken(context?.keycloak?.token);
+    setParseToken(context.keycloak.token);
   }, [context, dispatch]);
+
+  if (!context?.keycloak?.token) {
+    return (
+      <div className="d-flex align-items-center justify-content-center vh-100 bg-light">
+        <div className="text-center">
+          <Spinner animation="border" variant="primary" className="mb-3" />
+          <div className="text-muted fw-semibold">Loading session...</div>
+        </div>
+      </div>
+    );
+  }
   return (
     <>
       <div className="app">

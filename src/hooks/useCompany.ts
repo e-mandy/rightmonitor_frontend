@@ -38,7 +38,12 @@ export const useCompany = () => {
 
   const fetchCompaniesKPI = useQuery<KpiType>({
     queryKey: ["companies_kpi", companies],
-    queryFn: () => getKPIStats(companiesId, start_date, end_date),
+    queryFn: () =>
+      getKPIStats(
+        companiesId,
+        start_date?.toISOString(),
+        end_date?.toISOString(),
+      ),
     enabled: isReady,
   });
 

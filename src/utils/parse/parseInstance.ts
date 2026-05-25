@@ -7,7 +7,7 @@ export const initParseInClientSide = () => {
   );
 
   Parse.serverURL = import.meta.env.VITE_BACKEND_URL;
-  Parse.CoreManager.set("REQUEST_ATTEMPT_LIMIT", 1);
+  Parse.CoreManager.set("REQUEST_ATTEMPT_LIMIT", 5);
 };
 
 export const setParseToken = (token: string) => {
