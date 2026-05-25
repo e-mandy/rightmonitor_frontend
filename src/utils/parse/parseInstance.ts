@@ -9,3 +9,9 @@ export const initParseInClientSide = () => {
   Parse.serverURL = import.meta.env.VITE_BACKEND_URL;
   Parse.CoreManager.set("REQUEST_ATTEMPT_LIMIT", 1);
 };
+
+export const setParseToken = (token: string) => {
+  Parse.CoreManager.set("REQUEST_HEADERS", {
+    Authorization: `Bearer ${token}`,
+  });
+};

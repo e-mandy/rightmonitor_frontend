@@ -12,8 +12,16 @@ import KPIContainer from "../components/dashboard/KPIContainer";
 import AlertAtRisk from "../components/dashboard/AlertAtRisk";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 import ServiceQuality from "../components/dashboard/ServiceQuality";
+import { useDateStore } from "../store/current_date.store";
+import { useEffect } from "react";
 
 const Dashboard = () => {
+  const setDate = useDateStore((state) => state.setDate);
+
+  useEffect(() => {
+    setDate(null, null);
+  }, [setDate]);
+
   return (
     <div className="view active" id="view-dashboard">
       <ErrorBoundary>

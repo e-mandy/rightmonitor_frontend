@@ -24,6 +24,7 @@ import Companies from "./pages/Companies";
 import UserManagement from "./pages/UserManagement";
 import { CompaniesProvider } from "./Providers/CompaniesProvider";
 import HealthScoreDetails from "./components/companies/HealthScoreDetails";
+import { setParseToken } from "./utils/parse/parseInstance";
 
 function App() {
   const context = useEnvironment();
@@ -63,6 +64,8 @@ function App() {
         dispatch(setData({ key: "likedAccounts", value: response }));
       })
       .catch(console.error);
+
+    if (context?.keycloak?.token) setParseToken(context?.keycloak?.token);
   }, [context, dispatch]);
   return (
     <>
