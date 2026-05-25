@@ -1967,3 +1967,35 @@ We'll come back here
 .wr-hl.risk {
   border-left-color: #ef4444;
 }
+
+.w-kpi-section {
+  padding: 15px 20px;
+  position: relative;
+  cursor: pointer;
+  height: 100%;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.w-kpi-section:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+}
+
+.w-kpi-section:hover::after {
+  cursor: pointer;
+  background-color: #80b500;
+  opacity: 0.5;
+}
+
+.w-kpi-section.active::after {
+  background-color: #80b500;
+}
+
+.w-kpi-section.active {
+  color: #80b500;
+}
