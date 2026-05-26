@@ -1,6 +1,6 @@
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import WeeklySummary from "../components/weekly_report/WeeklySummary";
-import WeelkyDetails from "../components/weekly_report/WeelkyDetails";
+import WeeklyDetails from "../components/weekly_report/WeeklyDetails";
 import { getWeek } from "../utils/functions/getFormatDate";
 
 const WeeklyReport = () => {
@@ -26,7 +26,7 @@ const WeeklyReport = () => {
         <WeeklySummary />
       </ErrorBoundary>
       <ErrorBoundary>
-        <WeelkyDetails />
+        <WeeklyDetails />
       </ErrorBoundary>
     </div>
   );

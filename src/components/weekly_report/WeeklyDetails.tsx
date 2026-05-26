@@ -2,10 +2,11 @@ import { Card } from "@rightcom/right-lib";
 import { useState } from "react";
 import CustomerHealthChanges from "./CustomerHealthChanges";
 import RisksEscalations from "./RisksEscalations";
+import { ErrorBoundary } from "../ErrorBoundary";
 
 type SectionName = "risks" | "adpotions" | "changes";
 
-const WeelkyDetails = () => {
+const WeeklyDetails = () => {
   const [section, setSection] = useState<SectionName>("changes");
 
   const SECTIONS_COMPONENTS = {
@@ -40,9 +41,11 @@ const WeelkyDetails = () => {
           </Card.Body>
         </Card>
       </div>
-      <div>{SECTIONS_COMPONENTS[section]}</div>
+      <ErrorBoundary>
+        <div>{SECTIONS_COMPONENTS[section]}</div>
+      </ErrorBoundary>
     </>
   );
 };
 
-export default WeelkyDetails;
+export default WeeklyDetails;
