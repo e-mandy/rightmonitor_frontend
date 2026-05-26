@@ -15,5 +15,8 @@ export const useCurrentCompany = () => {
       ? Object.assign(companyMetrics, company[0])
       : null;
 
-  return { companyWithMetrics };
+  const isReady =
+    successCompany && successCompanyMetrics && !!companyWithMetrics;
+
+  return { companyWithMetrics, isReady };
 };

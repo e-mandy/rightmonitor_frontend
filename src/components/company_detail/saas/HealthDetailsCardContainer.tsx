@@ -1,15 +1,19 @@
 import HealthDetailsCard from "../HealthDetailsCard";
 
 const HealthDetailsCardContainer = () => {
-  const DETAILS_INFORMATIONS = [
+  const DETAILS_INFORMATIONS: {
+    head_name: string;
+    score: number;
+    label: string;
+  }[] = [
     {
       head_name: "Frequency of usage score",
-      score: 68,
+      score: 0,
       label: "Sessions / active days",
     },
     {
       head_name: "Feature adoption score",
-      score: 68,
+      score: 0,
       label: "Module adopted / available",
     },
   ];
@@ -17,7 +21,7 @@ const HealthDetailsCardContainer = () => {
   return (
     <div className="d-flex my-6 gap-6">
       {DETAILS_INFORMATIONS.map((e) => (
-        <HealthDetailsCard />
+        <HealthDetailsCard {...e} />
       ))}
     </div>
   );

@@ -1,19 +1,25 @@
 import { Card } from "@rightcom/right-lib";
+import type React from "react";
 
-const HeadDetails = () => {
+type SectionInfos = {
+  section_name: string;
+  value: number | React.ReactNode;
+};
+
+const HeadDetails = ({ ...data }: SectionInfos) => {
   return (
     <Card>
       <Card.Body className="d-flex justify-content-between align-items-center">
         <div className="d-flex gap-8">
           <div>
-            <p>Saas Health score</p>
+            <p>{data?.section_name}</p>
             <h4
               style={{
                 fontSize: "30px",
                 fontWeight: "700",
               }}
             >
-              74
+              {data?.value}
             </h4>
           </div>
           <div>

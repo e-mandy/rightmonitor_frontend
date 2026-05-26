@@ -1,10 +1,16 @@
 import { Card } from "@rightcom/right-lib";
 
-const HealthDetailsCard = () => {
+const HealthDetailsCard = ({
+  ...data
+}: {
+  head_name: string;
+  score: number;
+  label: string;
+}) => {
   return (
     <Card className="flex-grow-1">
       <Card.Body>
-        <p>Head name</p>
+        <p>{data.head_name}</p>
         <span
           style={{
             fontSize: "25px",
