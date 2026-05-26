@@ -7,7 +7,6 @@ import Contacts from "../components/auth/Contacts";
 import Notes from "../components/company_detail/Notes";
 import { useCompanyMetrics } from "../hooks/useCompaniesMetrics";
 import type { CustomerScoreType } from "../components/dashboard/CustomerScore";
-import { useCompany } from "../hooks/useCompany";
 
 type SectionType = "overview" | "journey" | "products" | "contacts" | "notes";
 
@@ -15,11 +14,6 @@ const CompanyDetail = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { getCompanyWithMetrics } = useCompanyMetrics();
-  const {
-    fetchCurrentCompany: { data },
-  } = useCompany();
-
-  console.log(data);
 
   const [currentSection, setCurrentSection] = useState<SectionType>("overview");
   const id: null | string = state?.id ?? null;

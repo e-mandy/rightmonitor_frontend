@@ -34,7 +34,7 @@ export const getCompanyMetrics = async (company_id: number) => {
   return query.data;
 };
 
-export const getCompany = async (id: string) => {
+export const getCompany = async (id: number) => {
   const query = await Parse.Cloud.run("company", {
     id: id,
   });

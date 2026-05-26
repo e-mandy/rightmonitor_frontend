@@ -6,19 +6,18 @@ import {
   getCompanyMetrics,
   getKPIStats,
 } from "../api/companies.api";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useCompanies } from "./useCompanies";
 import { useCompaniesId } from "./useCompaniesId";
 import type { KpiType } from "../types/kpi.types";
 import { useDateStore } from "../store/current_date.store";
+import type { CompanyType } from "../types/company.type";
 
 export const useCompany = () => {
   const { companies } = useCompanies();
-  const { state } = useLocation();
+  const { company_id } = useParams<{ company_id: string }>();
   const start_date = useDateStore((state) => state.start_date);
   const end_date = useDateStore((state) => state.end_date);
-
-  const id: null | string = state?.id ?? null;
 
   const fetchCompanies = useQuery({
     queryKey: ["companies"],
@@ -49,19 +48,15 @@ export const useCompany = () => {
   });
 
   const fetchCompanyMetrics = useQuery({
-    queryKey: ["company_metrics"],
-    queryFn: () => {
-      if (!id) return null;
-      return getCompanyMetrics(parseInt(id));
-    },
+    queryKey: ["company_metrics", company_id],
+    queryFn: () => getCompanyMetrics(parseInt(company_id!)),
+    enabled: !!company_id,
   });
 
-  const fetchCurrentCompany = useQuery({
-    queryKey: ["current_company"],
-    queryFn: () => {
-      if (!id) return null;
-      return getCompany(id);
-    },
+  const fetchCurrentCompany = useQuery<CompanyType[]>({
+    queryKey: ["current_company", company_id],
+    queryFn: () => getCompany(parseInt(company_id!)),
+    enabled: !!company_id,
   });
 
   return {
