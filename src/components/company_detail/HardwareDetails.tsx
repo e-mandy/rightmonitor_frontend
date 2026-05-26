@@ -1,6 +1,7 @@
 import { Spinner } from "react-bootstrap";
 import { useCurrentCompany } from "../../hooks/useCurrentCompany";
 import HeadDetails from "./HeadDetails";
+import HardwareHealthDetailsCardContainer from "./hardware/HardwareHealthDetailsCardContainer";
 
 const HardwareDetails = () => {
   const { companyWithMetrics, isReady } = useCurrentCompany();
@@ -17,6 +18,7 @@ const HardwareDetails = () => {
           )
         }
       />
+      <HardwareHealthDetailsCardContainer />
     </div>
   );
 };

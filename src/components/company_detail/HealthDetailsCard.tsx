@@ -10,15 +10,15 @@ const HealthDetailsCard = ({
   return (
     <Card className="flex-grow-1">
       <Card.Body>
-        <p>{data.head_name}</p>
+        <p className="fs-2">{data.head_name}</p>
         <span
           style={{
-            fontSize: "25px",
+            fontSize: "30px",
           }}
         >
-          12
+          {data.score}
         </span>
-        <p>more details</p>
+        <p className="fs-7">{data.label}</p>
       </Card.Body>
     </Card>
   );

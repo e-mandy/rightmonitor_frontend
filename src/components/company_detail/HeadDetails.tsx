@@ -1,5 +1,5 @@
 import { Card } from "@rightcom/right-lib";
-import type React from "react";
+import React from "react";
 
 type SectionInfos = {
   section_name: string;
@@ -22,12 +22,10 @@ const HeadDetails = ({ ...data }: SectionInfos) => {
               {data?.value}
             </h4>
           </div>
-          <div>
-            <p>Score evolutioin</p>
-          </div>
         </div>
         <div>
-          <span className="px-2 py-1 rounded-2">Healthy</span>
+          <p>Score evolutioin</p>
+          <div></div>
         </div>
       </Card.Body>
     </Card>

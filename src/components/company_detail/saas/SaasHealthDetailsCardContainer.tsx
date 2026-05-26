@@ -1,6 +1,6 @@
 import HealthDetailsCard from "../HealthDetailsCard";
 
-const HealthDetailsCardContainer = () => {
+const SaasHealthDetailsCardContainer = () => {
   const DETAILS_INFORMATIONS: {
     head_name: string;
     score: number;
@@ -27,4 +27,4 @@ const HealthDetailsCardContainer = () => {
   );
 };
 
-export default HealthDetailsCardContainer;
+export default SaasHealthDetailsCardContainer;

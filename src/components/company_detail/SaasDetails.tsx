@@ -1,9 +1,9 @@
 import { Spinner } from "react-bootstrap";
 import { useCurrentCompany } from "../../hooks/useCurrentCompany";
 import HeadDetails from "./HeadDetails";
-import HealthDetailsCardContainer from "./saas/HealthDetailsCardContainer";
 import { ErrorBoundary } from "../ErrorBoundary";
 import SaasExplanation from "./saas/SaasExplanation";
+import SaasHealthDetailsCardContainer from "./saas/SaasHealthDetailsCardContainer";
 
 const SaasDetails = () => {
   const { companyWithMetrics, isReady } = useCurrentCompany();
@@ -16,7 +16,7 @@ const SaasDetails = () => {
         }
       />
       <ErrorBoundary>
-        <HealthDetailsCardContainer />
+        <SaasHealthDetailsCardContainer />
       </ErrorBoundary>
       <SaasExplanation />
     </div>
