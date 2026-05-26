@@ -6,6 +6,7 @@ import { getFormatDate } from "../../utils/functions/getFormatDate";
 import { getScoreColor } from "../../utils/functions/getScoreColor";
 import { getTargetColor } from "../../utils/functions/getTargetColor";
 import type { CustomerScoreType } from "../dashboard/CustomerScore";
+import { Modal } from "@rightcom/right-lib";
 
 const ScoreDetailsCard = () => {
   const setIsOpenedModal = useCurrentCompanyStore.getState().setIsOpenedModal;
@@ -27,23 +28,17 @@ const ScoreDetailsCard = () => {
   };
   return (
     companyMetric && (
-      <div
-        className={`rm-modal-overlay ${isOpenedModal ? "open" : ""}`}
+      <Modal
+        show={isOpenedModal}
+        onHide={() => setIsOpenedModal(false, "")}
         id="rm-modal"
         onClick={() => setIsOpenedModal(false, "")}
       >
         <div className="rm-modal" onClick={(e) => e.stopPropagation()}>
-          <div className="rm-modal-head">
+          <Modal.Header closeButton className="rm-modal-head">
             <div className="rm-modal-title">Health Score Breakdown</div>
-            <div
-              className="rm-modal-close"
-              id="rm-modal-close"
-              onClick={() => setIsOpenedModal(false, "")}
-            >
-              ✕
-            </div>
-          </div>
-          <div className="rm-modal-body">
+          </Modal.Header>
+          <Modal.Body className="rm-modal-body">
             <div className="rm-modal-co">
               <div className="rm-modal-co-av" id="m-logo">
                 {companyMetric.name.slice(0, 2).toUpperCase()}
@@ -361,9 +356,9 @@ const ScoreDetailsCard = () => {
                 View Full Profile →
               </button>
             </div>
-          </div>
+          </Modal.Body>
         </div>
-      </div>
+      </Modal>
     )
   );
 };
