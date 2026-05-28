@@ -8,7 +8,9 @@ const RisksEscalations = () => {
       <ErrorBoundary>
         <NewlyAtRisk />
       </ErrorBoundary>
-      <WorseCompaniesHealth />
+      <ErrorBoundary>
+        <WorseCompaniesHealth />
+      </ErrorBoundary>
     </div>
   );
 };

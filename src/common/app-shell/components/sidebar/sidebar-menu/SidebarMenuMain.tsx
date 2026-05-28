@@ -28,12 +28,6 @@ const SidebarMenuMain = () => {
       </SidebarMenuItemWithSub>
 
       <SidebarMenuItemWithSub to="" title="Companies" icon="office-bag">
-        <SidebarMenuItem
-          to="/companies"
-          title="All Companies"
-          hasBullet={true}
-        />
-
         <SidebarMenuItem to="/at-risk" title="At Risk" hasBullet={true} />
       </SidebarMenuItemWithSub>
 

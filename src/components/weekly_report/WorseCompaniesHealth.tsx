@@ -1,7 +1,5 @@
 import { DataTable, Card } from "@rightcom/right-lib";
-import type { CompanyType } from "../../types/company.type";
-import type Graph from "../Graph";
-import { useWeeklyReport } from "../../hooks/useWeeklyReport";
+import Graph from "../Graph";
 
 const customStyles = {
   rows: {
@@ -13,16 +11,18 @@ const customStyles = {
 };
 
 const WorseCompaniesHealth = () => {
-  const {
-    getWorseningHealthTrend: { data },
-  } = useWeeklyReport();
-
-  console.log(data);
+  const DATA = [
+    {
+      name: "Bro bor bro",
+      trend: -50,
+      healthscore: 80,
+    },
+  ];
 
   const columns = [
     {
       name: "Company",
-      cell: (row: CompanyType) => (
+      cell: (row) => (
         <span className="d-flex gap-4 justify-content-start">
           <p>{row?.name}</p>
         </span>
@@ -30,11 +30,13 @@ const WorseCompaniesHealth = () => {
     },
     {
       name: "Trend",
-      cell: (row: CompanyType) => "",
+      cell: (row) => <Graph value={row.healthscore} trend={row.trend} />,
+      center: true,
     },
     {
       name: "Health Score",
-      selector: (row: CompanyType) => "",
+      selector: (row) => row.healthscore,
+      center: true,
     },
   ];
 
@@ -44,7 +46,7 @@ const WorseCompaniesHealth = () => {
         customStyles={customStyles}
         columns={columns}
         responsive
-        data={[]}
+        data={DATA}
       />
     </Card>
   );
