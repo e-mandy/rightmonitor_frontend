@@ -7,8 +7,8 @@ type GraphType = {
 };
 
 const Graph = ({ ...data }: GraphType) => {
-  const quotient = data.trend / 4;
-  const levels = [4, 3, 2, 1];
+  const quotient = Math.abs(data.trend) / 4;
+  const levels = [1, 1, 3, 4];
   const absciss = levels.map((level) => {
     return ((Math.abs(data.value) + quotient * level) * 20) / 100;
   });

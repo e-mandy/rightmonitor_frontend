@@ -21,14 +21,14 @@ const customStyles = {
 const CustomerHealthChanges = () => {
   const [perPage, setPerPage] = useState(5);
   const {
-    getHealthChanges: { data },
+    getHealthChanges: { data, isPending },
     getCompanyInfo,
   } = useWeeklyReport();
 
   const columns = [
     {
       name: "Company",
-      cell: (row) => (
+      cell: (row: { company: string }) => (
         <span className="d-flex gap-4 justify-content-start">
           <p>{getCompanyInfo(row?.company)?.name}</p>
         </span>
@@ -37,17 +37,17 @@ const CustomerHealthChanges = () => {
     },
     {
       name: "Previous",
-      selector: (row) => Math.round(row.previous),
+      selector: (row: { previous: number }) => Math.round(row.previous),
       center: true,
     },
     {
       name: "Current",
-      cell: (row) => <p>{Math.round(row.current)}</p>,
+      cell: (row: { current: number }) => <p>{Math.round(row.current)}</p>,
       center: true,
     },
     {
       name: "Changes",
-      cell: (row) => (
+      cell: (row: { change: number }) => (
         <>
           <p
             style={{
@@ -74,7 +74,7 @@ const CustomerHealthChanges = () => {
         </h3>
       </div>
       <DataTable
-        noDataComponent={<Spinner />}
+        noDataComponent={isPending ? <Spinner /> : <p>No changes noticed !!</p>}
         key={perPage}
         customStyles={customStyles}
         columns={columns}

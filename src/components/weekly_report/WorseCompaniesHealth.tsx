@@ -1,52 +1,69 @@
 import { DataTable, Card } from "@rightcom/right-lib";
 import Graph from "../Graph";
+import { useWeeklyReport } from "../../hooks/useWeeklyReport";
+import { getTargetColor } from "../../utils/functions/getTargetColor";
 
 const customStyles = {
   rows: {
     style: {
-      minHeight: "60px",
-      padding: "16px",
+      height: "40px",
+      marginTop: "8px",
+      marginBottom: "8px",
     },
   },
 };
 
 const WorseCompaniesHealth = () => {
-  const DATA = [
-    {
-      name: "Bro bor bro",
-      trend: -50,
-      healthscore: 80,
-    },
-  ];
+  const {
+    getWorseningHealthTrend: { data, isPending },
+    getCompanyInfo,
+  } = useWeeklyReport();
+
+  console.log(data);
 
   const columns = [
     {
       name: "Company",
       cell: (row) => (
         <span className="d-flex gap-4 justify-content-start">
-          <p>{row?.name}</p>
+          <p>{getCompanyInfo(row?.company).name}</p>
         </span>
       ),
     },
     {
       name: "Trend",
-      cell: (row) => <Graph value={row.healthscore} trend={row.trend} />,
+      cell: (row) => (
+        <div className="text-center">
+          <Graph value={row?.current} trend={row?.change} />
+          <p
+            className="my-3"
+            style={{
+              color: getTargetColor("red").color,
+            }}
+          >
+            {Math.round(row?.change)}
+          </p>
+        </div>
+      ),
       center: true,
     },
     {
       name: "Health Score",
-      selector: (row) => row.healthscore,
+      selector: (row) => Math.round(row.current),
       center: true,
     },
   ];
 
   return (
-    <Card className="flex-grow-1">
+    <Card className="flex-grow-1 px-8">
       <DataTable
+        key={5}
         customStyles={customStyles}
         columns={columns}
         responsive
-        data={DATA}
+        data={data ?? []}
+        pagination
+        paginationPerPage={5}
       />
     </Card>
   );
