@@ -1,5 +1,7 @@
 import { DataTable, Card } from "@rightcom/right-lib";
 import type { CompanyType } from "../../types/company.type";
+import type Graph from "../Graph";
+import { useWeeklyReport } from "../../hooks/useWeeklyReport";
 
 const customStyles = {
   rows: {
@@ -11,6 +13,12 @@ const customStyles = {
 };
 
 const WorseCompaniesHealth = () => {
+  const {
+    getWorseningHealthTrend: { data },
+  } = useWeeklyReport();
+
+  console.log(data);
+
   const columns = [
     {
       name: "Company",
@@ -21,8 +29,8 @@ const WorseCompaniesHealth = () => {
       ),
     },
     {
-      name: "Status",
-      selector: (row: CompanyType) => "",
+      name: "Trend",
+      cell: (row: CompanyType) => "",
     },
     {
       name: "Health Score",

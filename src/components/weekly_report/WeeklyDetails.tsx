@@ -4,7 +4,7 @@ import CustomerHealthChanges from "./CustomerHealthChanges";
 import RisksEscalations from "./RisksEscalations";
 import { ErrorBoundary } from "../ErrorBoundary";
 
-type SectionName = "risks" | "adpotions" | "changes";
+type SectionName = "risks" | "adoptions" | "changes";
 
 const WeeklyDetails = () => {
   const [section, setSection] = useState<SectionName>("changes");
@@ -12,7 +12,7 @@ const WeeklyDetails = () => {
   const SECTIONS_COMPONENTS = {
     changes: <CustomerHealthChanges />,
     risks: <RisksEscalations />,
-    adpotions: <></>,
+    adoptions: <></>,
   };
 
   return (
@@ -33,10 +33,10 @@ const WeeklyDetails = () => {
               Risks
             </div>
             <div
-              className={`w-kpi-section ${section === "adpotions" && "active"}`}
-              onClick={() => setSection("adpotions")}
+              className={`w-kpi-section ${section === "adoptions" && "active"}`}
+              onClick={() => setSection("adoptions")}
             >
-              Adpotions
+              Adoptions
             </div>
           </Card.Body>
         </Card>

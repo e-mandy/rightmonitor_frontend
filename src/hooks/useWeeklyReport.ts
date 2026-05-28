@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useCompaniesId } from "./useCompaniesId";
 import { useCompany } from "./useCompany";
 import { useCompanies } from "./useCompanies";
-import { healthChanges } from "../api/weekly_report.api";
+import { healthChanges, worseningHealthTrend } from "../api/weekly_report.api";
 import type { CompanyType } from "../types/company.type";
 
 export const useWeeklyReport = () => {
@@ -31,6 +31,17 @@ export const useWeeklyReport = () => {
     enabled: isReady,
   });
 
+  // const getNewlyAtRisk = useQuery({
+  //   queryKey: ["newly_risk"],
+  //   queryFn: () =>
+  // });
+
+  const getWorseningHealthTrend = useQuery({
+    queryKey: ["worseningHS"],
+    queryFn: () => worseningHealthTrend(companiesId),
+    enabled: isReady,
+  });
+
   const getCompanyInfo = (company_id: string) => {
     let company = null;
     if (fetchCompanies.isSuccess) {
@@ -42,5 +53,5 @@ export const useWeeklyReport = () => {
     return company;
   };
 
-  return { getHealthChanges, getCompanyInfo };
+  return { getHealthChanges, getCompanyInfo, getWorseningHealthTrend };
 };
