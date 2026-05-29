@@ -2,15 +2,23 @@ import { DataTable, Card } from "@rightcom/right-lib";
 import Graph from "../Graph";
 import { useWeeklyReport } from "../../hooks/useWeeklyReport";
 import { getTargetColor } from "../../utils/functions/getTargetColor";
+import { Spinner } from "react-bootstrap";
 
 const customStyles = {
   rows: {
     style: {
-      height: "40px",
+      height: "45px",
       marginTop: "8px",
       marginBottom: "8px",
     },
   },
+};
+
+type WorseningHealthType = {
+  company: string;
+  current: number;
+  previous: number;
+  change: number;
 };
 
 const WorseCompaniesHealth = () => {
@@ -24,7 +32,7 @@ const WorseCompaniesHealth = () => {
   const columns = [
     {
       name: "Company",
-      cell: (row) => (
+      cell: (row: WorseningHealthType) => (
         <span className="d-flex gap-4 justify-content-start">
           <p>{getCompanyInfo(row?.company).name}</p>
         </span>
@@ -32,7 +40,7 @@ const WorseCompaniesHealth = () => {
     },
     {
       name: "Trend",
-      cell: (row) => (
+      cell: (row: WorseningHealthType) => (
         <div className="text-center">
           <Graph value={row?.current} trend={row?.change} />
           <p
@@ -49,14 +57,18 @@ const WorseCompaniesHealth = () => {
     },
     {
       name: "Health Score",
-      selector: (row) => Math.round(row.current),
+      selector: (row: WorseningHealthType) => Math.round(row.current),
       center: true,
     },
   ];
 
   return (
-    <Card className="flex-grow-1 px-8">
+    <Card className="flex-grow-1 px-8 py-6">
+      <div>
+        <h4>Worsening health trend</h4>
+      </div>
       <DataTable
+        noDataComponent={isPending ? <Spinner /> : <p>No data found !!</p>}
         key={5}
         customStyles={customStyles}
         columns={columns}

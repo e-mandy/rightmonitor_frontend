@@ -1,7 +1,6 @@
 import { DataTable, Card } from "@rightcom/right-lib";
 import { customStyles } from "../../constants/styles.constants";
 import { useState } from "react";
-import { getTargetColor } from "../../utils/functions/getTargetColor";
 
 const DUMMY_COMPANIES: {
   name: string;
@@ -72,6 +71,7 @@ const NewlyAtRisk = () => {
         <h4>Companies newly at risk</h4>
       </div>
       <DataTable
+        // noDataComponent={isPending ? <Spinner /> : <p>No data found !!</p>}
         key={perPage}
         customStyles={customStyles}
         columns={columns}

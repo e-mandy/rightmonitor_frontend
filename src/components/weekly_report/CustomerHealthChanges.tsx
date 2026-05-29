@@ -19,6 +19,7 @@ const customStyles = {
 };
 
 const CustomerHealthChanges = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [perPage, setPerPage] = useState(5);
   const {
     getHealthChanges: { data, isPending },
