@@ -3,6 +3,7 @@ import { useState } from "react";
 import CustomerHealthChanges from "./CustomerHealthChanges";
 import RisksEscalations from "./RisksEscalations";
 import { ErrorBoundary } from "../ErrorBoundary";
+import AdoptionProgress from "./AdoptionProgress";
 
 type SectionName = "risks" | "adoptions" | "changes";
 
@@ -12,7 +13,11 @@ const WeeklyDetails = () => {
   const SECTIONS_COMPONENTS = {
     changes: <CustomerHealthChanges />,
     risks: <RisksEscalations />,
-    adoptions: <></>,
+    adoptions: (
+      <>
+        <AdoptionProgress />
+      </>
+    ),
   };
 
   return (
