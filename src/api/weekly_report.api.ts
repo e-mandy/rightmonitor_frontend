@@ -14,9 +14,19 @@ export const healthChanges = async (
   return response.data;
 };
 
-// export const newlyRIsk = async () => {
-//   const response = await Parse.Cloud.run("newlyAtRisk");
-// };
+export const newlyRisk = async (
+  companiesId: number[],
+  start_date: string | null = null,
+  end_date: string | null = null,
+) => {
+  const response = await Parse.Cloud.run("newlyAtRisk", {
+    companies: companiesId,
+    start_date: start_date,
+    end_date: end_date,
+  });
+
+  return response.data;
+};
 
 export const worseningHealthTrend = async (
   companiesId: number[],
