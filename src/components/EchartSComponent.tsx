@@ -1,26 +1,25 @@
 import EChartsReact from "echarts-for-react";
+import type { EchartsBarType } from "../types/echats-graph.types";
 
-const EchartSComponent = () => {
+const EchartSComponent = ({ ...data }: EchartsBarType) => {
   const option = {
-    title: { text: "Adoption progression" },
+    title: { text: data.title },
     tooltip: {
       axisPointer: {
         type: "shadow",
       },
     },
     xAxis: {
-      data: [
-        "Lundi",
-        "Mardi",
-        "Mercredi",
-        "Jeudi",
-        "Vendredi",
-        "Samedi",
-        "Dimanche",
-      ],
+      data: data.xData,
     },
     yAxis: {},
-    series: [{ name: "sales", type: "bar", data: [5, 20, 36, 10, 10, 20, 30] }],
+    series: [
+      {
+        name: data.series.name,
+        type: "bar",
+        data: data.series.data,
+      },
+    ],
   };
 
   return (
