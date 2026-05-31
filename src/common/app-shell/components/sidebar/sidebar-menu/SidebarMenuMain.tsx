@@ -1,16 +1,12 @@
 // import { useIntl } from "react-intl";
 import { SidebarMenuItemWithSub } from "./SidebarMenuItemWithSub";
 import { SidebarMenuItem } from "./SidebarMenuItem";
-import { useLocation } from "react-router-dom";
-import { companies } from "../../../../../constants/at_risk.constants";
+import { useCompany } from "../../../../../hooks/useCompany";
 
 const SidebarMenuMain = () => {
-  const { state } = useLocation();
-
-  const id: null | string = state?.id ?? null;
-  const companyName = id
-    ? companies.find((company) => company.id === id)?.name
-    : null;
+  const {
+    fetchCurrentCompany: { data },
+  } = useCompany();
 
   return (
     <>
@@ -49,10 +45,10 @@ const SidebarMenuMain = () => {
         />
       </SidebarMenuItemWithSub>
 
-      {companyName && (
+      {data?.name && (
         <SidebarMenuItem
           to="/company-profile"
-          title={companyName}
+          title={data?.name}
           fontIcon="bi-archive"
           icon="ranking"
         />

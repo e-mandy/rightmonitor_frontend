@@ -100,10 +100,13 @@ function App() {
                   <Route path="/at-risk" element={<AtRisk />} />
                   <Route path="/weekly-report" element={<WeeklyReport />} />
                   <Route path="/analytics" element={<Analytics />} />
-                  <Route path="/company-profile" element={<CompanyDetail />} />
                   <Route
                     path="/company-profile/:company_id/health/details"
                     element={<HealthScoreDetails />}
+                  />
+                  <Route
+                    path="/company-profile/:company_id"
+                    element={<CompanyDetail />}
                   />
                   <Route path="/user-management" element={<UserManagement />} />
                 </Route>

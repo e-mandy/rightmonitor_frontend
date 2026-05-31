@@ -27,8 +27,6 @@ const WorseCompaniesHealth = () => {
     getCompanyInfo,
   } = useWeeklyReport();
 
-  console.log(data);
-
   const columns = [
     {
       name: "Company",

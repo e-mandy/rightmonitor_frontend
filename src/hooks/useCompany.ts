@@ -11,7 +11,7 @@ import { useCompanies } from "./useCompanies";
 import { useCompaniesId } from "./useCompaniesId";
 import type { KpiType } from "../types/kpi.types";
 import { useDateStore } from "../store/current_date.store";
-import type { CompanyType } from "../types/company.type";
+import type { CompanyMetricType, CompanyType } from "../types/company.type";
 
 export const useCompany = () => {
   const { companies } = useCompanies();
@@ -47,13 +47,13 @@ export const useCompany = () => {
     enabled: isReady,
   });
 
-  const fetchCompanyMetrics = useQuery({
+  const fetchCompanyMetrics = useQuery<CompanyMetricType>({
     queryKey: ["company_metrics", company_id],
     queryFn: () => getCompanyMetrics(parseInt(company_id!)),
     enabled: !!company_id,
   });
 
-  const fetchCurrentCompany = useQuery<CompanyType[]>({
+  const fetchCurrentCompany = useQuery<CompanyType>({
     queryKey: ["current_company", company_id],
     queryFn: () => getCompany(parseInt(company_id!)),
     enabled: !!company_id,

@@ -1,32 +1,19 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Overview from "../components/company_detail/Overview";
 import Journey from "./Journey";
 import Products from "../components/company_detail/Products";
 import Contacts from "../components/auth/Contacts";
-import Notes from "../components/company_detail/Notes";
-import { useCompanyMetrics } from "../hooks/useCompaniesMetrics";
-import type { CustomerScoreType } from "../components/dashboard/CustomerScore";
-
-type SectionType = "overview" | "journey" | "products" | "contacts" | "notes";
+import { useCompany } from "../hooks/useCompany";
+import { Spinner } from "react-bootstrap";
+type SectionType = "overview" | "journey" | "products" | "contacts";
 
 const CompanyDetail = () => {
-  const { state } = useLocation();
-  const navigate = useNavigate();
-  const { getCompanyWithMetrics } = useCompanyMetrics();
+  const {
+    fetchCurrentCompany: { data: company, isPending: isPendingCompany },
+  } = useCompany();
 
   const [currentSection, setCurrentSection] = useState<SectionType>("overview");
-  const id: null | string = state?.id ?? null;
 
-  const company: null | CustomerScoreType = id
-    ? getCompanyWithMetrics("all").find(
-        (company: CustomerScoreType) => company.company_id === id,
-      )
-    : null;
-
-  useEffect(() => {
-    if (id === null) navigate("/dashboard", { replace: true });
-  }, [id, navigate]);
   return (
     <div className="view" id="view-company">
       <div className="co-hero">
@@ -35,24 +22,11 @@ const CompanyDetail = () => {
         </div>
         <div style={{ flex: 1 }}>
           <div className="co-name-big" id="co-name-big">
-            {company?.name}
+            {isPendingCompany ? <Spinner /> : company?.name}
           </div>
           <div className="co-meta">
             <span className="co-tag">
               {company?.industry} · {company?.region} · CSA: Amos Ahounou
-            </span>
-            <span
-              id="co-status-badge"
-              style={{
-                fontSize: "11px",
-                fontWeight: 700,
-                padding: "3px 10px",
-                borderRadius: "20px",
-                background: "#dcfce7",
-                color: "#15803d",
-              }}
-            >
-              ● Active
             </span>
             <span
               style={{
@@ -67,12 +41,6 @@ const CompanyDetail = () => {
               PRO License
             </span>
           </div>
-        </div>
-        <div className="co-actions">
-          <button className="btn btn-ghost">📋 Notes</button>
-          <button className="btn btn-ghost">📅 Schedule</button>
-          <button className="btn btn-blue">✉ Contact</button>
-          <button className="btn btn-primary">+ Log Activity</button>
         </div>
       </div>
       <div className="ptabs">
@@ -104,20 +72,12 @@ const CompanyDetail = () => {
         >
           Contacts
         </div>
-        <div
-          className={`ptab ${currentSection === "notes" && "on"}`}
-          data-pane="notes"
-          onClick={() => setCurrentSection("notes")}
-        >
-          Notes
-        </div>
       </div>
       <div className="tab-body">
         {currentSection === "overview" && <Overview />}
         {currentSection === "journey" && <Journey />}
         {currentSection === "products" && <Products />}
         {currentSection === "contacts" && <Contacts />}
-        {currentSection === "notes" && <Notes />}
       </div>
     </div>
   );

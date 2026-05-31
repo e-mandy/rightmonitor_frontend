@@ -1,34 +1,30 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getScoreColor } from "../../utils/functions/getScoreColor";
-import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
-import type { CustomerScoreType } from "../dashboard/CustomerScore";
 import { getCompanyStatus } from "../../utils/functions/getCompanyStatus";
 import { getTargetColor } from "../../utils/functions/getTargetColor";
+import { useCompany } from "../../hooks/useCompany";
+import { Spinner } from "react-bootstrap";
 
 const Overview = () => {
-  const { state } = useLocation();
-  const { getCompanyWithMetrics } = useCompanyMetrics();
-  const id: null | string = state?.id ?? null;
-
-  const company: null | CustomerScoreType = id
-    ? getCompanyWithMetrics("all").find(
-        (company: CustomerScoreType) => company.company_id === id,
-      )
-    : null;
+  const { company_id } = useParams<{ company_id: string }>();
+  const {
+    fetchCompanyMetrics: { data: companyMetrics, isPending, isSuccess },
+  } = useCompany();
 
   const circonference = 314;
-  const offset = company
-    ? circonference - (company?.overall_health / 100) * circonference
+  const offset = companyMetrics
+    ? circonference - (companyMetrics?.overall_health / 100) * circonference
     : 314;
 
   return (
-    company && (
+    isSuccess &&
+    !!companyMetrics && (
       <div className="tp active" id="pane-overview">
         <div className="sec-t">
           Health Score Breakdown{" "}
           <Link
             to={{
-              pathname: `/company-profile/${company.company_id}/health/details`,
+              pathname: `/company-profile/${company_id}/health/details`,
             }}
           >
             View more details
@@ -52,7 +48,9 @@ const Overview = () => {
                   cy="60"
                   r="50"
                   fill="none"
-                  stroke={getScoreColor(company.overall_health).color}
+                  stroke={
+                    getScoreColor(companyMetrics?.overall_health ?? 0).color
+                  }
                   stroke-width="10"
                   stroke-dasharray="314"
                   stroke-dashoffset={offset}
@@ -61,7 +59,11 @@ const Overview = () => {
               </svg>
               <div className="score-center">
                 <div className="score-num" id="co-score-num">
-                  {Math.round(company?.overall_health)}
+                  {isPending ? (
+                    <Spinner />
+                  ) : (
+                    Math.round(companyMetrics?.overall_health ?? 0)
+                  )}
                 </div>
                 <div className="score-lbl">/ 100</div>
               </div>
@@ -70,12 +72,15 @@ const Overview = () => {
               className="score-stat"
               id="co-score-stat"
               style={{
-                background: getScoreColor(company?.overall_health).bg,
-                color: getScoreColor(company?.overall_health).color,
+                background: getScoreColor(companyMetrics?.overall_health ?? 0)
+                  .bg,
+                color: getScoreColor(companyMetrics?.overall_health ?? 0).color,
               }}
             >
-              {getCompanyStatus(company.overall_health)[0].toUpperCase() +
-                getCompanyStatus(company.overall_health).slice(1)}
+              {getCompanyStatus(
+                companyMetrics?.overall_health ?? 0,
+              )[0].toUpperCase() +
+                getCompanyStatus(companyMetrics?.overall_health ?? 0).slice(1)}
             </span>
           </div>
           <div>
@@ -88,18 +93,19 @@ const Overview = () => {
                 <div
                   className="dim-b"
                   style={{
-                    width: company.saas_health + "%",
-                    background: getScoreColor(company.saas_health).color,
+                    width: companyMetrics?.saas_health + "%",
+                    background: getScoreColor(companyMetrics?.saas_health ?? 0)
+                      .color,
                   }}
                 ></div>
               </div>
               <div
                 className="dim-sc"
                 style={{
-                  color: getScoreColor(company.saas_health).color,
+                  color: getScoreColor(companyMetrics?.saas_health ?? 0).color,
                 }}
               >
-                {Math.round(company.saas_health)}
+                {Math.round(companyMetrics?.saas_health ?? 0)}
               </div>
               <div className="dim-wt">×40%</div>
             </div>
@@ -112,18 +118,20 @@ const Overview = () => {
                 <div
                   className="dim-b"
                   style={{
-                    width: company.hardware_health + "%",
-                    background: getScoreColor(company.hardware_health).color,
+                    width: companyMetrics?.hardware_health + "%",
+                    background: getScoreColor(
+                      companyMetrics?.hardware_health ?? 0,
+                    ).color,
                   }}
                 ></div>
               </div>
               <div
                 className="dim-sc"
                 style={{
-                  color: getScoreColor(company.hardware_health).color,
+                  color: getScoreColor(companyMetrics?.hardware_health).color,
                 }}
               >
-                {Math.round(company.hardware_health)}
+                {Math.round(companyMetrics?.hardware_health)}
               </div>
               <div className="dim-wt">×30%</div>
             </div>
@@ -136,19 +144,21 @@ const Overview = () => {
                 <div
                   className="dim-b"
                   style={{
-                    width: company.relationship_health + "%",
-                    background: getScoreColor(company.relationship_health)
-                      .color,
+                    width: companyMetrics?.relationship_health + "%",
+                    background: getScoreColor(
+                      companyMetrics?.relationship_health,
+                    ).color,
                   }}
                 ></div>
               </div>
               <div
                 className="dim-sc"
                 style={{
-                  color: getScoreColor(company.relationship_health).color,
+                  color: getScoreColor(companyMetrics?.relationship_health)
+                    .color,
                 }}
               >
-                {Math.round(company.relationship_health)}
+                {Math.round(companyMetrics?.relationship_health)}
               </div>
               <div className="dim-wt">×30%</div>
             </div>
@@ -162,18 +172,18 @@ const Overview = () => {
               className="km-val"
               style={{
                 color:
-                  company.implementation_nps.nps < 0
+                  companyMetrics?.implementation_nps.nps < 0
                     ? getTargetColor("red").color
                     : getTargetColor("green").color,
               }}
             >
-              {Math.round(company.implementation_nps.nps)}
+              {Math.round(companyMetrics?.implementation_nps.nps)}
             </div>
             <div
               className="km-sub"
               style={{
                 color:
-                  company.implementation_nps.nps < 0
+                  companyMetrics?.implementation_nps.nps < 0
                     ? getTargetColor("red").color
                     : getTargetColor("green").color,
               }}

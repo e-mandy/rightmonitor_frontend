@@ -8,7 +8,6 @@ import {
   worseningHealthTrend,
 } from "../api/weekly_report.api";
 import type { CompanyType } from "../types/company.type";
-import type { newlyAtRiskType } from "../types/weekly_report.types";
 
 export const useWeeklyReport = () => {
   const { fetchCompanies } = useCompany();
