@@ -5,4 +5,5 @@ export type EchartsBarType = {
     name: string;
     data: number[];
   };
+  legend: string[];
 };

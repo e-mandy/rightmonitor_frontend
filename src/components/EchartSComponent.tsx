@@ -9,6 +9,9 @@ const EchartSComponent = ({ ...data }: EchartsBarType) => {
         type: "shadow",
       },
     },
+    legend: {
+      data: data.legend,
+    },
     xAxis: {
       data: data.xData,
     },
