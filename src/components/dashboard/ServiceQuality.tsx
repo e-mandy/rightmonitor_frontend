@@ -11,7 +11,6 @@ const ServiceQuality = () => {
     <div className="card">
       <div className="ch">
         <div className="ch-t">Service Quality</div>
-        <span className="ch-a">Details →</span>
       </div>
       <div className="cb">
         <div className="mr">

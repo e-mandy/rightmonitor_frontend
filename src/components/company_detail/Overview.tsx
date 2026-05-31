@@ -235,9 +235,7 @@ const Overview = () => {
             </div>
           </div>
         </div>
-        <div className="sec-t">
-          Product Adoption<span className="sec-link">Full breakdown →</span>
-        </div>
+        <div className="sec-t">Product Adoption</div>
         <div className="prod-grid">
           <div className="prod-card">
             <div className="prod-head">

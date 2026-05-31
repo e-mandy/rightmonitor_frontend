@@ -22,9 +22,7 @@ const ScoreDetailsCard = () => {
 
   const handleCompanyProfile = (id: string) => {
     setIsOpenedModal(false, "");
-    navigate("/company-profile", {
-      state: { id },
-    });
+    navigate(`/company-profile/${id}`);
   };
   return (
     companyMetric && (

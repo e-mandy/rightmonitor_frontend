@@ -44,7 +44,6 @@ const Dashboard = () => {
         <div className="card">
           <div className="ch">
             <div className="ch-t">Product Adoption</div>
-            <span className="ch-a">Breakdown →</span>
           </div>
           <div className="cb">
             <div className="ai">
