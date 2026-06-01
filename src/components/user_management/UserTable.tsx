@@ -8,7 +8,7 @@ import {
 import type { UserType } from "../../types/user.types";
 import { Person } from "react-bootstrap-icons";
 import { useSettings } from "../../hooks/useSettings";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { useState } from "react";
 import { useCompany } from "../../hooks/useCompany";
 import type { CompanyType } from "../../types/company.type";
@@ -24,7 +24,7 @@ const customStyles = {
 
 const UserTable = () => {
   const {
-    getUserUserWithRoles: { data },
+    getUserUserWithRoles: { data, isPending },
   } = useSettings();
 
   const {
@@ -79,6 +79,7 @@ const UserTable = () => {
   return (
     <div>
       <DataTable
+        noDataComponent={isPending ? <Spinner /> : <p>No user found</p>}
         customStyles={customStyles}
         columns={columns}
         responsive

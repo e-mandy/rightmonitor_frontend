@@ -1,7 +1,7 @@
 import { type CustomerScoreType } from "./CustomerScore";
 import { useState } from "react";
 import { useCompanyMetrics } from "../../hooks/useCompaniesMetrics";
-import { Card, DataTable } from "@rightcom/right-lib";
+import { Card, DataTable, Spinner } from "@rightcom/right-lib";
 import { getScoreColor } from "../../utils/functions/getScoreColor";
 import CustomScoreRow from "./CustomScoreRow";
 import { getCompanyStatus } from "../../utils/functions/getCompanyStatus";
@@ -13,7 +13,7 @@ import { customStyles } from "../../constants/styles.constants";
 type HealthScoreType = "all" | "at-risk" | "healthy" | "warning";
 
 const CustomHealthScoreContainer = () => {
-  const { getCompanyWithMetrics } = useCompanyMetrics();
+  const { getCompanyWithMetrics, isPending } = useCompanyMetrics();
   const setIsOpenedModal = useCurrentCompanyStore.getState().setIsOpenedModal;
 
   const sections: HealthScoreType[] = ["all", "at-risk", "healthy", "warning"];
@@ -120,11 +120,14 @@ const CustomHealthScoreContainer = () => {
         </div>
         <div className="my-4">
           <DataTable
+            noDataComponent={
+              isPending ? <Spinner /> : <p>No companies found !!</p>
+            }
             customStyles={customStyles}
             responsive
             pagination
             columns={columns}
-            data={getCompanyWithMetrics(currentSection)}
+            data={getCompanyWithMetrics("all")}
           />
         </div>
       </Card.Body>

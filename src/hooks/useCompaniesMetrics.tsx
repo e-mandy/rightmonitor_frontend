@@ -4,9 +4,14 @@ import { useCompany } from "./useCompany";
 type CompanyMetricStatus = "warning" | "at-risk" | "healthy" | "all";
 export const useCompanyMetrics = () => {
   const {
-    fetchCompanies: { data: companies },
-    fetchCompaniesMetrics: { data: companiesMetrics },
+    fetchCompanies: { data: companies, isPending: isCompaniesPending },
+    fetchCompaniesMetrics: {
+      data: companiesMetrics,
+      isPending: isCompaniesMetricsPending,
+    },
   } = useCompany();
+
+  const isPending = isCompaniesMetricsPending || isCompaniesPending;
 
   const getCompanyWithMetrics = (status: CompanyMetricStatus) => {
     if (!companies || !companiesMetrics) return [];
@@ -32,5 +37,5 @@ export const useCompanyMetrics = () => {
       .filter(Boolean);
   };
 
-  return { getCompanyWithMetrics };
+  return { getCompanyWithMetrics, isPending };
 };
