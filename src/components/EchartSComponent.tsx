@@ -19,8 +19,10 @@ const EchartSComponent = ({ ...data }: EchartsBarType) => {
     series: [
       {
         name: data.series.name,
-        type: "bar",
+        type: data.series.type,
         data: data.series.data,
+        min: data.series.min,
+        max: data.series.max,
       },
     ],
   };

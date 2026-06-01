@@ -6,8 +6,10 @@ import HardwareDetails from "../company_detail/HardwareDetails";
 import RelationshipDetails from "../company_detail/RelationshipDetails";
 import { useCompany } from "../../hooks/useCompany";
 import { ArrowLeft } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 const HealthScoreDetails = () => {
+  const navigate = useNavigate();
   const [section, setSection] = useState<"saas" | "hardware" | "relationship">(
     "saas",
   );
@@ -23,9 +25,12 @@ const HealthScoreDetails = () => {
 
   return (
     <div className="px-15">
-      <div className="d-flex align-items-center gap-2">
+      <button
+        className="d-flex align-items-center gap-2 px-2 py-1 rounded bg-white border-0 fs-4 my-2 shadow-sm"
+        onClick={() => navigate(-1)}
+      >
         <ArrowLeft /> Back
-      </div>
+      </button>
       <div>
         <Card className="overflow-hidden ps-3 my-6">
           <Card.Body className="d-flex flex-column px-4 py-0 pt-4">

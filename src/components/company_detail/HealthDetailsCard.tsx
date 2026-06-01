@@ -4,7 +4,7 @@ const HealthDetailsCard = ({
   ...data
 }: {
   head_name: string;
-  score: number;
+  score: number | string;
   label: string;
 }) => {
   return (

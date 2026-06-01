@@ -235,7 +235,7 @@ const Overview = () => {
             </div>
           </div>
         </div>
-        <div className="sec-t">Product Adoption</div>
+        {/* <div className="sec-t">Product Adoption</div>
         <div className="prod-grid">
           <div className="prod-card">
             <div className="prod-head">
@@ -412,7 +412,7 @@ const Overview = () => {
               <b className="c-b">Send proposal →</b>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     )
   );

@@ -21,7 +21,11 @@ const ModulesUsage = () => {
           title="Adoption fluctuation"
           legend={legend}
           xData={WEEK_DAYS}
-          series={{ name: "Modules used", data: [12, 30, 40, 100, 10, 3, 50] }}
+          series={{
+            name: "Modules used",
+            data: [12, 30, 40, 100, 10, 3, 50],
+            type: "bar",
+          }}
         />
       </Card.Body>
     </Card>
