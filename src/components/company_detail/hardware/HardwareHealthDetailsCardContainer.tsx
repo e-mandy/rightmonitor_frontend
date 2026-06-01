@@ -17,17 +17,17 @@ const HardwareHealthDetailsCardContainer = () => {
     {
       head_name: "Offline terminals",
       score: 0,
-      label: "of 28 total",
+      label: "of 0 total",
     },
     {
       head_name: "RMA Open",
       score: Math.round(companyWithMetrics?.rma_rate),
-      label: "of 28 total",
+      label: "",
     },
     {
-      head_name: "Offline terminals",
+      head_name: "Hardware incidents",
       score: 0,
-      label: "of 28 total",
+      label: "of 0 total",
     },
   ];
 

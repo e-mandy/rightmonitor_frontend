@@ -2,6 +2,8 @@ import { Spinner } from "react-bootstrap";
 import { useCurrentCompany } from "../../hooks/useCurrentCompany";
 import HeadDetails from "./HeadDetails";
 import HardwareHealthDetailsCardContainer from "./hardware/HardwareHealthDetailsCardContainer";
+import { ErrorBoundary } from "../ErrorBoundary";
+import HardwareExplanation from "./hardware/HardwareExplanation";
 
 const HardwareDetails = () => {
   const { companyWithMetrics, isReady } = useCurrentCompany();
@@ -18,7 +20,10 @@ const HardwareDetails = () => {
           )
         }
       />
-      <HardwareHealthDetailsCardContainer />
+      <ErrorBoundary>
+        <HardwareHealthDetailsCardContainer />
+      </ErrorBoundary>
+      <HardwareExplanation />
     </div>
   );
 };

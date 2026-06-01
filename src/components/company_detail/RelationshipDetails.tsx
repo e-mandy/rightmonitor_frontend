@@ -9,7 +9,7 @@ const RelationshipDetails = () => {
   return (
     <div>
       <HeadDetails
-        section_name="Saas Health"
+        section_name="Relationship Health"
         value={
           !isReady ? (
             <Spinner />

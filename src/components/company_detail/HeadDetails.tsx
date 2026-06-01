@@ -23,10 +23,6 @@ const HeadDetails = ({ ...data }: SectionInfos) => {
             </h4>
           </div>
         </div>
-        <div>
-          <p>Score evolutioin</p>
-          <div></div>
-        </div>
       </Card.Body>
     </Card>
   );
