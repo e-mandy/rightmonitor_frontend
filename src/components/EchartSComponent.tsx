@@ -1,37 +1,58 @@
 import EChartsReact from "echarts-for-react";
 import type { EchartsBarType } from "../types/echats-graph.types";
 
-const EchartSComponent = ({ ...data }: EchartsBarType) => {
+interface EchartsComponentProps extends Partial<EchartsBarType> {
+  option?: any;
+  style?: React.CSSProperties;
+}
+
+const EchartSComponent = ({ option: customOption, style, ...data }: EchartsComponentProps) => {
+  // If a full customOption is passed, use it directly
+  if (customOption) {
+    return (
+      <div style={style}>
+        <EChartsReact option={customOption} style={style} />
+      </div>
+    );
+  }
+
+  const isGauge = data.series?.type === "gauge";
+
   const option = {
-    title: { text: data.title },
+    title: data.title ? { text: data.title } : undefined,
     tooltip: {
+      trigger: isGauge ? "item" : "axis",
       axisPointer: {
         type: "shadow",
       },
     },
-    legend: {
-      data: data.legend,
-    },
-    xAxis: {
-      data: data.xData,
-    },
-    yAxis: {},
-    series: [
-      {
-        name: data.series.name,
-        type: data.series.type,
-        data: data.series.data,
-        min: data.series.min,
-        max: data.series.max,
-      },
-    ],
+    legend: data.legend ? { data: data.legend } : undefined,
+    ...(isGauge
+      ? {}
+      : {
+          xAxis: {
+            type: "category",
+            data: data.xData,
+          },
+          yAxis: {
+            type: "value",
+          },
+        }),
+    series: data.series
+      ? [
+          {
+            ...data.series,
+          },
+        ]
+      : [],
   };
 
   return (
-    <div>
-      <EChartsReact option={option} />
+    <div style={style}>
+      <EChartsReact option={option} style={style} />
     </div>
   );
 };
 
 export default EchartSComponent;
+

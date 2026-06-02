@@ -5,7 +5,7 @@ export type EchartsBarType = {
     startAngle?: number;
     endAngle?: number;
     name?: string;
-    data?: number[] | [{ value: number; name?: string }];
+    data?: any;
     type: string;
     min?: number;
     max?: number;
@@ -30,6 +30,10 @@ export type EchartsBarType = {
       formatter: string;
       fontSize: number;
     };
+    [key: string]: any;
   };
   legend?: string[];
+  option?: any;
+  [key: string]: any;
 };
+
