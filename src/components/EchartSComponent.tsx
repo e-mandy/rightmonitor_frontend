@@ -6,8 +6,11 @@ interface EchartsComponentProps extends Partial<EchartsBarType> {
   style?: React.CSSProperties;
 }
 
-const EchartSComponent = ({ option: customOption, style, ...data }: EchartsComponentProps) => {
-  // If a full customOption is passed, use it directly
+const EchartSComponent = ({
+  option: customOption,
+  style,
+  ...data
+}: EchartsComponentProps) => {
   if (customOption) {
     return (
       <div style={style}>
@@ -55,4 +58,3 @@ const EchartSComponent = ({ option: customOption, style, ...data }: EchartsCompo
 };
 
 export default EchartSComponent;
-

@@ -35,5 +35,8 @@ export type EchartsBarType = {
   legend?: string[];
   option?: any;
   [key: string]: any;
+  xAxis: {
+    type: string;
+    data: string[];
+  };
 };
-

@@ -1,3 +1,4 @@
+import { DateRangePicker } from "@rightcom/right-lib";
 import AnalyticsSections from "../components/analytics/AnalyticsSections";
 
 const Analytics = () => {
@@ -11,12 +12,7 @@ const Analytics = () => {
           </div>
         </div>
         <div className="ph-right">
-          <select className="tsel">
-            <option>This Month</option>
-            <option>Last Month</option>
-            <option>Q1 2026</option>
-            <option>Last 6 months</option>
-          </select>
+          <DateRangePicker />
           <button className="btn btn-ghost">↓ Export</button>
         </div>
       </div>
