@@ -21,7 +21,7 @@ const AggregatesContainer = () => {
 
   const AGGREGATES_FIELDS: AggregateCardType[] = [
     {
-      color: "green",
+      color: "neutral",
       icon: <Circle size="18" color={getTargetColor("green").color} />,
       label: "Total Companies",
       value: companies?.length ?? 0,
@@ -29,7 +29,7 @@ const AggregatesContainer = () => {
       link: "all",
     },
     {
-      color: "green",
+      color: "neutral",
       icon: <CheckCircleFill size="18" color={getTargetColor("green").color} />,
       label: "Healthy",
       value: getCompanyWithMetrics("healthy").length,
@@ -37,7 +37,7 @@ const AggregatesContainer = () => {
       link: "healthy",
     },
     {
-      color: "orange",
+      color: "neutral",
       icon: (
         <ExclamationCircle size="18" color={getTargetColor("orange").color} />
       ),
@@ -47,7 +47,7 @@ const AggregatesContainer = () => {
       link: "warning",
     },
     {
-      color: "red",
+      color: "neutral",
       icon: <XCircleFill size="18" color={getTargetColor("red").color} />,
       label: "At Risk",
       value: getCompanyWithMetrics("at-risk").length,

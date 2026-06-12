@@ -127,7 +127,7 @@ const CustomHealthScoreContainer = () => {
             responsive
             pagination
             columns={columns}
-            data={getCompanyWithMetrics("all")}
+            data={getCompanyWithMetrics(currentSection)}
           />
         </div>
       </Card.Body>

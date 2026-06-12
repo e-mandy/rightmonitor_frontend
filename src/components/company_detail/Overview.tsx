@@ -220,7 +220,7 @@ const Overview = () => {
             <div className="km-val c-g">100%</div>
             <div className="km-sub c-g">Completed Day 12</div>
           </div>
-          <div className="km">
+          {/* <div className="km">
             <div className="km-lbl">Survey Response Rate</div>
             <div className="km-val">74%</div>
             <div className="km-sub" style={{ color: "var(--t3)" }}>
@@ -233,7 +233,7 @@ const Overview = () => {
             <div className="km-sub" style={{ color: "var(--t3)" }}>
               10 months away
             </div>
-          </div>
+          </div> */}
         </div>
         {/* <div className="sec-t">Product Adoption</div>
         <div className="prod-grid">

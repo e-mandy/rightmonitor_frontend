@@ -1,4 +1,3 @@
-import { DateRangePicker } from "@rightcom/right-lib";
 import { useCompany } from "../../hooks/useCompany";
 import CompaniesSelection from "../companies/CompaniesSelection";
 
@@ -15,7 +14,6 @@ const DashboardHeader = () => {
         </div>
       </div>
       <div className="ph-right d-flex align-items-center">
-        <DateRangePicker />
         <CompaniesSelection />
       </div>
     </div>

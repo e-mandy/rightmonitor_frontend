@@ -4,7 +4,7 @@ import RiskTrend from "./RiskTrend";
 
 const GlobalCustomerKPI = () => {
   return (
-    <div className="d-flex gap-8 align-items-center">
+    <div className="d-flex gap-8 align-items-center my-8">
       <ErrorBoundary>
         <AverageHealth />
       </ErrorBoundary>

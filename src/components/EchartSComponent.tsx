@@ -11,6 +11,7 @@ const EchartSComponent = ({
   style,
   ...data
 }: EchartsComponentProps) => {
+  // If a full customOption is passed, use it directly
   if (customOption) {
     return (
       <div style={style}>

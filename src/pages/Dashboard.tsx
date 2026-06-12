@@ -1,11 +1,3 @@
-import {
-  BarChartFill,
-  CardText,
-  CircleFill,
-  FileEarmarkFill,
-  FileTextFill,
-  RecordCircle,
-} from "react-bootstrap-icons";
 import AggregatesContainer from "../components/dashboard/AggregatesContainer";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import KPIContainer from "../components/dashboard/KPIContainer";
@@ -41,7 +33,7 @@ const Dashboard = () => {
         <ErrorBoundary>
           <ServiceQuality />
         </ErrorBoundary>
-        <div className="card">
+        {/* <div className="card">
           <div className="ch">
             <div className="ch-t">Product Adoption</div>
           </div>
@@ -131,7 +123,7 @@ const Dashboard = () => {
               <span className="ai-pct">41%</span>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="card">
           <div className="ch">
             <div className="ch-t">Onboarding Tracker</div>

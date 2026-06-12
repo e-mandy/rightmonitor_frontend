@@ -11,10 +11,8 @@ const RiskTrend = () => {
             type: "line",
             data: [12, 34, 67, 78, 90, 10, 16],
           }}
-          xAxis={{
-            type: "category",
-            data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-          }}
+          xData={["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}
+          legend={["At risk Companies"]}
         />
       </Card.Body>
     </Card>
