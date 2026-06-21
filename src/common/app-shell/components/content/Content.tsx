@@ -21,6 +21,7 @@ const Content = ({ children }: WithChildren) => {
         classes.content.join(" "),
         config?.app?.content?.class,
       )}
+      style={{ flex: 1 }}
     >
       {appContentContainer ? (
         <div
@@ -29,6 +30,7 @@ const Content = ({ children }: WithChildren) => {
             "_app-container _container",
             classes.contentContainer.join(" "),
           )}
+          style={{ height: "100%" }}
         >
           {children}
         </div>

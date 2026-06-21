@@ -13,9 +13,6 @@ const AtRisk = () => {
           <div className="ph-title">At-Risk Companies</div>
           <TotalAtRiskCompanies />
         </div>
-        <div className="ph-right">
-          <button className="btn btn-primary">Schedule All QBRs</button>
-        </div>
       </div>
       <TotalARR />
       {getCompanyWithMetrics("at-risk").map((element: CustomerScoreType) => (

@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Journey from "./pages/Journey";
 import Onboarding from "./pages/Onboarding";
@@ -26,6 +26,7 @@ import { CompaniesProvider } from "./Providers/CompaniesProvider";
 import HealthScoreDetails from "./components/companies/HealthScoreDetails";
 import { setParseToken } from "./utils/parse/parseInstance";
 import { Spinner } from "react-bootstrap";
+import Welcome from "./pages/Welcome";
 
 function App() {
   const context = useEnvironment();
@@ -89,10 +90,7 @@ function App() {
             <CompaniesProvider>
               <Routes>
                 <Route element={<MasterLayout />}>
-                  <Route
-                    path="/"
-                    element={<Navigate to="/dashboard" replace />}
-                  />
+                  <Route path="/" element={<Welcome />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/companies" element={<Companies />} />
                   <Route path="/journey" element={<Journey />} />
