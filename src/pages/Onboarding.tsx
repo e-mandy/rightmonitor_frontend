@@ -6,10 +6,10 @@ const Onboarding = () => {
           <div className="ph-title">Onboarding Tracker</div>
           <div className="ph-sub">All companies · Implementation progress</div>
         </div>
-        <div className="ph-right">
+        {/* <div className="ph-right">
           <button className="btn btn-ghost">↓ Export</button>
           <button className="btn btn-primary">+ New Onboarding</button>
-        </div>
+        </div> */}
       </div>
       <div className="ob-stats">
         <div className="ob-stat">

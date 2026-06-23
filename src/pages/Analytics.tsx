@@ -13,7 +13,6 @@ const Analytics = () => {
         </div>
         <div className="ph-right">
           <DateRangePicker />
-          <button className="btn btn-ghost">↓ Export</button>
         </div>
       </div>
       <AnalyticsSections />

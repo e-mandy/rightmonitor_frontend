@@ -15,9 +15,6 @@ const Journey = () => {
           <div className="ph-title">Journey Feed</div>
           <div className="ph-sub">All customer events · Live</div>
         </div>
-        <div className="ph-right">
-          <button className="btn btn-ghost">↓ Export</button>
-        </div>
       </div>
       <div className="jf-filters">
         <div className="jf-chip on" data-filter="all">
@@ -38,11 +35,11 @@ const Journey = () => {
         <div className="jf-chip" data-filter="XP">
           RightCom XP
         </div>
-        <input
+        {/* <input
           className="jf-search"
           id="jf-search"
           placeholder="Search company or event…"
-        />
+        /> */}
       </div>
       <div className="jf-list" id="jf-list">
         <div className="jf-item" data-prod="RightQ" data-co="Ecobank GH">

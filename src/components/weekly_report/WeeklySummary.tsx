@@ -13,7 +13,7 @@ const WeeklySummary = () => {
   const setDate = useDateStore((state) => state.setDate);
 
   useEffect(() => {
-    setDate(start_date, end_date);
+    setDate(start_date.toISOString(), end_date.toISOString());
   }, [end_date, start_date, setDate]);
 
   const {

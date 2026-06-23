@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
 interface DateStoreType {
-  start_date: Date | null;
-  end_date: Date | null;
-  setDate: (start: Date | null, end: Date | null) => void;
+  start_date: string | null;
+  end_date: string | null;
+  setDate: (start: string | null, end: string | null) => void;
 }
 
 export const useDateStore = create<DateStoreType>((set) => ({
